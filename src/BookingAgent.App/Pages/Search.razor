@@ -1,6 +1,8 @@
 @page "/search"
 @inject ILookupService LookupService
 @inject ICruisePricingService PricingService
+@inject Microsoft.Extensions.Options.IOptions<RoyalCaribbeanApiOptions> ApiOptions
+@inject ISailingListService SailingListService
 @using BookingAgent.Domain.Models
 
 <PageTitle>Sailing search</PageTitle>
@@ -8,6 +10,7 @@
 <section class="section-block">
     <h1>Sailing search</h1>
     <p>Use lookup data (regions, ports, ships, cabin categories) to prepare a pricing request. The form will call the pricing service with the selected filters.</p>
+    <p class="muted">Current pricing mode: @(ApiOptions.Value.UseStub ? "Stub (sample data)" : "Live SOAP call")</p>
 </section>
 
 @if (isLoading)
@@ -100,20 +103,110 @@ else
     @if (pricingResult is not null)
     {
         <section class="section-block">
-            <h2>Pricing result (stub)</h2>
-            <p class="muted">Using sample data until SOAP integration is complete.</p>
-            <dl>
-                <dt>Reservation</dt>
-                <dd>@pricingResult.ReservationId</dd>
-                <dt>Ship</dt>
-                <dd>@pricingResult.SailingInfo?.SelectedSailing?.ShipCode</dd>
-                <dt>Start</dt>
-                <dd>@pricingResult.SailingInfo?.SelectedSailing?.Start?.ToString("yyyy-MM-dd")</dd>
-                <dt>Fare</dt>
-                <dd>@pricingResult.SailingInfo?.SelectedCategory?.FareCode</dd>
-            </dl>
+            <h2>Pricing result</h2>
+            <p class="muted">Currently using sample data; will reflect live SOAP response once connected.</p>
+            <div class="info-grid">
+                <div>
+                    <dl>
+                        <dt>Reservation</dt>
+                        <dd>@pricingResult.ReservationId</dd>
+                        <dt>Ship</dt>
+                        <dd>@pricingResult.SailingInfo?.SelectedSailing?.ShipCode</dd>
+                        <dt>Start</dt>
+                        <dd>@pricingResult.SailingInfo?.SelectedSailing?.Start?.ToString("yyyy-MM-dd")</dd>
+                        <dt>Fare</dt>
+                        <dd>@pricingResult.SailingInfo?.SelectedCategory?.FareCode</dd>
+                    </dl>
+                </div>
+                <div>
+                    <h3>Booking totals</h3>
+                    <table class="rate-table">
+                        <thead>
+                            <tr><th>Type</th><th class="numeric">Amount</th></tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var bp in pricingResult.BookingPayment?.BookingPrices ?? new List<BookingPrice>())
+                            {
+                                <tr>
+                                    <td>@bp.PriceTypeCode</td>
+                                    <td class="numeric">@bp.Amount?.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h3>Payment schedule</h3>
+                    <ul class="payment-list">
+                        @foreach (var p in pricingResult.BookingPayment?.PaymentSchedule?.Payments ?? new List<Payment>())
+                        {
+                            <li>
+                                <span>@p.PaymentNumber</span>
+                                <span>@p.Amount?.ToString("C")</span>
+                                <span>@p.DueDate?.ToString("yyyy-MM-dd")</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <h3>Guest pricing</h3>
+            <div class="guest-grid">
+                @foreach (var g in pricingResult.BookingPayment?.GuestPrices ?? new List<GuestPrice>())
+                {
+                    <article class="guest-card">
+                        <h4>Guest @g.GuestRefNumber</h4>
+                        <table class="rate-table small">
+                            <thead>
+                            <tr><th>Code</th><th class="numeric">Amount</th></tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var pi in g.PriceInfos)
+                            {
+                                <tr>
+                                    <td>@pi.PriceTypeCode</td>
+                                    <td class="numeric">@pi.Amount?.ToString("C")</td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </article>
+                }
+            </div>
         </section>
     }
+}
+
+@if (sailings is not null && sailings.Count > 0)
+{
+    <section class="section-block">
+        <h2>Sailing list</h2>
+        <p class="muted">Showing results from @(ApiOptions.Value.UseStub ? "stub data" : "staging API")</p>
+        <table class="rate-table">
+            <thead>
+                <tr>
+                    <th>Ship</th>
+                    <th>Package</th>
+                    <th>Start</th>
+                    <th>Duration</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in sailings)
+                {
+                    <tr>
+                        <td>@s.ShipCode</td>
+                        <td>@s.CruisePackageCode</td>
+                        <td>@s.StartDate?.ToString("yyyy-MM-dd")</td>
+                        <td>@s.Duration</td>
+                        <td>@s.DeparturePort</td>
+                        <td>@s.ArrivalPort</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
 }
 
 @code {
@@ -123,6 +216,7 @@ else
     private string? summary;
     private SearchFilters filters = new();
     private CruisePricingResult? pricingResult;
+    private List<SailingOptionResult> sailings = new();
 
     private List<RegionLookup> regions = new();
     private List<PortLookup> ports = new();
@@ -191,6 +285,8 @@ else
         try
         {
             pricingResult = await PricingService.GetPriceAsync(criteria);
+            var list = await SailingListService.GetSailingListAsync(criteria);
+            sailings = list.ToList();
         }
         catch (Exception ex)
         {

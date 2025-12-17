@@ -57,3 +57,16 @@
 
 14) SOAP/API Safety
 - Do not log SOAP payloads or credentials. If calling staging endpoints, prefer basic auth via HTTP headers and redact secrets in logs. Fall back to mocks if connectivity/auth is not confirmed.
+- Use staging endpoints by default; set reasonable timeouts/retries. If a call fails, surface a safe user-facing message and do not expose SOAP faults verbatim.
+- Keep a configurable stub toggle for external calls (e.g., `UseStub` in API options) to avoid accidental calls when credentials are not set; never hardcode secrets in code or configs.
+
+15) Plan Updates
+- Always update `plan.md` and `plan_vi.md` with progress, proposals, and work log entries after significant changes. Keep histories aligned in both languages.
+
+16) API Method Findings
+- Login: current credentials return warning CSE0572 "ACCESS NOT AUTHORIZED FOR THIS AGENCY" (RequestorID 275611/378372, TerminalID JOHN12); requires vendor clearance/agency enablement before use.
+- LookupAgency: works with provided credentials; returns agency IDs (e.g., 378372, 275611) and contact info; can be used to confirm agency data.
+- SailingList: works with provided credentials and OTA_CruiseSailAvailRQ; returns sailing options; can be integrated with caution while keeping `UseStub` toggle for live calls.
+
+17) Config Hygiene
+- Never rely on `bin/` output appsettings that may contain real secrets; ensure runtime secrets (DB password, API credentials) come from env vars/user-secrets and clean build artifacts before commit.

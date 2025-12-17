@@ -11,7 +11,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.Configure<RoyalCaribbeanApiOptions>(builder.Configuration.GetSection("RoyalCaribbeanApi"));
 builder.Services.AddHttpClient<ICruisePricingService, RoyalCaribbeanSoapPricingClient>();
-builder.Services.AddSingleton<ICruisePricingService, RoyalCaribbeanSoapPricingClient>();
+builder.Services.AddHttpClient<ISailingListService, SailingListService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<ILookupService, LookupService>();
 

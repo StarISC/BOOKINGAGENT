@@ -16,11 +16,13 @@ public record CruisePriceCriteria
     public string? PortCode { get; init; }
     public string? ShipCode { get; init; }
     public string? CabinCategoryCode { get; init; }
+    public string? CabinNumber { get; init; }
     public DateOnly? StartDate { get; init; }
     public DateOnly? EndDate { get; init; }
     public int? DurationNights { get; init; }
     public string? CurrencyCode { get; init; } = "USD";
     public List<CruiseGuestCriteria> Guests { get; init; } = new();
+    public List<string> PromotionCodes { get; init; } = new();
 }
 
 public record CruiseGuestCriteria

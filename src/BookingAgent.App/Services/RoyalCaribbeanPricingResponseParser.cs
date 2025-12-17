@@ -23,6 +23,7 @@ public static class RoyalCaribbeanPricingResponseParser
             var bookingPrices = doc.Descendants(ns + "BookingPrice").ToList();
             var payments = doc.Descendants(ns + "Payment").ToList();
             var promotions = doc.Descendants(ns + "SelectedPromotions").ToList();
+            var selectedCabin = doc.Descendants(ns + "SelectedCabin").FirstOrDefault();
 
             var result = new CruisePricingResult
             {
@@ -45,7 +46,14 @@ public static class RoyalCaribbeanPricingResponseParser
                             FareCode = category.Attribute("FareCode")?.Value,
                             PromotionDescription = category.Attribute("PromotionDescription")?.Value,
                             PricedCategoryCode = category.Attribute("PricedCategoryCode")?.Value,
-                            BerthedCategoryCode = category.Attribute("BerthedCategoryCode")?.Value
+                            BerthedCategoryCode = category.Attribute("BerthedCategoryCode")?.Value,
+                            SelectedCabin = selectedCabin is null ? null : new SelectedCabin
+                            {
+                                CabinNumber = selectedCabin.Attribute("CabinNumber")?.Value,
+                                Status = selectedCabin.Attribute("Status")?.Value,
+                                CategoryLocation = selectedCabin.Attribute("CategoryLocation")?.Value,
+                                MaxOccupancy = ParseInt(selectedCabin.Attribute("MaxOccupancy")?.Value)
+                            }
                         }
                 },
                 BookingPayment = new BookingPayment

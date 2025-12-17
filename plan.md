@@ -23,10 +23,36 @@
 - Supervisor: agent permissions plus override/approval flows (if added), access to operational reports.
 - Admin: manage lookups/refresh, configuration toggles, user/role administration, view system diagnostics/health.
 
+## Latest Updates (runtime readiness)
+- Verified SQL `BookingAgentDB` exists on `SHENLUNG\\SQLSERVER2022` with seeded lookup data (e.g., CabinCategories 3447, Ports 1186, Ships 53, SubRegions 366, Regions 21).
+- Build check: `dotnet build BookingAgent.sln` passes cleanly.
+- Runtime config: set env `ConnectionStrings__BookingAgent=Server=SHENLUNG\\SQLSERVER2022;Database=BookingAgentDB;User Id=sa;Password=123456;TrustServerCertificate=True;` before running; keep API creds via env (`RoyalCaribbeanApi__Username=CONNCQN`, `RoyalCaribbeanApi__Password=qFDmKFM7eTaLk3s`, `RoyalCaribbeanApi__UseStub=true` by default to avoid unintended calls).
+- Live API notes: SailingList works when `UseStub=false`; Login/BookingPrice still return CSE0572 authorization warning, so pricing stays stub until vendor clears access. Keep bin output with secrets out of commits.
+- Runtime attempt 2025-12-17: starting on `http://localhost:5234` failed because port is already bound by an existing `BookingAgent.App.exe` (PID 41700). Reuse the running instance or start a new one on a free port, e.g. `dotnet run --project src/BookingAgent.App/BookingAgent.App.csproj --urls http://localhost:5290`.
+
 ## Progress
 - Done: Solution scaffolding (Blazor Server + Domain), initial domain pricing models, UI shell, placeholder pricing service, database schema for lookups, bulk import script, lookup domain interfaces, SQL-backed lookup service with caching and DI wiring, config placeholders for SHENLUNG\\SQLSERVER2022, search UI wired to lookup data (regions/ports/ships/cabin categories) in `/search`, SOAP pricing client skeleton (config binding, HttpClient, sample response stub).
-- In progress: Expand SOAP request builder/response parser toward OTA_CruisePriceBookingRQ/RS (added POS/Sailing/DeparturePort/Category, basic parser for booking/guest prices); search page calls pricing service with filters (stub response).
-- Next: Complete UI search ? live SOAP pricing call (full guest/promotions/cabin mapping); booking flow and role policies; payment abstraction prep.
+- In progress: Expand SOAP request builder/response parser toward OTA_CruisePriceBookingRQ/RS (POS/Sailing/DeparturePort/Category, guests, promotions, booking/guest prices, payment schedule); search page calls pricing service with filters (stub response). Using configurable UseStub to avoid accidental live calls.
+- Next: Disable UseStub with env/user-secrets credentials to test live SOAP pricing, adjust SOAPAction/path if required; then complete booking flow and role policies; payment abstraction prep.
+
+## Work Log (recent)
+- Created SQL schema + import scripts for lookup tables; added lookup service with cache and DI.
+- Built Blazor shell, search page using lookup data; pricing page shows sample breakdown.
+- Added SOAP pricing client skeleton (HttpClient, config binding, Basic Auth), request builder stub, response parser stub; search page triggers pricing service with criteria.
+- Expanded SOAP builder (POS/Sailing/DeparturePort/Category, duration, guest list, selected cabin, promotions) and parser (booking prices, payment schedule, guest price infos, promotions, selected cabin); client still falls back to sample when parsing fails.
+- Search page now shows pricing breakdown (booking totals, payment schedule, guest pricing) from the service stub while awaiting live SOAP integration.
+- Config now includes OperationPath/SoapAction options for staging endpoint flexibility and UseStub toggle to prevent accidental live calls.
+- UI displays current pricing mode (stub vs live) on the search page to clarify environment status.
+- Attempted staging call via SOAP POST to BookingPrice (Basic auth) returned SOAP Fault env:Client "Internal Error"; next step: verify endpoint/SOAPAction/payload with vendor docs/support.
+- Tested staging Login endpoint (Basic auth) per provided payload; HTTP 200 with warning CSE0572 "ACCESS NOT AUTHORIZED FOR THIS AGENCY" — need vendor confirmation on agency/RequestorID/credentials to proceed.
+
+## Work Log (recent)
+- Created SQL schema + import scripts for lookup tables; added lookup service with cache and DI.
+- Built Blazor shell, search page using lookup data; pricing page shows sample breakdown.
+- Added SOAP pricing client skeleton (HttpClient, config binding, Basic Auth), request builder stub, response parser stub; search page triggers pricing service with criteria.
+- Expanded SOAP builder (POS/Sailing/DeparturePort/Category, duration, guest list, selected cabin, promotions) and parser (booking prices, payment schedule, guest price infos, promotions, selected cabin); client still falls back to sample when parsing fails.
+- Search page now shows pricing breakdown (booking totals, payment schedule, guest pricing) from the service stub while awaiting live SOAP integration.
+- Config now includes OperationPath/SoapAction options for staging endpoint flexibility (still set via env/user-secrets; no secrets committed).
 
 ## Work Log (recent)
 - Created SQL schema + import scripts for lookup tables; added lookup service with cache and DI.
@@ -104,6 +130,19 @@
 - Booking: bookings persisted with pricing audit; retrieve/amend supports repricing.
 - Security: role policies enforced; secrets not logged/committed.
 - Payment-ready: abstraction and schema in place; UI can branch into payment once gateway is selected.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

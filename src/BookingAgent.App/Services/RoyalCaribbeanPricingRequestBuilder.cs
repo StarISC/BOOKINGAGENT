@@ -39,9 +39,19 @@ public static class RoyalCaribbeanPricingRequestBuilder
         {
             sb.AppendLine($@"  <ota:DeparturePort LocationCode=""{criteria.PortCode}"" />");
         }
-        if (!string.IsNullOrWhiteSpace(criteria.CabinCategoryCode))
+        if (!string.IsNullOrWhiteSpace(criteria.CabinCategoryCode) || !string.IsNullOrWhiteSpace(criteria.CabinNumber))
         {
-            sb.AppendLine($@"  <ota:SelectedCategory FareCode=""{criteria.CabinCategoryCode}"" />");
+            sb.Append(@"  <ota:SelectedCategory");
+            if (!string.IsNullOrWhiteSpace(criteria.CabinCategoryCode))
+            {
+                sb.Append($@" FareCode=""{criteria.CabinCategoryCode}""");
+            }
+            sb.AppendLine(">");
+            if (!string.IsNullOrWhiteSpace(criteria.CabinNumber))
+            {
+                sb.AppendLine($@"    <ota:SelectedCabin CabinNumber=""{criteria.CabinNumber}"" />");
+            }
+            sb.AppendLine("  </ota:SelectedCategory>");
         }
         sb.AppendLine("</ota:SailingInfo>");
         if (criteria.Guests.Count > 0)
@@ -57,7 +67,15 @@ public static class RoyalCaribbeanPricingRequestBuilder
             sb.AppendLine("</ota:GuestDetails>");
             sb.AppendLine("</ota:ReservationInfo>");
         }
-        // TODO: add promotions and cabin selection when available.
+        if (criteria.PromotionCodes.Count > 0)
+        {
+            sb.AppendLine("<ota:SelectedPromotions>");
+            foreach (var promo in criteria.PromotionCodes)
+            {
+                sb.AppendLine($@"  <ota:SelectedPromotion PromotionCode=""{promo}"" />");
+            }
+            sb.AppendLine("</ota:SelectedPromotions>");
+        }
         sb.AppendLine("</ota:OTA_CruisePriceBookingRQ>");
         sb.AppendLine("</soapenv:Body>");
         sb.AppendLine("</soapenv:Envelope>");

@@ -44,9 +44,9 @@ public sealed class RoyalCaribbeanSoapPricingClient : ICruisePricingService
 
     private async Task<CruisePricingResult> ExecutePricingAsync(CruisePriceCriteria criteria)
     {
-        if (string.IsNullOrWhiteSpace(_options.BaseUrl))
+        if (_options.UseStub || string.IsNullOrWhiteSpace(_options.BaseUrl))
         {
-            _logger.LogWarning("Royal Caribbean API base URL is not configured; returning sample.");
+            _logger.LogInformation("Using stub pricing (UseStub=true or BaseUrl missing).");
             return SampleCruisePricingService.BuildSample();
         }
 
@@ -56,7 +56,10 @@ public sealed class RoyalCaribbeanSoapPricingClient : ICruisePricingService
         {
             Content = new StringContent(envelope, Encoding.UTF8, "text/xml")
         };
-        request.Headers.Add("SOAPAction", ""); // placeholder; adjust if endpoint requires specific action
+        if (!string.IsNullOrWhiteSpace(_options.SoapAction))
+        {
+            request.Headers.Add("SOAPAction", _options.SoapAction);
+        }
 
         if (!string.IsNullOrEmpty(_options.Username) && !string.IsNullOrEmpty(_options.Password))
         {
@@ -102,6 +105,7 @@ public sealed class RoyalCaribbeanSoapPricingClient : ICruisePricingService
         {
             throw new InvalidOperationException("RoyalCaribbeanApi:BaseUrl is not configured.");
         }
-        return new Uri(new Uri(_options.BaseUrl.TrimEnd('/')), "BookingPrice");
+        var path = string.IsNullOrWhiteSpace(_options.OperationPath) ? "BookingPrice" : _options.OperationPath;
+        return new Uri(new Uri(_options.BaseUrl.TrimEnd('/')), path);
     }
 }
