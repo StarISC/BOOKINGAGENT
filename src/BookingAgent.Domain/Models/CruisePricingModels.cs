@@ -10,6 +10,18 @@ public record CruisePricingResult
     public BookingPayment? BookingPayment { get; init; }
 }
 
+public record CruisePriceCriteria
+{
+    public string? RegionCode { get; init; }
+    public string? PortCode { get; init; }
+    public string? ShipCode { get; init; }
+    public string? CabinCategoryCode { get; init; }
+    public DateOnly? StartDate { get; init; }
+    public DateOnly? EndDate { get; init; }
+    public int? DurationNights { get; init; }
+    public string? CurrencyCode { get; init; } = "USD";
+}
+
 public record CruiseSailingInfo
 {
     public SelectedSailing? SelectedSailing { get; init; }

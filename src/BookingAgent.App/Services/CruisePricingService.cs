@@ -8,17 +8,28 @@ namespace BookingAgent.App.Services;
 public interface ICruisePricingService
 {
     Task<CruisePricingResult> GetLatestPricingAsync();
+    Task<CruisePricingResult> GetPriceAsync(CruisePriceCriteria criteria);
 }
 
 public sealed class SampleCruisePricingService : ICruisePricingService
 {
     public Task<CruisePricingResult> GetLatestPricingAsync()
     {
+        return Task.FromResult(BuildSample());
+    }
+
+    public Task<CruisePricingResult> GetPriceAsync(CruisePriceCriteria criteria)
+    {
+        return Task.FromResult(BuildSample());
+    }
+
+    internal static CruisePricingResult BuildSample()
+    {
         var bookingStart = DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(3));
         var paymentDate1 = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(7));
         var paymentDate2 = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(35));
 
-        var result = new CruisePricingResult
+        return new CruisePricingResult
         {
             ReservationId = "RC-123456",
             SailingInfo = new CruiseSailingInfo
@@ -140,7 +151,5 @@ public sealed class SampleCruisePricingService : ICruisePricingService
                 }
             }
         };
-
-        return Task.FromResult(result);
     }
 }

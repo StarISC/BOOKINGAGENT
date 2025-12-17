@@ -1,0 +1,214 @@
+@page "/search"
+@inject ILookupService LookupService
+@inject ICruisePricingService PricingService
+@using BookingAgent.Domain.Models
+
+<PageTitle>Sailing search</PageTitle>
+
+<section class="section-block">
+    <h1>Sailing search</h1>
+    <p>Use lookup data (regions, ports, ships, cabin categories) to prepare a pricing request. The form will call the pricing service with the selected filters.</p>
+</section>
+
+@if (isLoading)
+{
+    <p class="status">Loading lookup data…</p>
+}
+else if (loadError is not null)
+{
+    <p class="status">Error loading lookups: @loadError</p>
+}
+else
+{
+    <section class="section-block">
+        <EditForm Model="@filters" OnValidSubmit="HandleSearch">
+            <div class="info-grid">
+                <div>
+                    <label>Region</label>
+                    <InputSelect class="form-select" @bind-Value="filters.RegionCode">
+                        <option value="">Any</option>
+                        @foreach (var r in regions)
+                        {
+                            <option value="@r.RegionCode">@r.RegionName (@r.RegionCode)</option>
+                        }
+                    </InputSelect>
+                </div>
+                <div>
+                    <label>Port</label>
+                    <InputSelect class="form-select" @bind-Value="filters.PortCode">
+                        <option value="">Any</option>
+                        @foreach (var p in ports)
+                        {
+                            <option value="@p.PortCode">@p.PortName (@p.PortCode)</option>
+                        }
+                    </InputSelect>
+                </div>
+                <div>
+                    <label>Ship</label>
+                    <InputSelect class="form-select" @bind-Value="filters.ShipCode" OnChange="OnShipChanged">
+                        <option value="">Any</option>
+                        @foreach (var s in ships)
+                        {
+                            <option value="@s.ShipCode">@s.ShipName (@s.ShipCode)</option>
+                        }
+                    </InputSelect>
+                </div>
+                <div>
+                    <label>Cabin category</label>
+                    <InputSelect class="form-select" @bind-Value="filters.CabinCategoryCode">
+                        <option value="">Any</option>
+                        @foreach (var c in cabinCategories)
+                        {
+                            <option value="@c.CategoryCode">@c.CategoryCode @c.Description</option>
+                        }
+                    </InputSelect>
+                </div>
+                <div>
+                    <label>Start date</label>
+                    <InputDate class="form-control" @bind-Value="filters.StartDate" />
+                </div>
+                <div>
+                    <label>End date</label>
+                    <InputDate class="form-control" @bind-Value="filters.EndDate" />
+                </div>
+                <div>
+                    <label>Duration (nights)</label>
+                    <InputNumber class="form-control" @bind-Value="filters.DurationNights" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" disabled="@isSubmitting">Get pricing</button>
+            @if (isSubmitting)
+            {
+                <span class="status">Requesting pricing…</span>
+            }
+        </EditForm>
+    </section>
+
+    @if (!string.IsNullOrEmpty(summary))
+    {
+        <section class="section-block">
+            <h2>Current selection</h2>
+            <p>@summary</p>
+            <p class="muted">Pricing request sent using these inputs.</p>
+        </section>
+    }
+
+    @if (pricingResult is not null)
+    {
+        <section class="section-block">
+            <h2>Pricing result (stub)</h2>
+            <p class="muted">Using sample data until SOAP integration is complete.</p>
+            <dl>
+                <dt>Reservation</dt>
+                <dd>@pricingResult.ReservationId</dd>
+                <dt>Ship</dt>
+                <dd>@pricingResult.SailingInfo?.SelectedSailing?.ShipCode</dd>
+                <dt>Start</dt>
+                <dd>@pricingResult.SailingInfo?.SelectedSailing?.Start?.ToString("yyyy-MM-dd")</dd>
+                <dt>Fare</dt>
+                <dd>@pricingResult.SailingInfo?.SelectedCategory?.FareCode</dd>
+            </dl>
+        </section>
+    }
+}
+
+@code {
+    private bool isLoading = true;
+    private bool isSubmitting;
+    private string? loadError;
+    private string? summary;
+    private SearchFilters filters = new();
+    private CruisePricingResult? pricingResult;
+
+    private List<RegionLookup> regions = new();
+    private List<PortLookup> ports = new();
+    private List<ShipLookup> ships = new();
+    private List<CabinCategoryLookup> cabinCategories = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            regions = (await LookupService.GetRegionsAsync()).ToList();
+            ports = (await LookupService.GetPortsAsync()).ToList();
+            ships = (await LookupService.GetShipsAsync()).ToList();
+        }
+        catch (Exception ex)
+        {
+            loadError = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task OnShipChanged(ChangeEventArgs args)
+    {
+        var shipCode = args.Value?.ToString() ?? string.Empty;
+        filters.ShipCode = shipCode;
+        cabinCategories.Clear();
+        if (!string.IsNullOrWhiteSpace(shipCode))
+        {
+            try
+            {
+                cabinCategories = (await LookupService.GetCabinCategoriesAsync(shipCode)).ToList();
+            }
+            catch (Exception ex)
+            {
+                loadError = $"Cabin categories: {ex.Message}";
+            }
+        }
+    }
+
+    private async Task HandleSearch()
+    {
+        isSubmitting = true;
+        summary = BuildSummary();
+        var criteria = new CruisePriceCriteria
+        {
+            RegionCode = filters.RegionCode,
+            PortCode = filters.PortCode,
+            ShipCode = filters.ShipCode,
+            CabinCategoryCode = filters.CabinCategoryCode,
+            StartDate = filters.StartDate,
+            EndDate = filters.EndDate,
+            DurationNights = filters.DurationNights,
+            CurrencyCode = "USD"
+        };
+        try
+        {
+            pricingResult = await PricingService.GetPriceAsync(criteria);
+        }
+        catch (Exception ex)
+        {
+            loadError = $"Pricing request failed: {ex.Message}";
+        }
+        isSubmitting = false;
+        StateHasChanged();
+    }
+
+    private string BuildSummary()
+    {
+        var parts = new List<string>();
+        if (!string.IsNullOrWhiteSpace(filters.RegionCode)) parts.Add($"Region: {filters.RegionCode}");
+        if (!string.IsNullOrWhiteSpace(filters.PortCode)) parts.Add($"Port: {filters.PortCode}");
+        if (!string.IsNullOrWhiteSpace(filters.ShipCode)) parts.Add($"Ship: {filters.ShipCode}");
+        if (!string.IsNullOrWhiteSpace(filters.CabinCategoryCode)) parts.Add($"Cabin: {filters.CabinCategoryCode}");
+        if (filters.StartDate.HasValue) parts.Add($"Start: {filters.StartDate:yyyy-MM-dd}");
+        if (filters.EndDate.HasValue) parts.Add($"End: {filters.EndDate:yyyy-MM-dd}");
+        if (filters.DurationNights.HasValue) parts.Add($"Nights: {filters.DurationNights}");
+        return parts.Count == 0 ? "No filters selected." : string.Join(", ", parts);
+    }
+
+    private sealed class SearchFilters
+    {
+        public string? RegionCode { get; set; }
+        public string? PortCode { get; set; }
+        public string? ShipCode { get; set; }
+        public string? CabinCategoryCode { get; set; }
+        public DateOnly? StartDate { get; set; }
+        public DateOnly? EndDate { get; set; }
+        public int? DurationNights { get; set; }
+    }
+}

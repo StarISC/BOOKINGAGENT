@@ -1,13 +1,19 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using BookingAgent.Domain.Lookups;
 using BookingAgent.App.Services;
+using BookingAgent.Domain.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<ICruisePricingService, SampleCruisePricingService>();
+builder.Services.Configure<RoyalCaribbeanApiOptions>(builder.Configuration.GetSection("RoyalCaribbeanApi"));
+builder.Services.AddHttpClient<ICruisePricingService, RoyalCaribbeanSoapPricingClient>();
+builder.Services.AddSingleton<ICruisePricingService, RoyalCaribbeanSoapPricingClient>();
+builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<ILookupService, LookupService>();
 
 var app = builder.Build();
 

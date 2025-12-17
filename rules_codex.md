@@ -51,3 +51,9 @@
 12) Booking & Payments (forward-looking)
 - Core flows: sailing search, fare/price retrieval, cabin selection, booking creation/modification, with auditing of price components.
 - Future requirement: integrate online payment API for customers to pay during booking. Design service boundaries so payment gateway can be plugged in without breaking pricing/booking flows; capture payment intent/transaction references in DB when implemented.
+
+13) Planning Hygiene
+- Keep `plan.md` (English) and `plan_vi.md` (Vietnamese) in sync with progress and proposals. Add new mandatory rules here when discovered to prevent regressions.
+
+14) SOAP/API Safety
+- Do not log SOAP payloads or credentials. If calling staging endpoints, prefer basic auth via HTTP headers and redact secrets in logs. Fall back to mocks if connectivity/auth is not confirmed.
