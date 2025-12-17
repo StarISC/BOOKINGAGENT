@@ -25,8 +25,14 @@
 
 ## Progress
 - Done: Solution scaffolding (Blazor Server + Domain), initial domain pricing models, UI shell, placeholder pricing service, database schema for lookups, bulk import script, lookup domain interfaces, SQL-backed lookup service with caching and DI wiring, config placeholders for SHENLUNG\\SQLSERVER2022, search UI wired to lookup data (regions/ports/ships/cabin categories) in `/search`, SOAP pricing client skeleton (config binding, HttpClient, sample response stub).
-- In progress: Build real SOAP request/response handling for OTA_CruisePriceBookingRQ/RS against staging; search page now calls pricing service with selected filters (stub response).
-- Next: Complete UI search ? pricing call with live SOAP; booking flow and role policies; payment abstraction prep.
+- In progress: Expand SOAP request builder/response parser toward OTA_CruisePriceBookingRQ/RS (added POS/Sailing/DeparturePort/Category, basic parser for booking/guest prices); search page calls pricing service with filters (stub response).
+- Next: Complete UI search ? live SOAP pricing call (full guest/promotions/cabin mapping); booking flow and role policies; payment abstraction prep.
+
+## Work Log (recent)
+- Created SQL schema + import scripts for lookup tables; added lookup service with cache and DI.
+- Built Blazor shell, search page using lookup data; pricing page shows sample breakdown.
+- Added SOAP pricing client skeleton (HttpClient, config binding, Basic Auth), request builder stub, response parser stub; search page triggers pricing service with criteria.
+- Expanded SOAP builder (POS/Sailing/DeparturePort/Category, duration) and parser (booking prices, payment schedule, guest price infos, promotions); client still falls back to sample when parsing fails.
 
 ## Team Approach (2 developers)
 - Dev A (backend focus): schema, lookup ingestion, SOAP client, repositories, payment abstraction; security/auth.
@@ -98,6 +104,8 @@
 - Booking: bookings persisted with pricing audit; retrieve/amend supports repricing.
 - Security: role policies enforced; secrets not logged/committed.
 - Payment-ready: abstraction and schema in place; UI can branch into payment once gateway is selected.
+
+
 
 
 

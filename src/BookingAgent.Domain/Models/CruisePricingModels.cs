@@ -20,6 +20,13 @@ public record CruisePriceCriteria
     public DateOnly? EndDate { get; init; }
     public int? DurationNights { get; init; }
     public string? CurrencyCode { get; init; } = "USD";
+    public List<CruiseGuestCriteria> Guests { get; init; } = new();
+}
+
+public record CruiseGuestCriteria
+{
+    public int Age { get; init; }
+    public string? Nationality { get; init; }
 }
 
 public record CruiseSailingInfo

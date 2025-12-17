@@ -44,7 +44,20 @@ public static class RoyalCaribbeanPricingRequestBuilder
             sb.AppendLine($@"  <ota:SelectedCategory FareCode=""{criteria.CabinCategoryCode}"" />");
         }
         sb.AppendLine("</ota:SailingInfo>");
-        // TODO: add GuestDetails, Promotions, Payment preferences as required by spec.
+        if (criteria.Guests.Count > 0)
+        {
+            sb.AppendLine("<ota:ReservationInfo>");
+            sb.AppendLine("<ota:GuestDetails>");
+            foreach (var guest in criteria.Guests)
+            {
+                sb.AppendLine(@"  <ota:GuestDetail>");
+                sb.AppendLine($@"    <ota:ContactInfo Age=""{guest.Age}"" Nationality=""{guest.Nationality ?? "US"}"" />");
+                sb.AppendLine("  </ota:GuestDetail>");
+            }
+            sb.AppendLine("</ota:GuestDetails>");
+            sb.AppendLine("</ota:ReservationInfo>");
+        }
+        // TODO: add promotions and cabin selection when available.
         sb.AppendLine("</ota:OTA_CruisePriceBookingRQ>");
         sb.AppendLine("</soapenv:Body>");
         sb.AppendLine("</soapenv:Envelope>");

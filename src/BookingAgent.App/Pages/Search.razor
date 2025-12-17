@@ -75,6 +75,10 @@ else
                     <label>Duration (nights)</label>
                     <InputNumber class="form-control" @bind-Value="filters.DurationNights" />
                 </div>
+                <div>
+                    <label>Guest count</label>
+                    <InputNumber class="form-control" @bind-Value="filters.GuestCount" />
+                </div>
             </div>
             <button type="submit" class="btn btn-primary" disabled="@isSubmitting">Get pricing</button>
             @if (isSubmitting)
@@ -165,6 +169,13 @@ else
     {
         isSubmitting = true;
         summary = BuildSummary();
+        var guests = new List<CruiseGuestCriteria>();
+        var guestCount = filters.GuestCount ?? 1;
+        for (int i = 0; i < guestCount; i++)
+        {
+            guests.Add(new CruiseGuestCriteria { Age = 30, Nationality = "US" });
+        }
+
         var criteria = new CruisePriceCriteria
         {
             RegionCode = filters.RegionCode,
@@ -174,7 +185,8 @@ else
             StartDate = filters.StartDate,
             EndDate = filters.EndDate,
             DurationNights = filters.DurationNights,
-            CurrencyCode = "USD"
+            CurrencyCode = "USD",
+            Guests = guests
         };
         try
         {
@@ -210,5 +222,6 @@ else
         public DateOnly? StartDate { get; set; }
         public DateOnly? EndDate { get; set; }
         public int? DurationNights { get; set; }
+        public int? GuestCount { get; set; } = 2;
     }
 }

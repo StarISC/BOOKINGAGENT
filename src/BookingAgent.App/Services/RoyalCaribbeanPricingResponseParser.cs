@@ -22,6 +22,7 @@ public static class RoyalCaribbeanPricingResponseParser
             var category = doc.Descendants(ns + "SelectedCategory").FirstOrDefault();
             var bookingPrices = doc.Descendants(ns + "BookingPrice").ToList();
             var payments = doc.Descendants(ns + "Payment").ToList();
+            var promotions = doc.Descendants(ns + "SelectedPromotions").ToList();
 
             var result = new CruisePricingResult
             {
@@ -89,6 +90,21 @@ public static class RoyalCaribbeanPricingResponseParser
                 {
                     PriceInfos = priceInfos
                 });
+            }
+
+            if (promotions.Any() && result.SailingInfo?.SelectedCategory is not null)
+            {
+                foreach (var promo in promotions)
+                {
+                    var code = promo.Attribute("PromotionCode")?.Value;
+                    if (!string.IsNullOrWhiteSpace(code))
+                    {
+                        result.SailingInfo.SelectedCategory.Promotions.Add(new PromotionDetail
+                        {
+                            PromotionCode = code
+                        });
+                    }
+                }
             }
 
             return result;
