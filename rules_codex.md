@@ -37,3 +37,13 @@
 
 9) Documentation
 - Update this file when team rules change. Keep references to PDF pages for key API sections.
+
+10) New API reference assets
+- Additional reference tables are in `document/RCL Cruises Ltd - API TABLES/` (CSV/XLS for ships, decks, ports, regions, cabin categories, bed types, etc.). Treat these as authoritative lookup sources; keep them versioned in-place and never upload externally.
+
+11) Roles & Access
+- System supports multiple roles (e.g., internal agents, supervisors, customer-facing users). Enforce role-based access for searching sailings, viewing prices, and booking cabins; secure admin-only endpoints for configuration/lookups.
+
+12) Booking & Payments (forward-looking)
+- Core flows: sailing search, fare/price retrieval, cabin selection, booking creation/modification, with auditing of price components.
+- Future requirement: integrate online payment API for customers to pay during booking. Design service boundaries so payment gateway can be plugged in without breaking pricing/booking flows; capture payment intent/transaction references in DB when implemented.
