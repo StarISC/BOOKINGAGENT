@@ -25,6 +25,7 @@
 5) Database
 - Schema must support auditing of price components (booking-level and guest-level line items). Include created/updated timestamps.
 - Use migrations/scripts compatible with SQL Server 2019; avoid features beyond that version.
+- Default database name: `BookingAgentDB`; default admin account `admin` with password `Admin@2025` (store via env vars/user secrets; never commit plaintext secrets).
 
 6) UI/UX
 - Preserve the current layout shell and navigation. New pages should follow the same styling tokens in `wwwroot/css/site.css`.
