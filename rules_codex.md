@@ -1,5 +1,8 @@
 # Rules for BookingAgent Project
 
+0) Work Protocol (Highest Priority)
+- Always analyze the problem and propose an approach before coding. Wait for explicit user approval to proceed with implementation.
+
 1) Security & Secrets
 - Do not commit real credentials or connection strings. Keep placeholders (`<your-...>`) in config and use environment variables/user-secrets for real values.
 - Treat API credentials and DB access as sensitive; avoid logging them. Redact secrets in errors.
