@@ -1,0 +1,38 @@
+@page "/data-model"
+@using BookingAgent.Domain.Models
+
+<PageTitle>Data model</PageTitle>
+
+<section class="section-block">
+    <h1>Domain model snapshot</h1>
+    <p>
+        The pricing view binds to the records in
+        <code>src/BookingAgent.Domain/Models/CruisePricingModels.cs</code>. These records are shaped after the
+        <code>OTA_CruisePriceBookingRS</code> components that the Royal Caribbean API documents.
+    </p>
+</section>
+
+<section class="section-block model-grid">
+    <article>
+        <h2>CruisePricingResult</h2>
+        <ul>
+            <li><strong>ReservationId</strong> – RCL reservation identifier</li>
+            <li><strong>SailingInfo</strong> – includes <code>SelectedSailing</code>, <code>InclusivePackageOption</code> and category</li>
+            <li><strong>BookingPayment</strong> – top-level booking totals, payment schedule, guest pricing breakdown</li>
+        </ul>
+    </article>
+    <article>
+        <h2>BookingPayment / BookingPrice</h2>
+        <ul>
+            <li><strong>BookingPrices</strong> – list of charges (amount, price type, restricted flag)</li>
+            <li><strong>PaymentSchedule</strong> – captures due dates and installment amounts</li>
+        </ul>
+    </article>
+    <article>
+        <h2>GuestPrice / GuestPriceInfo</h2>
+        <ul>
+            <li><strong>GuestPrice</strong> – guest reference, name, nationality</li>
+            <li><strong>GuestPriceInfo</strong> – component-level amounts (pricing level, type, auto-added indicator, codes)</li>
+        </ul>
+    </article>
+</section>

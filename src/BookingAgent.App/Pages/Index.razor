@@ -1,0 +1,51 @@
+@page "/"
+
+<PageTitle>Overview</PageTitle>
+
+<section class="section-block">
+    <p class="eyebrow">Context</p>
+    <h1>Royal Caribbean pricing explorer</h1>
+    <p>
+        This portal will surface pricing data that we retrieve from the Royal Caribbean Cruise
+        Pricing API described in <code>document/RCL Cruise FIT Spec 5.2.pdf</code> (see the sections
+        around pages 162-205 for <code>OTA_CruisePriceBookingRQ</code> / <code>RS</code> details).
+    </p>
+    <p>
+        The goal is to keep the pricing breakdown aligned with the OTA schema, replaying the
+        sailing, reservation and guest-level components that the API returns.
+    </p>
+</section>
+
+<section class="section-block">
+    <h2>Progress so far</h2>
+    <ol>
+        <li>
+            <strong>API review</strong>: Captured the Cruise Price Booking request/response attributes
+            (sailing info, booking payment primitives, guest price info, promotion codes) from the
+            PDF so we know what needs to be displayed.
+        </li>
+        <li>
+            <strong>Data model</strong>: Added domain records that mirror <code>BookingPayment</code>,
+            <code>GuestPrice</code> and sailing structures in <code>src/BookingAgent.Domain/Models/CruisePricingModels.cs</code>.
+        </li>
+        <li>
+            <strong>UI scaffolding</strong>: Set up the shell layout, placeholder pricing service and
+            routing necessary for the Blazor pages that will later bind to the live API.
+        </li>
+    </ol>
+</section>
+
+<section class="section-block">
+    <h2>Configuration notes</h2>
+    <p class="muted">
+        Sensitive details such as the database connection string and API credentials are intentionally
+        left as placeholders in <code>src/BookingAgent.App/appsettings.json</code> and
+        <code>src/BookingAgent.App/appsettings.Development.json</code>. Replace the markers
+        (e.g., <code>&lt;your-server&gt;</code>, <code>&lt;your-api-password&gt;</code>) with the
+        authorized values in a secure way (environment variables or user secrets) when the app is deployed.
+    </p>
+    <p>
+        Current environment: Windows Server 2016 connecting to SQL Server 2019, targeting Royal Caribbean's
+        API through secured SOAP endpoints.
+    </p>
+</section>

@@ -1,0 +1,12 @@
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\bin\Debug\net9.0\BookingAgent.Domain.deps.json
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\bin\Debug\net9.0\BookingAgent.Domain.dll
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\bin\Debug\net9.0\BookingAgent.Domain.pdb
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\obj\Debug\net9.0\BookingAgent.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\obj\Debug\net9.0\BookingAgent.Domain.AssemblyInfoInputs.cache
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\obj\Debug\net9.0\BookingAgent.Domain.AssemblyInfo.cs
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\obj\Debug\net9.0\BookingAgent.Domain.csproj.CoreCompileInputs.cache
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\obj\Debug\net9.0\BookingAgent.Domain.sourcelink.json
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\obj\Debug\net9.0\BookingAgent.Domain.dll
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\obj\Debug\net9.0\refint\BookingAgent.Domain.dll
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\obj\Debug\net9.0\BookingAgent.Domain.pdb
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.Domain\obj\Debug\net9.0\ref\BookingAgent.Domain.dll

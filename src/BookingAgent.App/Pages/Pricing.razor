@@ -1,0 +1,150 @@
+@page "/pricing"
+@using BookingAgent.Domain.Models
+@using System.Collections.Generic
+@inject ICruisePricingService PricingService
+
+<PageTitle>Pricing preview</PageTitle>
+
+<section class="section-block">
+    <h1>Pricing workflow snapshot</h1>
+    <p>
+        The sample service currently returns a staging result to demonstrate how the API's booking-level
+        totals, payment schedule and guest price components will be rendered once the SOAP integration is live.
+    </p>
+</section>
+
+@if (pricing is null)
+{
+    <p class="status">Loading pricing preview…</p>
+}
+else
+{
+    <section class="section-block info-grid">
+        <div>
+            <h2>Sailing &amp; cabin</h2>
+            <dl>
+                <dt>Reservation</dt>
+                <dd>@pricing.ReservationId</dd>
+                <dt>Ship</dt>
+                <dd>@pricing.SailingInfo?.SelectedSailing?.ShipCode</dd>
+                <dt>Start</dt>
+                <dd>@pricing.SailingInfo?.SelectedSailing?.Start?.ToString("yyyy-MM-dd")</dd>
+                <dt>Category</dt>
+                <dd>@pricing.SailingInfo?.SelectedCategory?.FareCode</dd>
+                <dt>Promo</dt>
+                <dd>@pricing.SailingInfo?.SelectedCategory?.PromotionDescription</dd>
+            </dl>
+        </div>
+        <div>
+            <h2>Selected cabin</h2>
+            <dl>
+                <dt>Cabin</dt>
+                <dd>@pricing.SailingInfo?.SelectedCategory?.SelectedCabin?.CabinNumber</dd>
+                <dt>Location</dt>
+                <dd>@pricing.SailingInfo?.SelectedCategory?.SelectedCabin?.CategoryLocation</dd>
+                <dt>Status</dt>
+                <dd>@pricing.SailingInfo?.SelectedCategory?.SelectedCabin?.Status</dd>
+                <dt>Max occupancy</dt>
+                <dd>@pricing.SailingInfo?.SelectedCategory?.SelectedCabin?.MaxOccupancy</dd>
+            </dl>
+        </div>
+        <div>
+            <h2>Promotions</h2>
+            <ul>
+                @foreach (var promo in pricing.SailingInfo?.SelectedCategory?.Promotions ?? new List<PromotionDetail>())
+                {
+                    <li>
+                        <strong>@promo.PromotionCode</strong>: @promo.Description
+                        @if (!string.IsNullOrEmpty(promo.NonRefundableType))
+                        {
+                            <small class="muted">Ref type @promo.NonRefundableType</small>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    </section>
+
+    <section class="section-block">
+        <h2>Booking-level pricing</h2>
+        <table class="rate-table">
+            <thead>
+                <tr>
+                    <th>Price type</th>
+                    <th class="numeric">Amount</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var charge in pricing.BookingPayment?.BookingPrices ?? new List<BookingPrice>())
+                {
+                    <tr>
+                        <td>@charge.PriceTypeCode</td>
+                        <td class="numeric">@FormatCurrency(charge.Amount)</td>
+                        <td>@(charge.RestrictedIndicator == true ? "Restricted" : string.Empty)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h3>Payment schedule</h3>
+        <ul class="payment-list">
+            @foreach (var payment in pricing.BookingPayment?.PaymentSchedule?.Payments ?? new List<Payment>())
+            {
+                <li>
+                    <span>Payment @payment.PaymentNumber:</span>
+                    <span>@FormatCurrency(payment.Amount)</span>
+                    <span>@payment.DueDate?.ToString("yyyy-MM-dd")</span>
+                </li>
+            }
+        </ul>
+    </section>
+
+    <section class="section-block">
+        <h2>Guest-level breakdown</h2>
+        <div class="guest-grid">
+            @foreach (var guest in pricing.BookingPayment?.GuestPrices ?? new List<GuestPrice>())
+            {
+                <article class="guest-card">
+                    <header>
+                        <h3>Guest #@guest.GuestRefNumber</h3>
+                        <p>@guest.GivenName @guest.Surname (<span>@guest.Nationality</span>)</p>
+                    </header>
+                    <table class="rate-table small">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th class="numeric">Amount</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var info in guest.PriceInfos)
+                            {
+                                <tr>
+                                    <td>@info.PriceComponentCode</td>
+                                    <td class="numeric">@FormatCurrency(info.Amount)</td>
+                                    <td>@info.PriceTypeCode</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </article>
+            }
+        </div>
+    </section>
+}
+
+@code {
+    private CruisePricingResult? pricing;
+
+    protected override async Task OnInitializedAsync()
+    {
+        pricing = await PricingService.GetLatestPricingAsync();
+    }
+
+    private static string FormatCurrency(decimal? amount)
+    {
+        return amount.HasValue ? amount.Value.ToString("C") : "-";
+    }
+}
