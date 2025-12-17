@@ -42,7 +42,8 @@ public sealed class SailingListService : ISailingListService
 
     private async Task<IReadOnlyList<SailingOptionResult>> ExecuteAsync(CruisePriceCriteria criteria)
     {
-        var endpoint = new Uri(new Uri(_options.BaseUrl.TrimEnd('/')), "SailingList");
+        var baseUri = _options.BaseUrl.EndsWith("/") ? _options.BaseUrl : $"{_options.BaseUrl}/";
+        var endpoint = new Uri($"{baseUri}SailingList");
         var envelope = BuildEnvelope(criteria);
 
         var request = new HttpRequestMessage(HttpMethod.Post, endpoint)

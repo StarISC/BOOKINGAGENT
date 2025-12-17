@@ -1,0 +1,1612 @@
+				Minor API description clarifications.
+3.4	Release 3.4	3/18/2010	Partner Cert team	Updated constraints and restrictions section under the Transfer List message.
+Updated constraints and restrictions section under the Bus List message.
+Updated response parameters for the Tour List operation to add the Duration attribute.
+Updated constraints and restrictions section under the Bus Detail message.
+Changed length of CruisePackageCode in Bus List response.
+Updated constraints and restrictions section for the Package Detail message.
+Updated the request parameters section for the Package Detail message to increase the CruisePackageCode field size.
+Updated the Tour Detail request constraints and restrictions section.
+Updated the response parameters section for the Tour List response message to increase the CruisePackageCode field size.
+Updated response parameters Xpath expressions section for the Fare Detail response.
+Changed Transaction services section of the Booking price message.
+Updated request parameters in Booking Price message by adding filters for Sitting and SittingType attributes.
+Updated constraints and restrictions under Package List request.
+Updated response parameters for Retrieve booking to correct Xpath for LinkedBookings.
+Updated length for Code attribute in Option List response
+parameters.
+3.5	Release 3.5	6/28/2010	Partner Cert Team	Updated Xpath table in response list for Cabin Detail message. (Added DimensionInfo).
+Updated request parameters section for booking price request
+message (Provided complete list of GuestDetail elements for Amend
+
+---TABLE---
+
+	4.1		Team	Regulatory Enhancement.
+4.2	Release 4.2	07/18/2012	Partner Cert Team	Updated Xpath table for Pricing and ConfirmBooking Service for LoyaltyMembershipId attribute.
+
+Agency Primary Language will returned in Login Response.
+
+
+RCT Flag will be returned for tours in RetrieveBooking
+response.
+4.3	Release 4.3	10/21/2012	Partner Cert Team	Guest Level attributes, CPF #, CPF Exempt Flag, Redress # will be returned in RetrieveBooking response.
+
+Guest Level attributes, CPF #, CPF Exempt Flag, Middle Name, Middle Name Flag will be managed in ConfirmBooking service.
+
+
+Booking List service – Added additional Search criteria (Booking Type, Consumer Id) in the request.
+4.4	Release 4.4	12/13/2012	Partner Cert Team	Functional flow change in payment to include Payment eligibility
+New service – Payment Eligibility – added.
+4.5	Release 4.5	10/26/2013	PartnerCert Team	Pricing and Promotions Enhancement
+
+Category List enhancement.
+New version of Category List Service.
+Cruise FareList Enhancement.
+Cruise FastSell Enhancement.
+Cruise Booking price Enhancement.
+
+---TABLE---
+
+				ConfirmBooking Enhancement.
+Retrieve Booking Enhancement.
+Added New Service “PromoSearchBreakDown”
+Added New Service “PromoDetailBreakDown”
+4.6	Release 4.6	10/26/2014	PartnerCert Team	2014 Enhancements
+Following service functionality were extended to Group Reservations.
+Cruise Login
+Cabin Hold
+Release Cabin
+Cruise Fare List
+Release booking
+Promo Search Breakdown
+4.7	Release 4.7	06/01/2015	PartnerCert Team	2015 Enhancements
+Include Carrier Name in booking Retrieval response
+Guest Pre-vacation phone and Email maintenance.
+4.8	Release 4.8	10/23/2016	PartnerCert Team	2016 Enhancements
+Enhancement to support Headquarter Groups.
+Cruise Login
+Cruise Sailing List
+Cruise Fare List
+Promo Search Breakdown
+Cruise Cabin Hold
+Cruise Booking History
+4.9	Release 4.9	06/04/2017	PartnerCert Team	Non-Refundable Promotions Enhancement
+5.0	Release 5.0	08/30/2017	PartnerCert Team	2017 Enhancements
+Cruise Login
+Cruise Category List
+Retrieve Booking
+Confirm Booking
+5.1	Release 5.1	12/22/2017	PartnerCert Team	Individual To Group Transfers
+
+Retrieve Booking
+
+---TABLE---
+
+	The response message contains the details of the requested package along with the associated pricing for the package.
+Cruise Tour Detail	The Cruise Tour Detail message is used to request detailed textual information about the tour.
+The response message contains the details of the requested tours along with the associated pricing for these tours, hotel addresses etc.
+Cruise Transfer Detail	The Cruise Package Detail message is used to request detailed information about the pre-cruise, post-cruise, or the inclusive-cruise packages associated with a sailing. A cruise package can be a stay in a hotel for one or more days at the beginning or end of a cruise, cruise only transfers between the ship and the airport, or buses that transport the passengers from predetermined stops to the ship. In the case of a hotel, it is generally located near the port of embarkation or debarkation.
+The response message contains the details of the requested packages along with the associated pricing for these packages.
+Cruise Category List	The Category List Request message requests a list of cabin rate categories for a specified sailing and fare code. The sailing information is indicated by the ship and departure date.
+The response message returns a list of cabin rate categories that correspond to the requested sailing and fare.
+Cruise Category List Version 2.0	The new version supports category/pricing information for upto two different rate concepts.
+The response message returns a list of cabin rate categories that corresponds to the requested sailing and Fare codes(s). The new response structure is in a more readable format.
+Cruise Cabin List	The Cabin List Request message requests a list of available cabins for a selected category on a sailing. The sailing information is defined by the departure date and ship. The fare code and the berthed and priced category codes are retained from the respective list message.
+The response message returns a list of cabins matching the specified criteria.
+Cruise Cabin Detail	The Cabin Detail Request message requests details of a
+
+---TABLE---
+
+	selected cabin for a selected category on a sailing.
+The response message returns a list of cabin attributes such as size for the requested cabin.
+Cruise Cabin Hold	The Cruise Cabin Hold request message instructs RCL to put a temporary hold on selected cabin(s) for a short time interval (interval is currently set at fifteen minutes). This allows the user time to enter additional information, which is required to complete the booking without concern for losing the cabin. The sailing is identified by the ship and departure date. RCL currently allows up to four cabins to be held at a time.
+The response message indicates the status of each cabin for which a hold is requested.
+Cruise Cabin Release	The Cruise Cabin Release request message is used to release a hold that was previously placed on a cabin and to release the cabin into the available inventory.
+The response message indicates the status for the cabin in the request.
+Cruise Fare List	This transaction returns a list of the promotional programs that are applicable to a selected ship, sail date, and other guest requirements.
+The Fare List Request message requests a listing of available fares for a selected RCL sailing. The ship and departure date identifies the sailing. The guest count structure is used to communicate the number of guests that will be sailing. Although Guest Transportation information is optional, in normal practice it is advisable to enter the mode of transportation and gateway city because some fares have restrictions based on transportation.
+The response message returns a list of all Base fares/Promotional Fares, including agency specific restricted fares, for which the traveler qualifies based upon the criteria provided.
+Cruise Fare Detail	This transaction returns the details pertaining to a selected fare such as the restrictions associated with the fare.
+The response message returns a list of fare details, including agency specific restricted fares, for which the traveler qualifies based upon the criteria provided.
+Cruise Booking Price	The Cruise Booking Price request message requests the pricing for all components of a booking. All of the
+components to be purchased must be included in the
+
+---TABLE---
+
+Cruise Itinerary Detail	The Cruise Itinerary Detail message is used to return the itinerary details of the sailing.The message allows travel customers to request the detailed itinerary for a specific sailing.The request message accepts a ship and sail date to retrieve the itinerary.
+The response message contains the detailed itinerary.
+Cruise Booking Document	The Cruise Booking Document message provides the user the ability to request a document type and its delivery method without retrieving the reservation.
+Retrieve Booking	The Retrieve Booking message uses the RCL booking ID to retrieve and assemble all the components of a booking, to include cruise, air details, and tour information.
+RCL intends to support booking retrieval by guest name. This will be included with the next specification release.
+Get Booking List	The Get Booking List message is used to retrieve a list of bookings that are owned by the agency.
+The response message includes a list of bookings owned by the agency.
+Release Booking	The Release Booking message uses the RCL booking ID to release the lock on the booking so that it can be modified by another entity.
+Cruise Booking History	This transaction uses the booking ID assigned by RCL to get the history of revisions and/or transformations related to that booking.
+The Cruise Booking History message requests change/service history on an existing reservation. The request message is the OTA_ReadRQ where the user can specify the Reservation ID for which one wishes to see the change history. OTA_ReadRQ is also used to retrieve the reservation information. In order to distinguish the service history request from the retrieval of the reservation information a	oolean variable is used. The response message OTA_CruiseBookingHistoryRS returns a list of history entries for the reservation changes that have taken place.
+PromoSearchBreakDown	This transaction returns the Pricing break down for a given Promotion/Lead Promotion.
+
+---TABLE---
+
+PromoDetailBreakDown	This is similar to Fare Detail service in a new format.
+This transaction returns the details pertaining to a selected fare(s) such as the restrictions associated with the fare.
+
+---TABLE---
+
+Message to Operation Mapping List	Message to Operation Mapping List
+Partner Message Name	Operation Name
+Cabin Release	releaseCabin
+Cruise Booking Price	getBookingPrice
+Cruise Booking Document	getBookingDocument
+Cruise Booking History	getBookingHistory
+Cruise Cabin Hold	holdCabin
+Cruise Cabin List	getCabinList
+Cruise Cabin Detail	getCabinDetail
+Cruise Category List	getCategoryList
+Cruise Confirm Booking	confirmBooking
+Cruise Dining List	getDiningList
+Cruise Fare List	getFareList
+Cruise Fare Detail	getFareDetail
+Cruise Fast Sell	fastSell
+Cruise Guest Option List	getOptionList
+Cruise Guest Service List	getGuestServiceList
+Cruise Itinerary Detail	getItineraryDetail
+Cruise Lookup Agency	lookupAgency
+Cruise Login	login
+Cruise Make Payment	makePayment
+Cruise Option Detail	getOptionDetail
+Cruise Bus Detail	getBusDetail
+Cruise Tour Detail	getTourDetail
+Cruise Package Detail	getPackageDetail
+Cruise Transfer Detail	getTransferDetail
+Cruise Bus List	getBusList
+Cruise Tour List	getTourList
+Cruise Transfer List	getTransferList
+Cruise Package List	getPackageList
+Cruise Payment Extension	getPaymentExtension
+
+---TABLE---
+
+Message Paging Details	Message Paging Details
+Partner Message Name	Max Response Rows
+Cruise Cabin List	50
+Cruise Category List	50
+Cruise Fare List	99
+Cruise Fare Detail	60
+Cruise Option Detail	30
+Cruise Tour Detail	50
+Cruise Package Detail	60
+Cruise Transfer Detail	50
+Cruise Bus List	20
+Cruise Tour List	99
+Cruise Transfer List	50
+Cruise Package List	40
+Cruise Sailing List	40
+Get Booking List	20
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseDiningAvailRQ/SailingInfo/SelectedSailing/CruiseLine/ShipCode	String	2	Y
+/OTA_CruiseDiningAvailRQ/SailingInfo/SelectedSailing/@Start	Date		Y
+/OTA_CruiseDiningAvailRQ/SailingInfo/SelectedCategory/@BerthedCategoryCode	String	2	N
+/OTA_CruiseDiningAvailRQ/SailignInfo/SelectedCategory/@PricedCategoryCode	String	2	N
+/OTA_CruiseDiningAvailRQ/SailingInfo/SelectedFare/@FareCode	String	8	N
+/OTA_CruiseDiningAvailRQ/TPA_ReservationID/@ID	Numeric	7	N
+/OTA_CruiseDiningAvailRQ/Guest[1-4]/@LoyaltyMembershipID	Numeric	9	N
+/OTA_CruiseDiningAvailRQ/GuestCounts/GuestCount[1-4]/@Quantity	Numeric	4	Y
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruisePkgAvailRQ/@MoreDataEchoToken	Integer	2	Y
+/OTA_CruisePkgAvailRQ/@MaxResponses	Integer	3	Y
+/OTA_CruisePkgAvailRQ/GuestCounts/GuestCount[1-4]/@Quantity	Integer	1	Y
+/OTA_CruisePkgAvailRQ/SailingInfo/SelectedSailing/@Start	Date		Y
+/OTA_CruisePkgAvailRQ/SailingInfo/SelectedSailing/CruiseLine/@ShipCode	String	2	Y
+/OTA_CruisePkgAvailRQ/SailingInfo/SelectedCategory/@PricedCategoryCode	String	2	N
+/OTA_CruisePkgAvailRQ/SailingInfo/SelectedCategory/SelectedCabin/@CabinNumber	Integer	5	N
+/OTA_CruisePkgAvailRQ/PackageOption/@CruisePackageCode	String	8	N
+/OTA_CruisePkgAvailRQ/GuestInfos/GuestInfo/SelectedFareCode/@FareCode	String	8	N
+/OTA_CruisePkgAvailRQ/ReservationID/@ID	Integer	7	N
+
+---TABLE---
+
+<alpha:PriceInfo Amount="10580.00" BreakdownType="0101C" NCCFAmount="400.00" PromotionAmount="200.00" PromotionClass="12" " PromotionTypes="44" FareCode="FSTG01C" />	Cost of the Cruise Cabin for the first guest assuming single occupancy is 10580.00 (cruise
++ NCCF) if TaxInclusive=”true”
+Total applied promotion Amount will be returned in PromotionAmount.
+Promotion Class(s) and Type(s) will be returned for applied discount(s) with a blank space delimiter.
+The first two characters in the BreakdownType indicate the occupany. In this case, since the BreakdownType value is "0101C", the first two characters "01" indicate single occupancy.
+
+The third and fourth characters indicate the specific guest's breakdown for the line item. In this case, since the BreakdownType value is "0101C", the third and fourth characters "01" indicate that the line item is for the first guest.
+The fifth character indicates the PriceType. If the value for the fifth character is "C", then the pricing is shown for Cabin. In situations, where the fifth character is "A", the pricing is for the Air Add on.
+<alpha:PriceInfo Amount="0" BreakdownType="0101A" FareCode="FSTG01C" />	Since the value of the fifth character in the BreakdownType is "A", it is an Air Add on amount. Cost of the Air Add on for the first guest
+is 0 since it is a Cruise only booking
+<alpha:PriceInfo BreakdownType="01 A" FareCode="FSTG01C" />	Since the availability is linked with the occupancy count, the third entry shows the availability and the occupancy. In this case, since the value of the BreakdownType is "01 A", it means that the category is available assuming single occupancy. A value of "W" indicates the status as Waitlisted while “C” means that the category is Closed.
+Also, notice that there is no Amount attribute included in this since this PriceInfo line item is used to indicate only the status and the
+occupancy associated with the status
+<alpha:PriceInfo BreakdownType="01"
+FareCode="FSTG01C" />	The fourth entry is a guarantee indicator
+
+---TABLE---
+
+<alpha:PriceInfo Amount="5290.00" BreakdownType="0201C" NCCFAmount="200.00" PromotionAmount="200.00" PromotionClass="12" " PromotionTypes="44" FareCode="FSTG01C" />	Cost of the Cruise Cabin for the first guest assuming double occupancy is 5290.00 (cruise
++ NCCF) if TaxInclusive=”true”
+Total applied promotion Amount will be returned in PromotionAmount.
+Promotion Class(s) and Type(s) will be returned for applied discount(s) with a blank space delimiter.
+The first two characters in the BreakdownType indicate the occupany. In this case, since the BreakdownType value is "0201C", the first two characters "02" indicate double occupancy.
+
+The third and fourth characters indicate the specific guest's breakdown for the line item. In this case, since the BreakdownType value is "0201C", the third and fourth characters "01" indicate that the line item is for the first guest.
+The fifth character indicates the PriceType. If the value for the fifth character is "C", then the pricing is shown for Cabin. In situations, where the fifth character is "A", the pricing is for the Air Add on.
+<alpha:PriceInfo Amount="0" BreakdownType="0201A" FareCode="FSTG01C" />	Since the value of the fifth character in the BreakdownType is "A", it is an Air Add on amount. Cost of the Air Add on for the first guest
+is 0 since it is a Cruise only booking
+<alpha:PriceInfo Amount="5290.00" BreakdownType="0202C" FareCode="FSTG01C" />	Cost of the Cruise Cabin for the second guest assuming double occupancy is 5290.00
+The first two characters in the BreakdownType indicate the occupany. In this case, since the BreakdownType value is "0202C", the first two characters "02" indicate double occupancy.
+The third and fourth characters indicate the specific guest's breakdown for the line item. In this case, since the BreakdownType value is "0202C", the third and fourth characters "02" indicate that the line item is for the second guest.
+
+The fifth character indicates the PriceType. If the value for the fifth character is "C", then the pricing is shown for Cabin. In situations, where the fifth character is "A", the pricing is for the Air
+Add on.
+<alpha:PriceInfo Amount="0" BreakdownType="0202A" FareCode="FSTG01C" />	Since the value of the fifth character in the BreakdownType is "A", it is an Air Add on amount. Cost of the Air Add on for the second guest is 0 since it is a Cruise only booking
+
+---TABLE---
+
+<alpha:PriceInfo BreakdownType="02 A" FareCode="FSTG01C" />	Since the availability is linked with the occupancy count, the third entry shows the availability and the occupancy. In this case, since the value of the BreakdownType is "02 A", it means that the category is available assuming double occupancy. A value of "W" indicates the status as Waitlisted while “C” means that the category is Closed.
+Also, notice that there is no Amount attribute included in this since this PriceInfo line item is used to indicate only the status and the
+occupancy associated with the status
+<alpha:PriceInfo BreakdownType="02"
+FareCode="FSTG01C" />	The fourth entry is a guarantee indicator
+
+---TABLE---
+
+/OTA_CruiseCategoryAvailRQ/Guest[1-4]/Address/StateProv/@StateCode	String	2	N
+/OTA_CruiseCategoryAvailRQ/Guest[1-4]/FareQualifiers[0-5]/@FareRestriction	String	1	N
+/OTA_CruiseCategoryAvailRQ/Guest[1-4]/SelectedOffers[0-1]/@PromotionCode	String	20	N
+/OTA_CruiseCategoryAvailRQ/Guest[1-2]/@GuestCount	Integer	1	Y
+/OTA_CruiseCategoryAvailRQ/Guest[3-4]/@GuestCount	Integer	1	N
+/OTA_CruiseCategoryAvailRQ/SelectedFare[1-2]/@FareCode	String	8	N
+/OTA_CruiseCategoryAvailRQ/SelectedFare[1-2]/@IncludeNonRefundablePromos	YesNoType		N
+/OTA_CruiseCategoryAvailRQ/SelectedPromotions[0-20]/@PromotionCode	String	16	N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseCategoryAvailRS/@MaxResponses	Integer	3	Y
+/OTA_CruiseCategoryAvailRS/@MoreIndicator	Boolean		Y
+/OTA_CruiseCategoryAvailRS/@MoreDatasEchoToken	String	128	N
+/OTA_CruiseCategoryAvailRS/Warnings/Warning[1-3]	String	80	N
+/OTA_CruiseCategoryAvailRS/Warnings/Warning[1-3]/@ShortText	String	7	N
+/OTA_CruiseCategoryAvailRS/Warnings/Warning[1-3]/@Type	Integer	1	N
+/OTA_CruiseCategoryAvailRS/Success	Node		N
+/OTA_CruiseCategoryAvailRS/SailingInfo/SelectedSailing/@Duration	String	4	N
+/OTA_CruiseCategoryAvailRS/SailingInfo/SelectedSailing/Region/@RegionCode	String	5	N
+/OTA_CruiseCategoryAvailRS/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/@CategoryLocation	String	8	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-50]/@ListOfCategoryQualifierCodes	String Array with one blank space
+delimiter	1	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/@PricedCategoryCode	String	2	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/@BerthedCategoryCode	String	2	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos/PriceInfo[1-28]/@Amount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos/PriceInfo[1-28]/@BreakdownType	String	5	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos/PriceInfo[1-28]/@FareCode	String	8	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos/PriceInfo[1-28]/@NCCFAmount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos/PriceInfo[1-28]/@NonRefundableType	OTA_CodeType		N
+/OTA_CruiseCategoryAvailRS/Taxes/Tax[1-4]/@Amount	String	14	N
+/OTA_CruiseCategoryAvailRS/Fee/Taxes/Tax[1-4]/@Amount	String	14	N
+/OTA_CruiseCategoryAvailRS/Information/@Name	String	4	N
+/OTA_CruiseCategoryAvailRS/Information/Text	String	1	N
+
+---TABLE---
+
+<alpha:FareOption>
+<alpha:CategoryOptions>
+<alpha:CategoryOption
+CategoryLocation="Deluxe" PricedCategoryCode="PS" Status="36">	Category Location and availability status will be returned.
+<alpha:PriceInfo Amount="15998.00" NetAmount="15998.00" PriceId="A0803501" PriceIdType="1" PromotionDescription="STANDARD" FareCode="A0803501">	Cabin Level pricing is returned here.
+Amount is Cruise Fare + NCCF for markets that requires NCCF consolidation.
+Net Amount is Amount + NCCF
+PriceId returns the base Fare.
+PriceIdType indicates if the pricing returned is a BESTRATE/BestValue/Selected rate.
+PromotionDescription returns the short description of the baseFare/Promotion.
+Fare Code will have the BaseFare Id.
+<alpha:PriceDescription>Standard</alpha:PriceDescripti on>	Price Definition description is returned here.
+<alpha:PriceBreakDowns Occupancy="1" Status="36">	Requested occupancy is returned.
+Status returned here indicates the availability of category status for the requested pricing.
+<alpha:PriceBreakDown AgeQualifyingCode="10" Amount="15998.00" NCCFAmount="350.00" NetAmount="15998.00" RPH="1"/>	AgeQualifyingCode returns the pricing type (Adult/Child/Infant)
+Amount will return the cabin Fare+NCCF for markets that requires consolidation.
+NCCFAmount will return the guest level NCCF Amount.
+NetAmount is Amount + NCCF.
+RPH returns the guest sequence number.
+
+---TABLE---
+
+<alpha:CategoryOption CategoryLocation="Balcony" PricedCategoryCode="E1" Status="36">	Category Location and availability status will be returned.
+<alpha:PriceInfo Amount="1100.00" AppliedPromotionsQuantity="1" NetAmount="1000.00" PriceId="00343294" PriceIdType="1" PromotionAmount="100.00" PromotionClass="18" PromotionDescription="UKPROM14" PromotionTypes="58" FareCode="01148035">	Cabin Level pricing is returned here.
+Amount is Cruise Fare + NCCF for markets that requires NCCF consolidation.
+Net Amount is Amount + NCCF-PromotionAmount
+PriceId returns the base Fare associated with the promotion.
+PriceIdType indicates if the pricing returned is a BESTRATE/BestValue/Selected rate.
+PromotionAmount returns the total promotion Amount.
+PromotionDescription returns the short description of the Promotion.
+PromotionClass returns the Concatenated string of Promotion Type(s) with a space delimter.
+PromotionType returns the concatenated string of promotion subtype(s) with a space delimiter.
+Fare Code will have the Promotion/Lead Promotion Id.
+<alpha:PriceBreakDowns Occupancy="2" GuaranteeStatus="36" Status="36">	Requested occupancy is returned.
+GuaranteeStatus of the category is returned.
+Status returned here indicates the availability of category status for the requested pricing.
+<alpha:PriceBreakDown AgeQualifyingCode="10" Amount="550.00" DiscountTypes="2" NCCFAmount="130.00" NetAmount="500.00" PromotionAmount="50.00" RPH="1"/>
+<alpha:PriceBreakDown AgeQualifyingCode="10" Amount="550.00" DiscountTypes="2" NCCFAmount="130.00" NetAmount="500.00" PromotionAmount="50.00" RPH="2"/>	AgeQualifyingCode returns the pricing type (Adult/Child/Infant)
+Amount will return the cabin Fare+NCCF for markets that requires consolidation.
+DiscountTypes will return the type of discount (Amount/Percentage/OBC).
+NCCFAmount will return the guest level NCCF Amount.
+NetAmount is Amount + NCCF-PromotionAmount.
+PromotionAmount indicates the Total guest level promotion.
+RPH returns the guest sequence number.
+
+---TABLE---
+
+2]/GatewayCity/@LocationCode			
+/OTA_CruiseCategoryAvailRQ/Guest[1-4]/Address/StateProv/@StateCode	String	2	N
+/OTA_CruiseCategoryAvailRQ/Guest[1-4]/FareQualifiers[0-5]/@FareRestriction	String	1	N
+/OTA_CruiseCategoryAvailRQ/Guest[1-4]/SelectedOffers[0-1]/@PromotionCode	String	20	N
+/OTA_CruiseCategoryAvailRQ/Guest[1-2]/@GuestCount	Integer	1	Y
+/OTA_CruiseCategoryAvailRQ/Guest[3-4]/@GuestCount	Integer	1	N
+/OTA_CruiseCategoryAvailRQ/SelectedFare[1-2]/@FareCode	String	8	N
+/OTA_CruiseCategoryAvailRQ/SelectedFare[1-2]/@IncludeNonRefundablePromos	YesNoType	3	N
+/OTA_CruiseCategoryAvailRQ/SelectedPromotions[0-20]/@PromotionCode	String	16	N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseCategoryAvailRS/@MaxResponses	Integer	3	Y
+/OTA_CruiseCategoryAvailRS/@MoreIndicator	Boolean		Y
+/OTA_CruiseCategoryAvailRS/@MoreDatasEchoToken	String	128	N
+/OTA_CruiseCategoryAvailRS/Warnings/Warning[1-3]	String	80	N
+/OTA_CruiseCategoryAvailRS/Warnings/Warning[1-3]/@ShortText	String	7	N
+/OTA_CruiseCategoryAvailRS/Warnings/Warning[1-3]/@Type	Integer	1	N
+/OTA_CruiseCategoryAvailRS/Success	Node		N
+/OTA_CruiseCategoryAvailRS/SailingInfo/SelectedSailing/@Duration	String	4	N
+/OTA_CruiseCategoryAvailRS/SailingInfo/SelectedSailing/Region/@RegionCode	String	5	N
+/OTA_CruiseCategoryAvailRS/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseCategoryAvailRS/FareOption/CategoryOptions/CategoryOption[1-
+50]/@CategoryLocation	String	8	N
+/OTA_CruiseCategoryAvailRS/FareOption/CategoryOptions/CategoryOption[1-50]/@ListOfCategoryQualifierCodes	String Array with one blank space
+delimiter	1	N
+/OTA_CruiseCategoryAvailRS/FareOption/CategoryOptions/CategoryOption[1-
+50]/@PricedCategoryCode	String	2	N
+/OTA_CruiseCategoryAvailRS/FareOption/CategoryOptions/CategoryOption[1-
+50]/@Status	String	2	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@Amount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@NetAmount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@PriceId	String	16	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@PriceIdType	String	1	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@PromotionDescription	String	15	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@PromotionAmount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@PromotionClass	String	2	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@PromotionTypes	String	2	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@AppliedValueAddPromotionsQuantity	String	1	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@ValueAddAmount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/@NonRefundableType	OTA_CodeType		N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/PriceDescription@Text	String	15	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/@GuaranteeStatus	String	2	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-	String	1	N
+
+---TABLE---
+
+50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/@Occupancy			
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/@Status	String	2	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/PriceBreakDown[1-
+4]/@AgeQualifyingCode	String	2	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/PriceBreakDown[1-4]/@Amount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/PriceBreakDown[1-4]/@DiscountTypes	String	1	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/PriceBreakDown[1-4]/@NCCFAmount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/PriceBreakDown[1-4]/@NetAmount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-
+50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/PriceBreakDown[1-4]/@RPH	String	1	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/PriceBreakDown[1-
+4]/@PromotionAmount	String	14	N
+/OTA_CruiseCategoryAvailRS/FareOptions/CategoryOptions/CategoryOption[1-50]/PriceInfos[1-2]/PriceInfo/PriceBreakDowns/PriceBreakDown[1-
+4]/@ValueAddAmount	String	14	N
+/OTA_CruiseCategoryAvailRS/Taxes/Tax[1-4]/@Amount	String	14	N
+/OTA_CruiseCategoryAvailRS/Fee/Taxes/Tax[1-4]/@Amount	String	14	N
+/OTA_CruiseCategoryAvailRS/Information/@Name	String	4	N
+/OTA_CruiseCategoryAvailRS/Information/Text	String	1	N
+
+---TABLE---
+
+Functional Components	Re-Use and Source of other OTA Constructs
+POS (Point Of Sale)	POS_Type
+Guest	GuestType
+SailingInfo	SailingCategoryInfoType
+SelectedFare	FareGroup (Uses)
+SearchQualifiers	SearchQualifierType (Extends)
+
+---TABLE---
+
+Functional Components	Re-Use and Source of other OTA Constructs
+Success	SuccessType
+Warnings	WarningsType
+SailingInfo	SailingCategoryInfoType
+SelectedFare	FareGroup (Uses)
+CabinOptions	
+CabinOptions/CabinOption	CabinOptionType
+Information	ParagraphType
+Errors	ErrorsType
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseCabinAvailRQ/@MaxResponses	Integer	2	Y
+/OTA_CruiseCabinAvailRQ/SailingInfo/SelectedSailing/CruiseLine/@ShipCode	String	8	Y
+/OTA_CruiseCabinAvailRQ/SailingInfo/SelectedSailing/@Start	Date		Y
+/OTA_CruiseCabinAvailRQ/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseCabinAvailRQ/SailingInfo/SelectedCategory[1]/CabinAttributes/
+CabinAttribute[1]/@CabinAttributeCode	String	2	N
+count(/OTA_CruiseCabinAvailRQ/Guest)	Integer	7	N
+/OTA_CruiseCabinAvailRQ/Guest[1-4]/@Age	Integer	2	N
+/OTA_CruiseCabinAvailRQ/Guest[1]/GuestTransportation[1]/@Mode	Integer	2	Y
+/OTA_CruiseCabinAvailRQ/Guest[1]/GuestTransportation[2]/@Mode	Integer	2	N
+/OTA_CruiseCabinAvailRQ/Guest[2-4]/GuestTransportation[1-2]/@Mode	Integer	2	N
+/OTA_CruiseCabinAvailRQ/Guest[1]/GuestTransportation[1]/@Status	Integer	2	Y
+/OTA_CruiseCabinAvailRQ/Guest[1]/GuestTransportation[2]/@Status	Integer	2	N
+/OTA_CruiseCabinAvailRQ/Guest[2-4]/GuestTransportation[1-2]/@Status	Integer	2	N
+/OTA_CruiseCabinAvailRQ/Guest[1]/GuestTransportation[1-2]/GatewayCity/@LocationCode	String	3	Y
+/OTA_CruiseCabinAvailRQ/Guest[2-4]/GuestTransportation[1-
+2]/GatewayCity/@LocationCode	String	3	N
+/OTA_CruiseCabinAvailRQ/SearchQualifiers/@BerthedCategoryCode	String	2	Y
+/OTA_CruiseCabinAvailRQ/SearchQualifiers/@FareCode	String	8	Y
+/OTA_CruiseCabinAvailRQ/SearchQualifiers/@CabinNumber	String	5	N
+/OTA_CruiseCabinAvailRQ/SearchQualifiers/@DeckNumber	String	2	N
+/OTA_CruiseCabinAvailRQ/SearchQualifiers/ReservationID/@ID	Integer	7	N
+/OTA_CruiseCabinAvailRQ/SearchQualifiers/Status/[@Status= 19 || @Status=61]	Integer	2	N
+
+---TABLE---
+
+/OTA_CruiseCabinAvailRS/SailingInfo/SelectedSailing/Region/@RegionCode	String	5	N
+/OTA_CruiseCabinAvailRS/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseCabinAvailRS/SelectedFare/@FareCode	String	8	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@CabinCategoryCode	String	2	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@CabinNumber	String	5	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@Ca binRanking	Integer	2	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@ConnectingCabinIndicator	Boolean		N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@ConnectingCabinNumber	String	5	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@DeckName	String	20	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@DeckNumber	Integer	2	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@MaxOccupancy	Integer	2	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@PositionInShip	String	8	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/@Status	Integer	2	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-
+50]/TPA_Extensions@ConnectingCabinStatusCode	Integer	2	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/CabinConfiguration[1-
+3]/@BedConfigurationCode	String	2	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/CabinConfiguration[1-
+3]/@TPA_ViewObstruction	String	5	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/MeasurementInfo/@Name	String	30	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/MeasurementInfo/@UnitOfMeasure	String	6	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-
+50]/MeasurementInfo/@UnitOfMeasureQuantity	Integer	1	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/Remark	String	32	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption[1-50]/CabinFilters/CabinFilter[1-
+7]/@CabinFilterCode	Integer	2	N
+/OTA_CruiseCabinAvailRS/CabinOptions/CabinOption/TPA_Extensions/ConnectingCabinStatusCode	Integer	2	N
+
+---TABLE---
+
+Functional Components	Re-Use and Source of other OTA Constructs
+POS (Point Of Sale)	POS_Type
+Guest	GuestType
+SailingInfo	SailingCategoryInfoType
+SelectedFare	FareGroup (Uses)
+SearchQualifiers	SearchQualifierType (Extends)
+
+---TABLE---
+
+Functional Components	Re-Use and Source of other OTA Constructs
+Success	SuccessType
+Warnings	WarningsType
+SailingInfo	SailingCategoryInfoType
+SelectedFare	FareGroup (Uses)
+CabinOptions	
+CabinOptions/CabinOption	CabinOptionType
+Information	ParagraphType
+Errors	ErrorsType
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseCabinHoldRQ/GuestCounts/GuestCount[1-4]/@Quantity	Integer	1	Y
+/OTA_CruiseCabinHoldRQ/Guest[1-4]/@Age	Integer	2	N
+/OTA_CruiseCabinHoldRQ/SelectedSailing[1]/@Start	Date		Y
+/OTA_CruiseCabinHoldRQ/SelectedSailing[1]/@ShipCode	String	2	Y
+/OTA_CruiseCabinHoldRQ/SelectedSailing[1]/SelectedCategory/@PricedCategoryCode	String	2	Y
+/OTA_CruiseCabinHoldRQ/SelectedSailing[1]/SelectedFare/@FareCode	String	8	Y
+/OTA_CruiseCabinHoldRQ/SelectedSailing[1]/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseCabinHoldRQ/SelectedSailing[1]/SelectedCategory/@BerthedCategoryCode	String	2	N
+/OTA_CruiseCabinHoldRQ/SelectedSailing[1]/SelectedCategory/CabinAttributes/CabinAttribute/
+@CabinAttributeCode	String	2	N
+/OTA_CruiseCabinHoldRQ/SelectedSailing[1]/SelectedCategory/SelectedCabin[1]/@CabinNumber	Integer	5	Y
+/OTA_CruiseCabinHoldRQ/SelectedSailing[1]/SelectedCategory/SelectedCabin[2-
+4]/@CabinNumber	Integer	5	N
+/OTA_CruiseCabinHoldRQ/SearchQualifiers/ReservationID/@ID	Integer	7	N
+/OTA_CruiseCabinHoldRQ/SearchQualifiers/ReservationID/@Type	Integer	2	N
+
+---TABLE---
+
+Functional Components	Re-Use and Source of other OTA Constructs
+Success	SuccessType
+Warnings	WarningsType
+SailingInfo	SailingType
+FareCodeOptions/FareCodeOption	FareCodeOptionType
+Errors	ErrorsType
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseFareAvailRQ/@MoreDataEchoToken	String	27	N
+/OTA_CruiseFareAvailRQ/@MaxResponses	Integer	3	Y
+/OTA_CruiseFareAvailRQ/SailingInfo/SelectedSailing/CruiseLine/@ShipCode	String	2	Y
+/OTA_CruiseFareAvailRQ/SailingInfo/SelectedSailing/@Start	Date		Y
+/OTA_CruiseFareAvailRQ/Guest[1-4]/@Code	String	2	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/@Age	String	3	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/@LoyaltyMembershipID	String	9	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/GuestTransportation[1-2]/@Mode	Integer	2	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/GuestTransportation[1-2]/@Status	Integer	2	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/GuestTransportation[1-2]/GatewayCity/ @LocationCode	String	3	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/Address/StateProv/@StateCode	String	2	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/FareQualifiers[0-5]/@FareRestriction	String	1	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/SelectedOffers[0-1]/@PromotionCode	String	16	N
+/OTA_CruiseFareAvailRQ/SearchQualifiers/ReservationID/@ID	Integer	7	N
+/OTA_CruiseFareAvailRQ/SearchQualifiers/ReservationID/@ID_Context	Integer	7	N
+/OTA_CruiseFareAvailRQ/SearchQualifiers/ReservationID/@Type	Integer	2	N
+/OTA_CruiseFareAvailRQ/SearchQualifiers/Status/@Status	Integer	2	N
+
+---TABLE---
+
+/OTA_CruiseFareAvailRQ/TPA_Extenstions/TPA_FareQualifiers/TPA_FareType/@IncludeCombinability	YesNoType		N
+/OTA_CruiseFareAvailRQ/TPA_Extenstions/TPA_FareQualifiers/TPA_FareType/@IncludeNonRefundablePromos	YesNoType		N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseFareAvailRS/@MaxResponses	Integer	3	Y
+/OTA_CruisePkgAvailRS/@MoreIndicator	Boolean		Y
+/OTA_CruisePkgAvailRS/@MoreDatasEchoToken	String	128	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]	String	80	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]/@ShortText	String	7	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]/@Type	Integer	1	N
+/OTA_CruiseFareAvailRS/Success	Node		N
+/OTA_CruiseFareAvailRS/SailingInfo/SelectedSailing/@Start	Date		N
+/OTA_CruiseFareAvailRS/SailingInfo/SelectedSailing/CruiseLIne/@ShipCode	String	2	N
+/OTA_CruiseFareAvailRS/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@FareCode	String	8	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@FareDescription	String	45	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@Status	Integer	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+99]/@ListOfFareQualifierCode	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@DiscountTypes	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@PromoPercentage	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@PromotionClass	String	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@PromotionTypes	String	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+99]/@PromotionEligibility	String	3	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@FaceCurrency	String	3	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@FaceValueType	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@ValueAddAmount	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+99]/@NonRefundableType	O T A _ C o d e T y p e		N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/FareRemark	String	40	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+99]/FareBreakDowns/FareBreakDown[0-10]/@PromotionCode	String	16	N
+/OTA_CruiseFareAvailRS/TPA_Extensions/Taxes/Tax[1-4]/@Amount	String	14	N
+/OTA_CruiseFareAvailRS/TPA_Extensions/Fee/Taxes/Tax[1-4]/@Amount	String	14	N
+
+---TABLE---
+
+Functional Components	Re-Use and Source of other OTA Constructs
+Success	SuccessType
+Warnings	WarningsType
+SailingInfo	SailingType
+FareCodeOptions/FareCodeOption	FareCodeOptionType
+Errors	ErrorsType
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseFareAvailRQ/@MoreDataEchoToken	Integer	2	N
+/OTA_CruiseFareAvailRQ/@MaxResponses	Integer	3	Y
+/OTA_CruiseFareAvailRQ/SailingInfo/SelectedSailing/CruiseLine/@ShipCode	String	2	Y
+/OTA_CruiseFareAvailRQ/SailingInfo/SelectedSailing/@Start	Date		Y
+/OTA_CruiseFareAvailRQ/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseFareAvailRQ/SearchQualifiers/@FareCode	String	8	Y
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseFareAvailRS/@MaxResponses	Integer	3	Y
+/OTA_CruiseFareAvailRS/@MoreIndicator	Boolean		Y
+/OTA_CruiseFareAvailRS/@MoreDatasEchoToken	String	128	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]	String	80	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]/@ShortText	String	7	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]/@Type	Integer	1	N
+/OTA_CruiseFareAvailRS/Success	Node		N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-99]/@FareDescription	String	45	N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruisePriceBookingRQ/@TransactionActionCode=”RetrievePrice”	String	13	N
+/OTA_CruisePriceBookingRQ/POS/Source[1]/@ISOCurrency	String	3	Y
+/OTA_CruisePriceBookingRQ/ReservationInfo/ReservationID[1]/@ID	Integer	7	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/ReservationID[1]/@StatusCode	Integer	2	N
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedSailing/@Start	Date		Y
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedSailing/CruiseLine/@ShipCode	String	2	Y
+/OTA_CruisePriceBookingRQ/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedCategory/@FareCode	String	8	Y
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedCategory/@IncludeNonRefundablePromos	YesNoType		N
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedCategory/@BerthedCategoryCode	String	2	N
+
+---TABLE---
+
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedCategory/@PricedCategoryCode	String	2	Y
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedCategory/CabinAttributes/CabinAttribute
+/@CabinAttributeCode	String	2	N
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedCategory[@WaitlistIndicator =
+'false']/SelectedCabin[@Status=36 || 39]/@CabinNumber	String	5	Y
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedCategory/SelectedPromotions[0-25]/
+/@PromotionCode	String	16	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@GuestRefNumber	Integer	9	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@Nationality	String	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@BirthDate	Date		N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@Gender	String	8	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@Age	Integer	3	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/PersonName/GivenName	String	14	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/PersonName/Surname	String	18	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/PersonName/NameTitle	String	4	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/AddressLine	String	25	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/CityName	String	15	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/PostalCode	String	9	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/StateProv/@StateCode	String	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/StateProv	String	15	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/CountryName/@CountryCode	String	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Telephone/@PhoneNumber	String	25	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/FareQualifiers[0-5]/@FareRestriction	String	1	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/			
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/PersonName/GivenName	String	14	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/PersonName/Surname	String	18	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/PersonName/NameTitle	String	4	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/AddressLine[1-2]	String	25	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/CityName	String	15	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/PostalCode	String	9	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT ’]/Address/StateProv/@StateCode	String	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/StateProv	String	15	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/CountryName/@CountryCode	String	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Telephone[1-3]/@PhoneNumber	String	25	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Telephone[1-3]/@PhoneLocationType	Integer	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/	Integer	2	N
+
+---TABLE---
+
+SelectedDining[1]/@Language			
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedDining[1]/@AgeCode	Integer	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOffers[0-1]/@PromotionCode	String	16	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedInsurance/@InsuranceCode	String	4	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedInsurance/@SelectedOptionIndicator	Boolean		N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/ [@OptionCode='PPGR']	String	4	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/@DeliveryLocation	String	10	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/@ModifiableIndicator	Boolean		N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/@TPA_OptionType	String	1	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/Message/Text	String	12	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/@SelectedOptionsIndicator	String	1	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/ SelectedPackages/SelectedPackage[1-5] [@PackageTypeCode='5' ||
+'6']/@CruisePackageCode	String	6	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5] /@PackageTypeCode	Integer	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5] [@PackageTypeCode='5' || '6']/@Status	Integer	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/@InclusiveIndicator	Boolean		N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/@Duration	String	4	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/ SelectedPackages/SelectedPackage[1-5] [@PackageTypeCode='5' || '6']/Location[1-
+2]/@LocationCode	String	13	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/SelectedPackages/SelectedPackage[@PackageTypeCode='7' thru
+‘11’]/@CruisePackageCode	String	8	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedPackages/SelectedPackage[@PackageTypeCode='7' thru ‘11’]/@Status	Integer	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/Location[1]/@LocationName	String	50	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/Location[1]/Information/Text	String	40	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/AirInfo/Airline/@Code	String	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/Location[2]/@CodeContext	String	22	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/@Code	String	4	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/@Date	Date		N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/@NbrOfYears	Integer	2	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/@CodeDetail	String	15	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/Comment/Text	String	10	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/@AirAccommodationType	String	11	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/@Comment	String	1	N
+/OTA_CruisePriceBookingRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/@DepartureDateTime	DateTime		N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruisePriceBookingRS/Warnings/Warning[1-3]	String	80	N
+/OTA_CruisePriceBookingRS/Warnings/Warning[1-3]/@ShortText	String	7	N
+/OTA_CruisePriceBookingRS/Warnings/Warning[1-3]/@Type	Integer	1	N
+/OTA_CruisePriceBookingRS/Success	Node		N
+/OTA_CruisePriceBookingRS/ReservationID/@ID	Integer	7	N
+/OTA_CruisePriceBookingRS/ReservationID/@Type	Integer	2	N
+/OTA_CruisePriceBookingRS/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruisePriceBookingRS/SailingInfo/SelectedCategory/@FareCode	String	16	N
+/OTA_CruisePriceBookingRS/SailingInfo/SelectedCategory/@NonRefundableType	OTA_CodeType		N
+/OTA_CruisePriceBookingRS/SailingInfo/SelectedCategory/@BookingNonRefundableType	OTA_CodeType		N
+/OTA_CruisePriceBookingRS/SailingInfo/SelectedCategory/@PromotionDescription	String	16	N
+/OTA_CruisePriceBookingRS/BookingPayment/BookingPrices/BookingPrice[1-15]/@Amount	String	14	N
+/OTA_CruisePriceBookingRS/BookingPayment/BookingPrices/BookingPrice[1-
+15]/@PriceTypeCode	Integer	3	N
+/OTA_CruisePriceBookingRS/BookingPayment/BookingPrices/BookingPrice[1-
+15]/@RestrictedIndicator	Boolean		N
+/OTA_CruisePriceBookingRS/BookingPayment/PaymentSchedule/Payment[1-2]/@Amount	String	14	N
+/OTA_CruisePriceBookingRS/BookingPayment/PaymentSchedule/Payment[1-
+2]/@PaymentNumber	Integer	1	N
+/OTA_CruisePriceBookingRS/BookingPayment/PaymentSchedule/Payment[1-2]/@DueDate	Date		N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-
+4]/PriceInfos/PriceInfo[1-65]/@PricedComponentType	String	1	N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-
+4]/PriceInfos/PriceInfo[1-65]/@Amount	String	14	N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-
+4]/PriceInfos/PriceInfo[1-65]/@CodeDescription	String	16	N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-
+4]/PriceInfos/PriceInfo[1-65]/@PriceTypeCode	Integer	3	N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-
+4]/PriceInfos/PriceInfo[1-65]/@Percent	String	6	N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-
+4]/PriceInfos/PriceInfo[1-65]/@PriceComponentCode	String	10	N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-
+4]/PriceInfos/PriceInfo[1-65]/@CodeDetail	String	10	N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-
+4]/PriceInfos/PriceInfo[1-65]/@ItemizableIndicator	Boolean		N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-
+4]/PriceInfos/PriceInfo[1-65]/@MandatoryIndicator	Boolean		N
+/OTA_CruisePriceBookingRS/BookingPayment/GuestPrices/GuestPrice[1-	Boolean		N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseBookRQ/[@TransactionActionCode='Modify' || 'Commit' || ‘Cancel’]	String	6	Y
+/OTA_CruiseBookRQ/SailingInfo/SelectedSailing/@Start	Date		Y
+/OTA_CruiseBookRQ/SailingInfo/SelectedSailing/@Status='60'	Integer	2	N
+/OTA_CruiseBookRQ/SailingInfo/SelectedSailing/@Duration	String	4	Y
+/OTA_CruiseBookRQ/SailingInfo/SelectedSailing/CruiseLine/@ShipCode	String	2	Y
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory/@FareCode	String	8	Y
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory/@IncludeNonRefundablePromos	YesNoType		N
+/OTA_CruiseBookRQ/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory[@WaitlistIndicator = 'false']/
+@BerthedCategoryCode	String	2	N
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory/@PricedCategoryCode	String	2	Y
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory[@WaitlistIndicator='true']/
+SelectedCabin/@CabinNumber	String	5	N
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory[@WaitlistIndicator='true']/
+@BerthedCategoryCode	String	2	N
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory/CabinAttributes/CabinAttribute/
+@CabinAttributeCode	String	2	N
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory[@WaitlistIndicator='false']/
+SelectedCabin[@Status='46' || ‘39’]/@CabinNumber	String	5	Y
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory[@WaitlistIndicator='false']/
+SelectedCabin[@Status='39']/CabinConfiguration/@BedConfigurationCode	String	2	N
+/OTA_CruiseBookRQ/SailingInfo/SelectedCategory[@WaitlistIndicator='false']/SelectedPromotions[0-
+25]/@PromotionCode	String	16	N
+/OTA_CruiseBookRQ/ReservationInfo/ReservationID[1]/@ID	Integer	7	N
+/OTA_CruiseBookRQ/ReservationInfo/ReservationID[1]/@Instance	Integer	1	N
+/OTA_CruiseBookRQ/ReservationInfo/ReservationID[1]/@BookedDate	Date		N
+/OTA_CruiseBookRQ/ReservationInfo/ReservationID[1]/@StatusCode	Integer	2	N
+/OTA_CruiseBookRQ/ReservationInfo/ReservationID[1]/@LastModifyDateTime	Datetime		N
+/OTA_CruiseBookRQ/ReservationInfo/ReservationID/@OfferDate	Date		N
+/OTA_CruiseBookRQ/ReservationInfo/PaymentOptions/PaymentOption[1]/
+@ExtendedIndicator	Boolean		N
+/OTA_CruiseBookRQ/ReservationInfo/PaymentOptions/PaymentOption[2]
+/BankAcct/@ChecksAcceptedInd = 'true'	Boolean		N
+/OTA_CruiseBookRQ/ReservationInfo/PaymentOptions/PaymentOption[2]
+/BankAcct/@CheckNumber	String	8	N
+
+---TABLE---
+
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='ALT']/Address/CityName	String	15	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='ALT']/Address/StateProv	String	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='ALT']/Address/CountryName/@Code	String	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='ALT']/Email	String	60	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='ALT']/Email[EmailType=”1”]	String	60	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='ALT']/Address/PostalCode	String	9	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='ALT']/Telephone[@PhoneTechType='3']/@PhoneNumber	String	19	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/ContactInfo[@ContactType='ALT']/Telephone[@PhoneLocationType='7']/
+@PhoneNumber	String	19	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/ContactInfo[@ContactType='ALT']/Telephone[@PhoneLocationType='6']/
+@PhoneNumber	String	19	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/PersonName/Surname	String	18	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/PersonName/MiddleName	String	14	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’CNT’]/PersonName/GivenName	String	14	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’CNT’]/PersonName/NameTitle	String	4	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/@MiddleNameFlag	String	3	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/@Age	Integer	3	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/@Nationality	String	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/@BirthDate	Date		N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/Address/PostalCode	String	9	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/Telephone/@PhoneNumber	String	19	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/Address/AddressLine	String	25	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/Address/CityName	String	15	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/Address/StateProv/@StateCode	String	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/Address/CountryName/@Code	String	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType='CNT']/FareQualifiers[0-5]/@FareRestrictions	String	1	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’EMG’]/PersonName/Surname	String	18	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’EMG’]/PersonName/GivenName	String	14	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’EMG’]/Address/AddressLine[1]	String	25	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’EMG’]/Address/AddressLine[2]	String	25	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’EMG’]/Address/CityName	String	15	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’EMG’]/Address/StateProv/@StateCode	String	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’EMG’]/Address/CountryName/@Code	String	2	N
+
+---TABLE---
+
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’EMG’]/Address/PostalCode	String	9	9	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’EMG’]/Telephone/@PhoneNumber	String	19	19	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’LNG’]/PersonName/Surname	String	18	18	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’LNG’]/PersonName/MiddleName	String	14	14	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/ContactInfo[@ContactType=’LNG’]/PersonName/GivenName	String	14	14	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedDining[@Status!=’46’]/@FamilyTimeIndicator	Boolean			N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedDining[@Status!=’46’]/@SittingType	String	11	11	Y
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedDining[@Status!=’46’]/@Sitting	String	1	1	Y
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedDining[@Status!=’46’]/@SmokingCode	String	1	1	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedDining[@Status!=’46’]/@AgeCode	Integer	2	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedDining[@Status!=’46’]/@Language	String	2	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedDining[@Status!=’46’]/@TableSize	String	2	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedDining[@Status=’46’]/@SittingType	String	11	11	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedDining[@Status=’46’]/@Sitting	String	1	1	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/SelectedOffers[0-
+1]/@PromotionCode	String	16	16	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/AirAccommodations/AirAccommodation/@AirAccommodationType = 'Deviation'	String	9	9	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/AirAccommodations/AirAccommodation/DepartureCity/@LocationCode	String	3	3	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/AirAccommodations/AirAccommodation/@DepartureDateTime	Datetime			N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/AirAccommodations/AirAccommodation/ArrivalCity/@LocationCode	String	3	3	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/AirAccommodations/AirAccommodation/@ArrivalDateTime	Datetime			N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/AirAccommodations/AirAccommodation[@AirAccomodationType='I' || 'O']	String	1	1	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/AirAccommodations/AirAccommodation/Airline/@Code	String			N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/AirAccommodations/AirAccommodation/Airline/@Code	String	3		N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/AirAccommodations/AirAccommodation/Airline/@FlightNumber 5	String	5	5	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/SelectedPackages/SelectedPackage[@PackageTypeCode='5' || '6' || '7' ||
+'8' || '9' || '10' || '11']/@Status	Integer	2	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/SelectedPackages/SelectedPackage[1-6][@PackageTypeCode='5' || '6' || '7' ||
+'8' || '9' || '10' || '11']/@CruisePackageCode	String	8	8	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-4]/SelectedPackages/SelectedPackage[@PackageTypeCode = '5' || '6']/Location[1]/
+@LocationCode	String	3	3	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedSpecialServices/SelectedSpecialService[1-4]/@Date	Date			N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedSpecialServices/SelectedSpecialService[1-4]/@NbrOfYears	Integer	2	2	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedSpecialServices/SelectedSpecialService[1-4]/@Code	String	4	4	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-
+4]/SelectedSpecialServices/SelectedSpecialService[1-4]/Comment/Text	String	10	10	N
+/OTA_CruiseBookRQ/ReservationInfo/GuestDetails/GuestDetail[1-	String	3	3	N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseBookRS/Warnings/Warning[1-3]	String	80	N
+/OTA_CruiseBookRS/Warnings/Warning[1-3]/@ShortText	String	7	N
+/OTA_CruiseBookRS/Warnings/Warning[1-3]/@Type	Integer	1	N
+/OTA_CruiseBookRS/Success	Node		N
+/OTA_CruiseBookRS/ReservationID/@ID	Integer	7	N
+/OTA_CruiseBookRS/ReservationID/@Type	Integer	2	N
+/OTA_CruiseBookRS/ReservationID/@StatusCode	Integer	2	N
+/OTA_CruiseBookRS/SailingInfo/SelectedCategory/@FareCode	String	8	N
+/OTA_CruiseBookRS/SailingInfo/SelectedCategory/@NonRefundableType	OTA_CodeType		N
+/OTA_CruiseBookRS/SailingInfo/SelectedCategory/@BookingNonRefundableType	OTA_CodeType		N
+/OTA_CruiseBookRS/BookingPrices/BookingPrice[1-15]/@Amount	String	14	N
+/OTA_CruiseBookRS/BookingPrices/BookingPrice[1-15]/@PriceTypeCode	Integer	3	N
+/OTA_CruiseBookRS/BookingPayment/PaymentSchedule/Payment[1-2]/@Amount	String	14	N
+/OTA_CruiseBookRS/BookingPayment/PaymentSchedule/Payment[1-2]/@PaymentNumber	Integer	1	N
+/OTA_CruiseBookRS/BookingPayment/PaymentSchedule/Payment[1-2]/@DueDate	Date		N
+/OTA_CruiseBookRS/BookingPayment/GuestPrices/GuestPrice[1-4]/PriceInfos/PriceInfo[1-
+65]/@PricedComponentType	String	1	N
+/OTA_CruiseBookRS/BookingPayment/GuestPrices/GuestPrice[1-4]/PriceInfos/PriceInfo[1-
+65]/@Amount	String	14	N
+/OTA_CruiseBookRS/BookingPayment/GuestPrices/GuestPrice[1-4]/PriceInfos/PriceInfo[1-
+65]/@PriceTypeCode	Integer	3	N
+/OTA_CruiseBookRS/BookingPayment/GuestPrices/GuestPrice[1-4]/PriceInfos/PriceInfo[1-
+65]/@Percent	String	6	N
+/OTA_CruiseBookRS/BookingPayment/GuestPrices/GuestPrice[1-4]/PriceInfos/PriceInfo[1-
+65]/@PriceComponentCode	String	10	N
+/OTA_CruiseBookRS/BookingPayment/GuestPrices/GuestPrice[1-4]/PriceInfos/PriceInfo[1-
+65]/@CodeDetail	String	10	N
+/OTA_CruiseBookRS/BookingPayment/GuestPrices/GuestPrice[1-4]/PriceInfos/PriceInfo[1-65]/
+/@NonRefundableType	OTA_CodeType		N
+/OTA_CruiseBookRS/BookingPayment/GuestPrices/GuestPrice[1-4]/PriceInfos/PriceInfo[1-65]/
+/@BookingNonRefundableType	OTA_CodeType		N
+/OTA_CruiseBookRS/BookingPayment/PolicyInfo/Text	String	3200	N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseFastSellRQ/SearchQualifiers/ReservationID/@ID	Integer	7	N
+/OTA_CruiseFastSellRQ/SelectedSailing/@Start	Date		Y
+/OTA_CruiseFastSellRQ/SelectedSailing/@ShipCode	String	2	Y
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedCategory/@PricedCate
+goryCode	String	2	Y
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedFare/@FareCode	String	8	Y
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedFare/@IncludeNonRef
+undablePromos	String	3	N
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedFare/SelectedPromoti
+ons/@PromotionCode	String	16	N
+/OTA_CruiseFastSellRQ/SelectedSailing/InclusivePackageOption/@Crui
+sePackageCode	String	8	N
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedCategory/@BerthedCa
+tegoryCode	String	2	Y
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedCategory/CabinAttribu tes/CabinAttribute
+/@CabinAttributeCode	String	2	N
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedCategory/SelectedCabi
+n[1]/@CabinNumber	String	5	Y
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedCategory/SelectedCabi
+n[2]/@CabinNumber	String	5	N
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedCategory/SelectedCabi
+n[3]/@CabinNumber	String	5	N
+
+---TABLE---
+
+/OTA_CruiseFastSellRQ/SelectedSailing/SelectedCategory/SelectedCabi
+n[4]/@CabinNumber	String	5	N
+/OTA_CruiseFastSellRQ/Guest[1]			Y
+/OTA_CruiseFastSellRQ/Guest[2-4]			N
+/OTA_CruiseFastSellRQ/Guest[1-4]/@Age	Integer	2	N
+/OTA_CruiseFastSellRQ/Guest[1-4]/@Code	String	2	N
+/OTA_CruiseFastSellRQ/Guest[1-4]/@LoyaltyMembershipID	String	9	N
+/OTA_CruiseFastSellRQ/Guest[1]/GuestTransportation[1]/@Mode	Integer	2	Y
+/OTA_CruiseFastSellRQ/Guest[2-4]/GuestTransportation[1]/@Mode	Integer	2	N
+/OTA_CruiseFastSellRQ/Guest[1-4]/GuestTransportation[2]/@Mode	Integer	2	N
+/OTA_CruiseFastSellRQ/Guest[1]/GuestTransportation[1]/@Status	Integer	2	Y
+/OTA_CruiseFastSellRQ/Guest[1-4]/GuestTransportation[2]/@Status	Integer	2	N
+/OTA_CruiseFastSellRQ/Guest[1]/GuestTransportation[1]/GatewayCity
+/@LocationCode	String	3	Y
+/OTA_CruiseFastSellRQ/Guest[2-
+4]/GuestTransportation[1]/GatewayCity/@LocationCode	String	3	N
+/OTA_CruiseFastSellRQ/Guest[1-
+4]/GuestTransportation[2]/GatewayCity/@LocationCode	String	3	N
+/OTA_CruiseFastSellRQ/Guest[1-4]/Address/StateProv/@StateCode	String	2	N
+/OTA_CruiseFastSellRQ/Guest[1-4]/FareQualifiers/@FareRestrictions	String	2	N
+/OTA_CruiseFastSellRQ/Guest[1-4]/SelectedOffers/@PromotionCode	String	16	N
+/OTA_CruiseFastSellRQ/TPA_Extensions/TPA_FareQualifiers/TPA_FareType/@IncludeRefundablePromos	String	3	N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_ResRetrieveRS/Warnings/Warning[1-3]	String	80	N
+/OTA_ResRetrieveRS /Warnings/Warning[1-3]/@ShortText	String	7	N
+/OTA_ResRetrieveRS /Warnings/Warning[1-3]/@Type	Integer	1	N
+/OTA_ResRetrieveRS /Success	Node		N
+/OTA_ResRetrieveRS/CruiseReservation/@DocumentsIssuedIndicator	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/@DocumentChoiceIndicator	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/@RestrictedFareIndicator	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/@BookingCountryCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/@ExpeditionIndicator	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/@BookInToGroupsEligible	String	3	N
+/OTA_ResRetrieveRS/CruiseReservation/@BookInToGroupsMessageID	String	7	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedSailing/@Start	Date		N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedSailing/@Duration	String	4	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedSailing/CruiseLine/@ShipCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedSailing/CruiseLine/@VendorCode	String	3	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedSailing/Region/@RegionCode	String	5	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedSailing/Region/@SubRegionCode	String	5	N
+
+---TABLE---
+
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/InclusivePackageOption/
+@CruisePackageCode	String	8	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/Currency/@CurrencyCode	String	3	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@PricedCategoryCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@FareCode	String	8	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@NonRefundableType	OTA_CodeType		N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@BookingNonRefundableType	OTA_CodeType		N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@PromotionClass	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@PromotionDescription	String	15	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@PromotionTypes	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@BerthedCategoryCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@DeckName	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/@WaitlistIndicator	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/CabinAttributes/
+CabinAttribute/@CabinAttributeCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/@CabinNumber	String	5	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/@Status	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/@MaxOccupancy	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/@PositionInShip	String	7	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/@CategoryLocation	String	7	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/CabinConfiguration/@BedConfigurationCode	String	1	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/MeasurementInfo/@Name	String	25	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/MeasurementInfo/@UnitOfMeasurementQuantity	Integer	1	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/MeasurementInfo/@UnitOfMeasure	String	8	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingInfo/SelectedCategory/
+SelectedCabin/CabinAttributes/CabinAttribute/@CabinAttributeCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingProfile/[@ProfileTypeIdentifier=’NotModifiable’]
+/
+CruiseProfile/@Code	Integer	3	N
+/OTA_ResRetrieveRS/CruiseReservation/SailingProfile/[@ProfileTypeIdentifier=’Modifiable’]/
+CruiseProfile/@Code	Integer	3	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/@ID	Integer	7	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/@StatusCode	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/@Type	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/@Instance	Integer	1	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/@BookedDate	Date		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/
+@LastModifyDateTime	DateTime		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/@OfferDate	DateTime		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/CompanyName/
+@Department	Integer	9	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/CompanyName/
+@Division	Integer	9	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/CompanyName/
+@Code	String	10	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[1]/CompanyName/
+@CodeContext	String	20	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[2]/@ID	Integer	1	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[2]/@Type	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[2]/CompanyName/
+@Department	String	19	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[2]/CompanyName/
+@Division	String	19	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[2]/CompanyName/
+@Code	String	10	N
+
+---TABLE---
+
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/ReservationID[2]/CompanyName/
+@CodeContext	String	20	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@GuestRefNumber	Integer	9	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@Nationality	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@BirthDate	Date		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@Gender	String	8	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@Age	Integer	3	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/@MiddleNameFlag	String	5	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/PersonName/GivenName	String	14	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/PersonName/Surname	String	18	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/PersonName/MiddleName	String	14	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/PersonName/NameTitle	String	4	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/AddressLine	String	25	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/CityName	String	15	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/PostalCode	String	9	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/StateProv/@StateCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/StateProv	String	15	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Address/CountryName/@CountryCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/Telephone/@PhoneNumber	String	25	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’CNT’]/FareQualifiers/@FareRestriction	String	1	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/			
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/PersonName/GivenName	String	14	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/PersonName/Surname	String	18	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/PersonName/NameTitle	String	4	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/AddressLine[1-2]	String	25	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/CityName	String	15	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/PostalCode	String	9	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT ’]/Address/StateProv/@StateCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/StateProv	String	15	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Address/CountryName/@CountryCode	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Telephone[1-3]/@PhoneNumber	String	25	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Telephone[1-3]/@PhoneLocationType	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+ContactInfo/[@ContactType=’ALT’]/Telephone[1-3]/@PhoneTechType	Integer	2	N
+
+---TABLE---
+
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedDining[1]/@FamilyTimeIndicator	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedDining[1]/@SmokingCode	Integer	1	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedDining[1]/@TableSize	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedDining[1]/@Language	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedDining[1]/@AgeCode	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOffers[0-1]/@PromotionCode	String	16	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPromotions[0-20]/@PromotionCode	String	16	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPromotions[0-20]/@NonRefundableType	OTA_CodeType		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedInsurance/@InsuranceCode	String	4	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedInsurance/@SelectedOptionIndicator	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/@OptionCode	String	4	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/@DeliveryLocation	String	10	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/@ModifiableIndicator	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/@TPA_OptionType	String	1	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedOptions[1-20]/Message/Text	String	12	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/@CruisePackageCode	String	6	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/@PackageTypeCode	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/@Status	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/@InclusiveIndicator	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/@Duration	String	4	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/Location[1-2]/@LocationCode	String	13	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/Location[1]/@LocationName	String	50	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/Location[1]/Information/Text	String	40	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/Location[1]/Information/@Name	String	3	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedPackages/SelectedPackage[1-5]/Location[2]/@CodeContext	String	22	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/@Code	String	4	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/@Date	Date		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/@NbrOfYears	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/@CodeDetail	String	15	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+SelectedSpecialServices/SelectedSpecialService[1-4]/Comment/Text	String	10	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/@AirAccommodationType	String	11	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/@Comment	String	1	N
+
+---TABLE---
+
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/@DepartureDateTime	DateTime		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/@ArrivalDateTime	DateTime		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/DepartureCity/@LocationCode	String	3	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/ArrivalCity/@LocationCode	String	3	
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/Airline/@Code	String	3	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/Airline/@FlightNumber	String	5	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+AirAccommodations/AirAccomodation[1-10]/Airline/@CompanyShortName	String	32	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+CruiseDocument/@DocumentLanguage ***	String	3	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+CruiseDocument/@DeliveryMethodCode	Integer	1	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+Profiles/@ProfileTypeIdentifier	String	10	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+Profiles/CruiseProfile[1-2]/@Code	Integer	3	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/LinkedBookings/LinkedBooking[1-
+24]/@LinkTypeCode	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+LinkedBookings/LinkedBooking[1-24]/UniqueID/@ID	Integer	7	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/GuestDetails/GuestDetail[1-4]/
+LinkedBookings/LinkedBooking[1-24]/UniqueID/@Type	Integer	2	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/PaymentOptions/PaymentOption/
+BankAcct/@ChecksAcceptedInd	Boolean		N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/PaymentOptions/PaymentOption/
+PaymentAmount/@Amount	String	14	N
+/OTA_ResRetrieveRS/CruiseReservation/ReservationInfo/CancellationPenalty/@Amount	String	14	N
+/OTA_ResRetrieveRS/CruiseReservation/PaymentsDue/PaymentDue[1-2]/@DueDate	Date		N
+/OTA_ResRetrieveRS/CruiseReservation/PaymentsDue/PaymentDue[1]/@Amount	String	14	N
+/OTA_ResRetrieveRS/CruiseReservation/Information/Text[1]	String	100	N
+/OTA_ResRetrieveRS/CruiseReservation/Information/Text[2]/[@Name=’Insurance’]	String	1	N
+/OTA_ResRetrieveRS/CruiseReservation/Information/Text[3]	String	15	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/BookingPrices/
+BookingPrice[1-15]/@Amount	String	14	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/BookingPrices/
+BookingPrice[1-15]/@PriceTypeCode	Integer	3	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@Amount	String	14	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@PriceTypeCode	Integer	3	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@CodeDescription	String	16	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@CodeDetail	String	16	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@FaceCurrency	String	3	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@FaceValue	String	14	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@PricedComponentCode	String	16	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@PricedComponentType	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@PricingLevel	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@PricingType	String	2	N
+/OTA_ResRetrieveRS/CruiseReservation/TPA_Extensions/BookingPayment/GuestPrices/
+GuestPrice/PriceInfos/PriceInfo[1-65]/@OptionType	String	2	N
+
+---TABLE---
+
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@MandatoryIndicator	Boolean	
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@ItemizableIndicator	Boolean	
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@AutoAddedIndicator	Boolean	
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@ReEvaluationIndicatorIndicator	Boolean	
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@PricingType	Integer	2
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@AmountOrPercentage	Integer	2
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@FaceCurrency	String	3
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@FaceValue	Amount	
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@MaxFaceValuePerCabin	Amount	
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/@PricingLevel	Integer	2
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_CategoryInfos/TPA_CategoryInfo/@CategoryCode	String	2
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_CategoryInfos/TPA_CategoryInfo/@CategoryDescription	String	12
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_RestrictionInfo/TPA_Restriction/@RestrictionType	Integer	3
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_RestrictionInfo/TPA_Restriction/@Description	String	35
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_RestrictionInfo/TPA_Restriction/@PriceTypeCode	Integer	2
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_GuestPriceInfos/TPA_GuestPriceInfo/@FixedRate	Amount	
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_GuestPriceInfos/TPA_GuestPriceInfo/@MaxRate	Amount	
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_GuestPriceInfos/TPA_GuestPriceInfo/@MinRate	Amount	
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_ComponentInfos/TPA_ComponentInfo/@ComponentDescription	String	67
+/OTA_CruiseSpecialServiceAvailRS/SpecialServices/SpecialService/TPA_ComponentInfos/TPA_ComponentInfo/@ComponentType	Integer	2
+
+---TABLE---
+
+Functional Components	Re-Use and Source of other OTA Constructs
+Success	SuccessType
+Warnings	WarningsType
+SailingInfo	SailingType
+FareCodeOptions/FareCodeOption	FareCodeOptionType
+Errors	ErrorsType
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseFareAvailRQ/@MoreDataEchoToken	String	27	N
+/OTA_CruiseFareAvailRQ/@MaxResponses	Integer	3	Y
+/OTA_CruiseFareAvailRQ/SailingInfo/SelectedSailing/CruiseLine/@ShipCode	String	2	Y
+/OTA_CruiseFareAvailRQ/SailingInfo/SelectedSailing/@Start	Date		Y
+/OTA_CruiseFareAvailRQ/Guest[1-4]/@Code	String	2	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/@Age	String	3	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/@LoyaltyMembershipID	String	9	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/GuestTransportation[1-2]/@Mode	Integer	2	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/GuestTransportation[1-2]/@Status	Integer	2	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/GuestTransportation[1-
+2]/GatewayCity/@LocationCode	String	3	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/Address/StateProv/@StateCode	String	2	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/FareQualifiers[0-5]/@FareRestriction	String	1	N
+/OTA_CruiseFareAvailRQ/Guest[1-4]/SelectedOffers[0-1]/@PromotionCode	String	16	N
+/OTA_CruiseFareAvailRQ/SearchQualifiers/@BerthedCategoryCode	String	2	Y
+/OTA_CruiseFareAvailRQ/SearchQualifiers/ReservationID/@Type	String	2	N
+/OTA_CruiseFareAvailRQ/SearchQualifiers/ReservationID/@ID	Integer	7	N
+/OTA_CruiseFareAvailRQ/SearchQualifiers/ReservationID/@ID_Context	Integer	7	N
+/OTA_CruiseFareAvailRQ/TPA_Extensions/TPA_FareQualifiers/TPA_FareType/@TPA_FareCode	String	16	Y
+/OTA_CruiseFareAvailRQ/TPA_Extensions/TPA_FareQualifiers/TPA_FareType/@TPA_RequestSequnce	String	2	N
+/OTA_CruiseFareAvailRQ/TPA_Extensions/TPA_FareQualifiers/TPA_FareType/@IncludeNonRefundablePromos	String	3	N
+/OTA_CruiseFareAvailRQ/TPA_Extensions/TPA_FareQualifiers/TPA_FareType/@TPA_PriceId	String	16	N
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseFareAvailRS/@MaxResponses	Integer	3	Y
+/OTA_CruisePkgAvailRS/@MoreIndicator	Boolean		Y
+/OTA_CruisePkgAvailRS/@MoreDatasEchoToken	String	128	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]	String	80	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]/@ShortText	String	7	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]/@Type	Integer	1	N
+/OTA_CruiseFareAvailRS/Success	Node		N
+/OTA_CruiseFareAvailRS/SailingInfo/SelectedSailing/@Start	Date		N
+/OTA_CruiseFareAvailRS/SailingInfo/SelectedSailing/CruiseLIne/@ShipCode	String	2	N
+/OTA_CruiseFareAvailRS/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@FareCode	String	8	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@FareDescription	String	45	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@Status	Integer	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@DiscountTypes	String	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@PromotionAmount	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@PromotionClass	String	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@PromotionTypes	String	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@ValueAddAmount	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@FaceCurrency	String	3	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@FaceValueType	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/@ValueAddAmount	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+25]/@NonRefundableType	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-25]/FareRemark	String	40	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+25]/PriceInfo/PriceBreakDown[1-4]/@AgeQualifyingCode	String	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+25]/PriceInfo/PriceBreakDown[1-4]/@ProfileType	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+25]/PriceInfo/PriceBreakDown[1-4]/@PromotionAmount	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+25]/PriceInfo/PriceBreakDown[1-4]/@ValueAddAmount	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+25]/PriceInfo/PriceBreakDown[1-4]/@Discount_Type	String	1	N
+
+---TABLE---
+
+Functional Components	Re-Use and Source of other OTA Constructs
+Success	SuccessType
+Warnings	WarningsType
+SailingInfo	SailingType
+FareCodeOptions/FareCodeOption	FareCodeOptionType
+Errors	ErrorsType
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseFareAvailRQ/@MoreDataEchoToken	Integer	2	N
+/OTA_CruiseFareAvailRQ/@MaxResponses	Integer	3	Y
+
+---TABLE---
+
+/OTA_CruiseFareAvailRQ/SailingInfo/SelectedSailing/CruiseLine/@ShipCode	String	2	Y
+/OTA_CruiseFareAvailRQ/SailingInfo/SelectedSailing/@Start	Date		Y
+/OTA_CruiseFareAvailRQ/SailingInfo/InclusivePackageOption/@CruisePackageCode	String	8	N
+/OTA_CruiseFareAvailRQ/TPA_Extensions/TPA_FareQualifiers/TPA_FareType[1-
+10]/@TPA_FareCode	String	16	Y
+
+---TABLE---
+
+Field	Data
+Type	Type
+Size	Required
+/OTA_CruiseFareAvailRS/@MaxResponses	Integer	3	Y
+/OTA_CruiseFareAvailRS/@MoreIndicator	Boolean		Y
+/OTA_CruiseFareAvailRS/@MoreDatasEchoToken	String	128	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]	String	80	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]/@ShortText	String	7	N
+/OTA_CruiseFareAvailRS/Warnings/Warning[1-3]/@Type	Integer	1	N
+/OTA_CruiseFareAvailRS/Success	Node		N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@FareCode	String	16	Y
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@FareDescription	String	15	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@FaceCurrency	String	3	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@FaceValueType	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@NCCFAmount	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@NetAmount	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@PriceIdType	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@PromotionClass	String	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@PromotionTypes	String	2	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+10]/@NonRefundableType	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+10]/@PromotionDescription	String	45	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+10]/@TPA_FareCodeRefNumber	String	1	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/@ValueAddAmount	String	14	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-10]/FareRemark/@Text	String	4800	N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+10]/Restrictions/TPA_Restriction[1-50]/@Allowed	Boolean		N
+/OTA_CruiseFareAvailRS/FareCodeOptions/FareCodeOption[1-
+10]/Restrictions/TPA_Restriction[1-50]/@RestrictionType	String	2	N
+
+---TABLE---
+
+Code	Reason
+A	Booking is cancelled.
+B	Past sailing date.
+C	Sailing finalized.
+D	Split booking.
+E	Sailing is closed.
+F	Price restriction.
+G	Category is closed.
+H	Price code is closed.
+I	Fare restriction.
+J	Cabin has been assigned.
+K	Cabin has been assigned.
+L	Commission is protected.
+M	Booking within 30 to 7 days of sailing.
+N	Booking within 7 days of sailing.
+O	Booking within 7 days of sailing.
+P	Booking within 30 days of sailing.
+Q	Special rate cat S or SH booked.
+R	Air deviation is confirmed.
+S	Air tickets ordered.
+T	Air tickets issued.
+U	No tour or air dev for price code.
+V	Tour restriction.
+W	Free or day prior hotel.
+X	Back to back cruises.
+Y	Royal occasions booked.
+Z	Sailing is closed.
+a	Invalid agent link.

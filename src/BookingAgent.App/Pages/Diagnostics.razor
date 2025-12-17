@@ -1,0 +1,39 @@
+@page "/diagnostics"
+@attribute [AllowAnonymous]
+@inject ILoginApiService LoginApiService
+
+<PageTitle>API Diagnostics</PageTitle>
+
+<section class="section-block">
+    <h1>Login API check</h1>
+    <p class="muted">Runs the RCCL Login endpoint and shows raw SOAP response (ignoring warning CSE0572).</p>
+    <button class="btn btn-primary" @onclick="CallLogin" disabled="@isLoading">Test Login</button>
+    @if (isLoading)
+    {
+        <span class="status">Calling…</span>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(rawResponse))
+    {
+        <div class="section-block" style="margin-top:1rem;">
+            <p class="muted">Status: @statusCode</p>
+            <pre class="code-block">@rawResponse</pre>
+        </div>
+    }
+</section>
+
+@code {
+    private bool isLoading;
+    private string? rawResponse;
+    private int statusCode;
+
+    private async Task CallLogin()
+    {
+        isLoading = true;
+        rawResponse = null;
+        var result = await LoginApiService.LoginAsync();
+        statusCode = result.StatusCode;
+        rawResponse = result.RawResponse;
+        isLoading = false;
+    }
+}

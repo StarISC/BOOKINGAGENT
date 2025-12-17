@@ -70,3 +70,15 @@
 
 17) Config Hygiene
 - Never rely on `bin/` output appsettings that may contain real secrets; ensure runtime secrets (DB password, API credentials) come from env vars/user-secrets and clean build artifacts before commit.
+
+18) Endpoint Construction
+- When calling RCCL SOAP APIs, do not lose the `/sca/` segment: avoid relative URI replacement that drops the last path segment. Always append paths explicitly (BaseUrl ending with `/sca/` or string-concatenate) and keep `UseStub` explicit when switching between live/stub.
+
+19) Branding
+- Use the provided Startravel logo and align layout to its branding. Keep a header space for the logo and ensure colors/typography harmonize with the logo (#005edc primary, #212654 secondary). Do not substitute or recolor without approval, and include company identity: “Công ty cổ phần dịch vụ Star International” (short name “Du lịch Startravel”), hotline 0919 122 127, office 321 Nam Kỳ Khởi Nghĩa, Phường Xuân Hòa, HCM.
+
+20) Result Limits & Pagination
+- The RCCL FIT APIs cap response sizes (e.g., MaxResponses/MoreIndicator). When pulling lists (SailingList, FareList, Package/Tour/Transfer/BusList, BookingList), always request in bounded batches and honor `MoreIndicator`/continuation tokens to page through all results; do not assume full data arrives in one call.
+
+21) Admin Seed Safety
+- Default admin user created by `db/auth_schema.sql` has empty hash/salt; deployment must set real hash/salt via a secure process. Never leave PasswordHash/PasswordSalt as 0x in production.

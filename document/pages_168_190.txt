@@ -1,0 +1,1244 @@
+
+---PAGE 168---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 168 of 382 4]/PriceInfos/PriceInfo[1 -65]/@AutoAddedIndicator  
+/OTA_Cruise PriceBooking RS/BookingPayment/GuestPrices/GuestPrice[1 -
+4]/PriceInfos/PriceInfo[1-65]/@OptionType OTA_CodeType    N 
+/OTA_Cruise PriceBooking RS/BookingPayment/GuestPrices/GuestPrice[1 -
+4]/PriceInfos/PriceInfo[1-65]/@PricingLevel OTA_CodeType    N 
+/OTA_Cruise PriceBooking RS/BookingPayment/GuestPrices/GuestPrice[1 -
+4]/PriceInfos/PriceInfo[1-65]/@PricingType OTA_CodeType   N 
+/OTA_Cruise PriceBooking RS/BookingPayment/GuestPrices/GuestPrice[1 -
+4]/PriceInfos/PriceInfo[1-65]/@SelectedOptionsIndicator Boolean  N 
+/OTA_Cruise PriceBooking RS/BookingPayment/GuestPrices/GuestPrice [1 -
+4]/PriceInfos/PriceInfo[1-65]/@NonRefundableType OTA_CodeType    N 
+22.4.3 Use Case 
+22.4.3.1  Sample Message Request  
+John and a guest have decided to sail on the Freedo m of the Seas on August 2, 2009 and 
+wants to price cabin 1289 in category L using promo  code BRK07.  The booking will be 
+cruise only, they have selected traveler coverage, and have selected the ‘M’ flexible 
+dining sitting from the Cruise Dining List message response.  
+<m:getBookingPrice  xmlns:m =" http://services.rccl.com/Interfaces/BookingPrice ">  
+  <OTA_CruisePriceBookingRQ  RetransmissionIndicator =" false " SequenceNmbr =" 1" TimeStamp =" 2008-12-
+11T09:21:54.792-05:00 " TransactionIdentifier =" 106597 " Version =" 1.0 " 
+xmlns =" http://www.opentravel.org/OTA/2003/05/alpha ">  
+    <POS > 
+   … 
+    </ POS > 
+    <SailingInfo > 
+      <SelectedSailing  Start =" 2009-08-02 ">  
+        <CruiseLine  ShipCode =" FR "/>  
+      </ SelectedSailing > 
+      <InclusivePackageOption  CruisePackageCode =" FR07W032 "/>  
+      <SelectedCategory  BerthedCategoryCode =" L" FareCode =" 01349036 " PricedCategoryCode =" L">  
+        <SelectedCabin  CabinNumber =" 1289 " Status =" 48 "/>  
+      </ SelectedCategory > 
+    </ SailingInfo > 
+    <ReservationInfo > 
+      <GuestDetails > 
+        <GuestDetail > 
+          <ContactInfo  Age =" 31 "/>  
+          <GuestTransportation  Mode =" 29 " Status =" 36 ">  
+            <GatewayCity  LocationCode =" C/O "/>  
+          </ GuestTransportation > 
+          <SelectedDining  Sitting =" M"/>  
+          <SelectedInsurance  InsuranceCode =" CRCR " SelectedOptionIndicator =" true "/>  
+        </ GuestDetail > 
+        <GuestDetail > 
+          <ContactInfo  Age =" 25 "/>  
+          <GuestTransportation  Mode =" 29 " Status =" 36 ">  
+            <GatewayCity  LocationCode =" C/O "/>  
+          </ GuestTransportation > 
+          <SelectedDining  Sitting =" M"/>  
+          <SelectedInsurance  InsuranceCode =" CRCR "/>  
+        </ GuestDetail > 
+      </ GuestDetails > 
+    </ ReservationInfo > 
+  </ OTA_CruisePriceBookingRQ > 
+</ m:getBookingPrice > 
+---PAGE 169---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 169 of 382 22.4.3.2  Sample Message Response 
+The response message returns the detailed pricing b reakdown for the booking and for the 
+individual travelers.   
+<price:getBookingPriceResponse  xmlns:alpha =" http://www.opentravel.org/OTA/2003/05/alpha " 
+xmlns:price =" http://services.rccl.com/Interfaces/BookingPrice ">  
+  <alpha:OTA_CruisePriceBookingRS  SequenceNmbr =" 0" Version =" 1.0 ">  
+    <alpha:Success />  
+    <alpha:Warnings > 
+      <alpha:Warning  Type =" 3"/>  
+    </ alpha:Warnings > 
+    <alpha:ReservationID  ID =" 0" Type =" 14 "/>  
+    <alpha:SailingInfo > 
+      <alpha:InclusivePackageOption  CruisePackageCode =" FR07W032 "/> 
+      <alpha:SelectedCategory FareCode ="01349036"  PromotionDescription ="SINGLESPEC" /> 
+    </ alpha:SailingInfo > 
+    <alpha:BookingPayment > 
+      <alpha:BookingPrices > 
+          <alpha:BookingPrice Amount ="500.00"  PriceTypeCode ="6" /> 
+          <alpha:BookingPrice Amount ="1498.70"  PriceTypeCode ="3" /> 
+          <alpha:BookingPrice Amount ="1498.70"  PriceTypeCode ="100 "/> 
+          <alpha:BookingPrice Amount ="1498.70"  PriceTypeCode ="8" /> 
+          <alpha:BookingPrice Amount ="1498.70"  PriceTypeCode ="42" /> 
+          <alpha:BookingPrice PriceTypeCode ="98" /> 
+          <alpha:BookingPrice PriceTypeCode ="73" />       
+      </ alpha:BookingPrices > 
+      <alpha:PaymentSchedule > 
+        <alpha:Payment  Amount =" 500.00 " DueDate =" 2009-02-27 " PaymentNumber =" 1"/>  
+        <alpha:Payment  Amount =" 2483.1 " DueDate =" 2009-05-24 " PaymentNumber =" 2"/>  
+      </ alpha:PaymentSchedule > 
+      <alpha:GuestPrices > 
+        <alpha:GuestPrice > 
+          <alpha:PriceInfos > 
+            <alpha:PriceInfo  Amount =" 480.00 " PriceTypeCode =" 49 "/> 
+            <alpha:PriceInfo Amount ="-5.00"  CodeDescription ="01349036"  CodeDetail ="SINGLESPEC" 
+PricedComponentCode ="49"  PricedComponentType ="2"  PriceTypeCode ="34"  PricingLevel ="24"  
+PricingType ="1" /> 
+            <alpha:PriceInfo  Amount =" 175.00 " PriceTypeCode =" 60 "/>  
+            <alpha:PriceInfo  Amount =" 96.85" PriceTypeCode =" 18 "/>  
+            <alpha:PriceInfo  Amount =" 746.85 " PriceTypeCode =" 8"/>  
+            <alpha:PriceInfo  Amount =" 746.85 " PriceTypeCode =" 42 "/>  
+            <alpha:PriceInfo  PriceTypeCode =" 156 "/>  
+          </ alpha:PriceInfos > 
+        </ alpha:GuestPrice > 
+        <alpha:GuestPrice > 
+          <alpha:PriceInfos > 
+            <alpha:PriceInfo  Amount =" 480.00 " PriceTypeCode =" 49 "/>  
+            <alpha:PriceInfo  Amount =" 175.00 " PriceTypeCode =" 60 "/>  
+            <alpha:PriceInfo  Amount =" 96.85" PriceTypeCode =" 18 "/>  
+            <alpha:PriceInfo  Amount ="751.85 " PriceTypeCode =" 8"/>  
+            <alpha:PriceInfo  Amount =" 751.85 " PriceTypeCode =" 42 "/>  
+            <alpha:PriceInfo  PriceTypeCode =" 156 "/>  
+          </ alpha:PriceInfos > 
+        </ alpha:GuestPrice > 
+      </ alpha:GuestPrices > 
+    </ alpha:BookingPayment > 
+  </ alpha:OTA_CruisePriceBookingRS > 
+</ price:getBookingPriceResponse > 
+22.4.3.3  Sample Message Request  
+ 
+After creating the booking with id 15363, a few cha nges are made to the booking with 
+---PAGE 170---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 170 of 382 many different components in confirmed and waitlist ed status. Most of the relevant 
+information from GuestDetails Node can be returned as is from the booking retrieval 
+response message if there are no changes to the inf ormation. Please note that information 
+sent in the request is validated based on business rules defined for certain scenarios. 
+Presence of data does not automatically ensure vali dation. 
+ 
+The booking re-price message is sent below with cha nges to booking 15363. 
+ 
+<OTA_CruisePriceBookingRQ RetransmissionIndicator=" false" SequenceNmbr="1" TimeStamp="2009-12-
+14T15:11:20.407Z" Version="1.0" xmlns="http://www.o pentravel.org/OTA/2003/05/alpha"> 
+            <POS> 
+             ………….. 
+            </POS> 
+            <SailingInfo> 
+               <SelectedSailing Duration="P7N" Star t="2010-12-26"> 
+                  <CruiseLine ShipCode="LB" VendorC ode="RCC"/> 
+               </SelectedSailing> 
+               <InclusivePackageOption CruisePackag eCode="LB07E032"/> 
+               <Currency CurrencyCode="USD"/> 
+               <SelectedCategory BerthedCategoryCod e="G" DeckName="03" FareCode="BRKA05" 
+PricedCategoryCode="G" WaitlistIndicator="false"> 
+                  <SelectedCabin CabinNumber="3542"  CategoryLocation="Outside" MaxOccupancy="4" 
+PositionInShip="Forward" Status="39"/> 
+               </SelectedCategory> 
+            </SailingInfo> 
+            <ReservationInfo> 
+               <ReservationID ID="15363" Instance=" 5" Type="14" BookedDate="2010-06-24" 
+LastModifyDateTime="2010-06-24T21:14:14.0Z" OfferDa te="2010-06-24T18:52:59.0Z" StatusCode="42"/> 
+               <GuestDetails> 
+                  <GuestDetail> 
+                     <ContactInfo ContactType="CNT"  RPH="1" Age="55" Gender="Male" 
+GuestRefNumber="261798357" Nationality="US"> 
+                        <PersonName> 
+                           <GivenName>ONE</GivenNam e> 
+                           <Surname>TEST</Surname> 
+                           <NameTitle>MR</NameTitle > 
+                        </PersonName> 
+                        <Address> 
+                           <StateProv/> 
+                           <CountryName/> 
+                        </Address> 
+                     </ContactInfo> 
+                     <ContactInfo ContactType="EMG" > 
+                        <Address> 
+                           <StateProv/> 
+                           <CountryName/> 
+                        </Address> 
+                     </ContactInfo> 
+                     <GuestTransportation Mode="29"  Status="59"> 
+                        <GatewayCity LocationCode=" C/O"/> 
+                     </GuestTransportation> 
+                     <LoyaltyInfo MembershipID="0"/ > 
+                     <LinkedTraveler Relation="AA" LinkTypeCode="8"/> 
+                     <TravelDocument> 
+                        <DocLimitations>N</DocLimit ations> 
+                     </TravelDocument> 
+                     <SelectedDining AgeCode="24" F amilyTimeIndicator="false" Language="en" Sitting="2 " 
+SittingInstance="08:30 PM" SittingType="Traditional " SmokingCode="2" Status="39" TableSize="00"/> 
+                     <SelectedInsurance InsuranceCo de="CRCR" SelectedOptionIndicator="true"/> 
+                     <SelectedPackages> 
+                        <SelectedPackage CruisePack ageCode="AD3BX" Duration="P3N" InclusiveIndicator=" false" 
+PackageTypeCode="10" Status="39"> 
+                           <Location LocationCode=" MIA"> 
+---PAGE 171---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 171 of 382                               <Information> 
+                                 <Text>3NT PRE EPIC  HOTEL MIAMI W/TRANSFERS</Text> 
+                              </Information> 
+                           </Location> 
+                           <Location CodeContext="F ulfillment Facility" LocationCode="AD"/> 
+                        </SelectedPackage> 
+                        <SelectedPackage CruisePack ageCode="TFLLDM" PackageTypeCode="8" Status="39"> 
+                           <Location LocationCode=" Cruise Only"> 
+                              <Information> 
+                                 <Text>DEPARTURE  -  FLL AIRPORT</Text> 
+                              </Information> 
+                           </Location> 
+                        </SelectedPackage> 
+                     </SelectedPackages> 
+                     <SelectedSpecialServices> 
+                        <SelectedSpecialService Cod e="SPC" CodeDetail="SPECIAL MEALS"/> 
+                     </SelectedSpecialServices> 
+                     <AirAccommodations> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation ArrivalDa teTime="2011-01-02T18:00:01.0Z" DepartureDateTime=" 2011-01-
+02T14:00:01.0Z" AirAccommodationType="Regular" Comm ent="O"> 
+                           <DepartureCity LocationC ode="FLL"/> 
+                           <ArrivalCity LocationCod e="ATL"/> 
+                           <Airline Code="AA" Fligh tNumber="1"/> 
+                        </AirAccommodation> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                     </AirAccommodations> 
+                     <CruiseDocument DeliveryMethod Code="2" DocumentLanguage="en"/> 
+                     <Profiles ProfileTypeIdentifie r="Modifiable"> 
+                        <CruiseProfile Code="73"/> 
+                     </Profiles> 
+                  </GuestDetail> 
+                  <GuestDetail> 
+                     <ContactInfo ContactType="CNT"  RPH="2" Age="54" Gender="Female" 
+GuestRefNumber="261798365" Nationality="BS"> 
+                        <PersonName> 
+                           <GivenName>TWO</GivenNam e> 
+                           <Surname>TEST</Surname> 
+                           <NameTitle>MRS</NameTitl e> 
+                        </PersonName> 
+                        <Address> 
+                           <StateProv/> 
+                           <CountryName/> 
+                        </Address> 
+                     </ContactInfo> 
+                     <ContactInfo ContactType="EMG" > 
+                        <Address> 
+                           <StateProv/> 
+                           <CountryName/> 
+                        </Address> 
+                     </ContactInfo> 
+                     <GuestTransportation Mode="29"  Status="59"> 
+                        <GatewayCity LocationCode=" C/O"/> 
+                     </GuestTransportation> 
+                     <LoyaltyInfo MembershipID="0"/ > 
+                     <LinkedTraveler Relation="AA" LinkTypeCode="8"/> 
+                     <TravelDocument DocID="TBA" Do cType="2"> 
+                        <DocLimitations>N</DocLimit ations> 
+                     </TravelDocument> 
+---PAGE 172---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 172 of 382                      <SelectedDining AgeCode="23" F amilyTimeIndicator="false" Language="en" Sitting="2 " 
+SittingInstance="08:30 PM" SittingType="Traditional " SmokingCode="2" Status="39" TableSize="00"/> 
+                     <SelectedInsurance InsuranceCo de="CRCR" SelectedOptionIndicator="true"/> 
+                     <SelectedPackages> 
+                        <SelectedPackage CruisePack ageCode="AD3BX" Duration="P3N" InclusiveIndicator=" false" 
+PackageTypeCode="10" Status="39"> 
+                           <Location LocationCode=" MIA"> 
+                              <Information> 
+                                 <Text>3NT PRE EPIC  HOTEL MIAMI W/TRANSFERS</Text> 
+                              </Information> 
+                           </Location> 
+                           <Location CodeContext="F ulfillment Facility" LocationCode="AD"/> 
+                        </SelectedPackage> 
+                        <SelectedPackage CruisePack ageCode="TFLLDM" PackageTypeCode="8" Status="46"> 
+                           <Location LocationCode=" Cruise Only"> 
+                              <Information> 
+                                 <Text>DEPARTURE  -  FLL AIRPORT</Text> 
+                              </Information> 
+                           </Location> 
+                        </SelectedPackage> 
+                     </SelectedPackages> 
+                     <SelectedSpecialServices/> 
+                     <AirAccommodations> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                     </AirAccommodations> 
+                     <CruiseDocument DeliveryMethod Code="2" DocumentLanguage="en"/> 
+                     <Profiles ProfileTypeIdentifie r="Modifiable"> 
+                        <CruiseProfile Code="73"/> 
+                     </Profiles> 
+                  </GuestDetail> 
+                  <GuestDetail> 
+                     <ContactInfo ContactType="CNT"  RPH="3" Age="28" Gender="Male" 
+GuestRefNumber="261798373" Nationality="US"> 
+                        <PersonName> 
+                           <GivenName>THREE</GivenN ame> 
+                           <Surname>TEST</Surname> 
+                           <NameTitle>MR</NameTitle > 
+                        </PersonName> 
+                        <Address> 
+                           <StateProv/> 
+                           <CountryName/> 
+                        </Address> 
+                     </ContactInfo> 
+                     <ContactInfo ContactType="EMG" > 
+                        <Address> 
+                           <StateProv/> 
+                           <CountryName/> 
+                        </Address> 
+                     </ContactInfo> 
+                     <GuestTransportation Mode="14"  Status="59"> 
+                        <GatewayCity LocationCode=" JFK"/> 
+                     </GuestTransportation> 
+                     <LoyaltyInfo MembershipID="0"/ > 
+                     <TravelDocument> 
+                        <DocLimitations>N</DocLimit ations> 
+                     </TravelDocument> 
+---PAGE 173---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 173 of 382                      <SelectedDining AgeCode="22" F amilyTimeIndicator="false" Language="en" Sitting="M " 
+SittingInstance="06:00 PM" SittingType="Traditional " SmokingCode="2" Status="39" TableSize="00"/> 
+                     <SelectedInsurance InsuranceCo de="CRCR" SelectedOptionIndicator="true"/> 
+                     <SelectedPackages/> 
+                     <SelectedSpecialServices> 
+                        <SelectedSpecialService Cod e="BDY" CodeDetail="BIRTHDAY" Date="2010-12-28"/> 
+                     </SelectedSpecialServices> 
+                     <AirAccommodations> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                     </AirAccommodations> 
+                     <CruiseDocument DeliveryMethod Code="2" DocumentLanguage="en"/> 
+                     <Profiles ProfileTypeIdentifie r="NotModifiable"> 
+                        <CruiseProfile Code="73"/> 
+                     </Profiles> 
+                  </GuestDetail> 
+                  <GuestDetail> 
+                     <ContactInfo ContactType="CNT"  RPH="4" Age="5" Gender="Male" GuestRefNumber="2617 98381" 
+Nationality="US"> 
+                        <PersonName> 
+                           <GivenName>FOUR</GivenNa me> 
+                           <Surname>TEST</Surname> 
+                           <NameTitle>MR</NameTitle > 
+                        </PersonName> 
+                        <Address> 
+                           <StateProv/> 
+                           <CountryName/> 
+                        </Address> 
+                     </ContactInfo> 
+                     <ContactInfo ContactType="EMG" > 
+                        <Address> 
+                           <StateProv/> 
+                           <CountryName/> 
+                        </Address> 
+                     </ContactInfo> 
+                     <GuestTransportation Mode="14"  Status="59"> 
+                        <GatewayCity LocationCode=" JFK"/> 
+                     </GuestTransportation> 
+                     <LoyaltyInfo MembershipID="0"/ > 
+                     <TravelDocument> 
+                        <DocLimitations>N</DocLimit ations> 
+                     </TravelDocument> 
+                     <SelectedDining AgeCode="19" F amilyTimeIndicator="false" Language="en" Sitting="M " 
+SittingInstance="06:00 PM" SittingType="Traditional " SmokingCode="2" Status="39" TableSize="00"/> 
+                     <SelectedInsurance InsuranceCo de="CRCR" SelectedOptionIndicator="true"/> 
+                     <SelectedPackages/> 
+                     <SelectedSpecialServices/> 
+                     <AirAccommodations> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+                        <AirAccommodation AirAccomm odationType="Regular"/> 
+---PAGE 174---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 174 of 382                      </AirAccommodations> 
+                     <CruiseDocument DeliveryMethod Code="2" DocumentLanguage="en"/> 
+                     <Profiles ProfileTypeIdentifie r="NotModifiable"> 
+                        <CruiseProfile Code="73"/> 
+                     </Profiles> 
+                  </GuestDetail> 
+               </GuestDetails> 
+            </ReservationInfo> 
+         </OTA_CruisePriceBookingRQ> 
+ 
+22.4.3.4  Sample Message Response  
+The booking is repriced based on the changes made a nd the pricing details are sent back 
+in the response.  
+ 
+<alpha:OTA_CruisePriceBookingRS SequenceNmbr="0" Ve rsion="1.0"> 
+            <alpha:Success/> 
+            <alpha:Warnings> 
+               <alpha:Warning Type="3"/> 
+            </alpha:Warnings> 
+            <alpha:ReservationID ID="15363" Type="1 4"/> 
+            <alpha:SailingInfo> 
+               <alpha:InclusivePackageOption Cruise PackageCode="LB07E032"/> 
+            </alpha:SailingInfo> 
+            <alpha:BookingPayment> 
+               <alpha:BookingPrices> 
+                  <alpha:BookingPrice Amount="1200. 00" PriceTypeCode="3"/> 
+                  <alpha:BookingPrice Amount="0.00"  PriceTypeCode="90"/> 
+                  <alpha:BookingPrice Amount="0.00"  PriceTypeCode="81"/> 
+                  <alpha:BookingPrice Amount="0.00"  PriceTypeCode="103"/> 
+                  <alpha:BookingPrice Amount="0.00"  PriceTypeCode="104" RestrictedIndicator="true"/> 
+                  <alpha:BookingPrice Amount="1000. 00" PriceTypeCode="6"/> 
+                  <alpha:BookingPrice PriceTypeCode ="98"/> 
+                  <alpha:BookingPrice PriceTypeCode ="73"/> 
+                  <alpha:BookingPrice Amount="7692. 92" PriceTypeCode="100"/> 
+                  <alpha:BookingPrice Amount="2115. 00" PriceTypeCode="101"/> 
+                  <alpha:BookingPrice Amount="0.00"  PriceTypeCode="102"/> 
+                  <alpha:BookingPrice Amount="0" Pr iceTypeCode="147"/> 
+                  <alpha:BookingPrice Amount="0" Pr iceTypeCode="148"/> 
+                  <alpha:BookingPrice Amount="0" Pr iceTypeCode="149"/> 
+               </alpha:BookingPrices> 
+               <alpha:PaymentSchedule> 
+                  <alpha:Payment Amount="1000.00" D ueDate="2010-07-01" PaymentNumber="1"/> 
+                  <alpha:Payment Amount="9807.92" D ueDate="2010-09-27" PaymentNumber="2"/> 
+               </alpha:PaymentSchedule> 
+               <alpha:GuestPrices> 
+                  <alpha:GuestPrice> 
+                     <alpha:PriceInfos> 
+                        <alpha:PriceInfo Amount="17 00.00" PriceTypeCode="49"/> 
+                        <alpha:PriceInfo Amount="15 9.00" PriceTypeCode="60"/> 
+                        <alpha:PriceInfo Amount="84 .73" PriceTypeCode="18"/> 
+                        <alpha:PriceInfo Amount="29 9.00" CodeDetail="Royal CRCR T" PricedComponentCode ="CRCR" 
+PricedComponentType="I" PriceTypeCode="107"/> 
+                        <alpha:PriceInfo Amount="0. 00" CodeDetail="Royal CRCR T" PricedComponentCode=" CRCR" 
+PricedComponentType="I" PriceTypeCode="127"/> 
+                        <alpha:PriceInfo Amount="45 9.50" PriceTypeCode="46"/> 
+                        <alpha:PriceInfo Amount="10 57.00" PriceTypeCode="8"/> 
+                        <alpha:PriceInfo Amount="10 57.00" PriceTypeCode="42"/> 
+                        <alpha:PriceInfo PriceTypeC ode="156"/> 
+                     </alpha:PriceInfos> 
+                  </alpha:GuestPrice> 
+                  <alpha:GuestPrice> 
+                     <alpha:PriceInfos> 
+---PAGE 175---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 175 of 382                         <alpha:PriceInfo Amount="17 00.00" PriceTypeCode="49"/> 
+                        <alpha:PriceInfo Amount="15 9.00" PriceTypeCode="60"/> 
+                        <alpha:PriceInfo Amount="84 .73" PriceTypeCode="18"/> 
+                        <alpha:PriceInfo Amount="29 9.00" CodeDetail="Royal CRCR T" PricedComponentCode ="CRCR" 
+PricedComponentType="I" PriceTypeCode="107"/> 
+                        <alpha:PriceInfo Amount="0. 00" CodeDetail="Royal CRCR T" PricedComponentCode=" CRCR" 
+PricedComponentType="I" PriceTypeCode="127"/> 
+                        <alpha:PriceInfo Amount="45 9.50" PriceTypeCode="46"/> 
+                        <alpha:PriceInfo Amount="10 57.00" PriceTypeCode="8"/> 
+                        <alpha:PriceInfo Amount="10 57.00" PriceTypeCode="42"/> 
+                        <alpha:PriceInfo PriceTypeC ode="156"/> 
+                     </alpha:PriceInfos> 
+                  </alpha:GuestPrice> 
+                  <alpha:GuestPrice> 
+                     <alpha:PriceInfos> 
+                        <alpha:PriceInfo Amount="10 90.00" PriceTypeCode="49"/> 
+                        <alpha:PriceInfo Amount="56 9.00" PriceTypeCode="1"/> 
+                        <alpha:PriceInfo Amount="15 9.00" PriceTypeCode="60"/> 
+                        <alpha:PriceInfo Amount="84 .73" PriceTypeCode="18"/> 
+                        <alpha:PriceInfo Amount="29 9.00" CodeDetail="Royal CRCR T" PricedComponentCode ="CRCR" 
+PricedComponentType="I" PriceTypeCode="107"/> 
+                        <alpha:PriceInfo Amount="0. 00" CodeDetail="Royal CRCR T" PricedComponentCode=" CRCR" 
+PricedComponentType="I" PriceTypeCode="127"/> 
+                        <alpha:PriceInfo Amount="69 9.00" PriceTypeCode="8"/> 
+                        <alpha:PriceInfo Amount="69 9.00" PriceTypeCode="42"/> 
+                        <alpha:PriceInfo PriceTypeC ode="156"/> 
+                     </alpha:PriceInfos> 
+                  </alpha:GuestPrice> 
+                  <alpha:GuestPrice> 
+                     <alpha:PriceInfos> 
+                        <alpha:PriceInfo Amount="10 90.00" PriceTypeCode="49"/> 
+                        <alpha:PriceInfo Amount="56 9.00" PriceTypeCode="1"/> 
+                        <alpha:PriceInfo Amount="15 9.00" PriceTypeCode="60"/> 
+                        <alpha:PriceInfo Amount="84 .73" PriceTypeCode="18"/> 
+                        <alpha:PriceInfo Amount="29 9.00" CodeDetail="Royal CRCR T" PricedComponentCode ="CRCR" 
+PricedComponentType="I" PriceTypeCode="107"/> 
+                        <alpha:PriceInfo Amount="0. 00" CodeDetail="Royal CRCR T" PricedComponentCode=" CRCR" 
+PricedComponentType="I" PriceTypeCode="127"/> 
+                        <alpha:PriceInfo Amount="69 9.00" PriceTypeCode="8"/> 
+                        <alpha:PriceInfo Amount="69 9.00" PriceTypeCode="42"/> 
+                        <alpha:PriceInfo PriceTypeC ode="156"/> 
+                     </alpha:PriceInfos> 
+                  </alpha:GuestPrice> 
+               </alpha:GuestPrices> 
+            </alpha:BookingPayment> 
+         </alpha:OTA_CruisePriceBookingRS> 
+ 
+ 
+21.4.3.5 Sample Message Request  
+ 
+John has decided to sail on Voyager of the Seas on December 31, 2011 and wants to price 
+cabin 9529 in category GS.  The booking will includ e a cruise only transfer, and the flight 
+information necessary to price and confirm the tran sfer has been collected.  The airline 
+information is required in the request, otherwise t he transfer will be considered waitlisted 
+and will not be priced.  
+ 
+ 
+<OTA_CruisePriceBookingRQ TimeStamp="2011-10-14T15: 30:39" Target="Test" Version="2.0" 
+SequenceNmbr="1" xmlns="http://www.opentravel.org/O TA/2003/05/alpha"> 
+            <POS> 
+      ... 
+            </POS> 
+---PAGE 176---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 176 of 382             <SailingInfo> 
+               <SelectedSailing Start="2011-12-31" Duration="P7N"> 
+                  <CruiseLine VendorCode="RCC" Ship Code="VY"/> 
+               </SelectedSailing> 
+               <InclusivePackageOption CruisePackag eCode="VY07W083" Start="2011-12-31"/> 
+               <SelectedCategory BerthedCategoryCod e="GS" PricedCategoryCode="GS" WaitlistIndicator="f alse" 
+FareCode="BRKB01"> 
+                  <SelectedCabin Status="39" CabinN umber="9529"/> 
+               </SelectedCategory> 
+            </SailingInfo> 
+            <ReservationInfo> 
+               <GuestDetails> 
+                  <GuestDetail> 
+                     <ContactInfo ContactType="CNT"  Age="55" Nationality="US" Gender="Male"> 
+                        <PersonName> 
+                           <GivenName>JOHN</GivenNa me> 
+                           <Surname>TRYTRANSFER</Su rname> 
+                           <NameTitle>MR</NameTitle > 
+                        </PersonName> 
+                        <Address> 
+                           <CityName>ZZZ</CityName>  
+                        </Address> 
+                     </ContactInfo> 
+                     <GuestTransportation Mode="29"  Status="36"> 
+                        <GatewayCity LocationCode=" C/O"/> 
+                     </GuestTransportation> 
+                     <SelectedDining Sitting="B" St atus="39" FamilyTimeIndicator="false"/> 
+                     <SelectedInsurance InsuranceCo de="CRCR" SelectedOptionIndicator="true"/> 
+                     <SelectedPackages> 
+                        <SelectedPackage PackageTyp eCode="7" CruisePackageCode="TMSYA" Status="39"> 
+                           <AirInfo> 
+                              <Airline Code="AA"/> 
+                           </AirInfo> 
+                        </SelectedPackage> 
+                     </SelectedPackages> 
+                  </GuestDetail>       
+               </GuestDetails> 
+            </ReservationInfo> 
+         </OTA_CruisePriceBookingRQ> 
+ 
+21.4.3.6 Sample Message Response  
+ 
+This price is based on the sailing request with an air transfer. 
+ 
+<OTA_CruisePriceBookingRS SequenceNmbr="0" Version= "1.0"> 
+            <Success/> 
+            <ReservationID ID="0" Type="14"/> 
+            <SailingInfo> 
+               <InclusivePackageOption CruisePackag eCode="VY07W083"/> 
+               <SelectedCategory/> 
+            </SailingInfo> 
+            <BookingPayment> 
+               <BookingPrices> 
+                  <BookingPrice Amount="3790.48" Pr iceTypeCode="3"/> 
+                  <BookingPrice Amount="250.00" Pri ceTypeCode="6"/> 
+                  <BookingPrice PriceTypeCode="98"/ > 
+                  <BookingPrice PriceTypeCode="73"/ > 
+                  <BookingPrice Amount="3512.48" Pr iceTypeCode="100"/> 
+                  <BookingPrice Amount="278.00" Pri ceTypeCode="101"/> 
+                  <BookingPrice Amount="3790.48" Pr iceTypeCode="8"/> 
+                  <BookingPrice Amount="3790.48" Pr iceTypeCode="42"/> 
+               </BookingPrices> 
+               <PaymentSchedule> 
+                  <Payment Amount="250.00" DueDate= "2011-10-31" PaymentNumber="1"/> 
+---PAGE 177---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 177 of 382                   <Payment Amount="3790.48" DueDate ="2011-10-31" PaymentNumber="2"/> 
+               </PaymentSchedule> 
+               <GuestPrices> 
+                  <GuestPrice> 
+                     <PriceInfos> 
+                        <PriceInfo Amount="3280.00"  PriceTypeCode="49"/> 
+                        <PriceInfo Amount="159.00" PriceTypeCode="60"/> 
+                        <PriceInfo Amount="73.48" P riceTypeCode="18"/> 
+                        <PriceInfo Amount="259.00" CodeDetail="CRUISE CARE" OptionType="5" 
+PricedComponentCode="CRCR" PricedComponentType="I" PriceTypeCode="107"/> 
+                        <PriceInfo Amount="0.00" Co deDetail="CRUISE CARE" OptionType="5" 
+PricedComponentCode="CRCR" PricedComponentType="I" PriceTypeCode="127"/> 
+                        <PriceInfo PriceTypeCode="1 56"/> 
+                        <PriceInfo Amount="3790.48"  PriceTypeCode="8"/> 
+                        <PriceInfo Amount="3790.48"  PriceTypeCode="42"/> 
+                     </PriceInfos> 
+                  </GuestPrice> 
+               </GuestPrices> 
+            </BookingPayment> 
+         </OTA_CruisePriceBookingRS> 
+ 
+21.4.3.5 Sample Message Request  
+ 
+John has decided to sail on Zenith on December 26, 2013 and wants to price cabin 2256 
+in category E.  He is supplying all promotional qua lifiers in the request and expecting a 
+best rate to be returned.  
+ 
+ 
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.o rg/soap/envelope/"> 
+   <soap:Body> 
+      <ns26:getBookingPrice > 
+         <OTA_CruisePriceBookingRQ SequenceNmbr="1"  Version="1"> 
+            <POS> 
+              …… 
+            </POS> 
+            <SailingInfo> 
+               <SelectedSailing Start="2013-12-26">  
+                  <CruiseLine ShipCode="ZE"/> 
+               </SelectedSailing> 
+               <InclusivePackageOption CruisePackag eCode="ZEPZ0905"/> 
+               <SelectedCategory FareCode=" BESTRATE " PricedCategoryCode="E" BerthedCategoryCode="E" 
+WaitlistIndicator="false"> 
+                  <SelectedCabin CabinNumber="2256"  Status="36"/> 
+               </SelectedCategory> 
+            </SailingInfo> 
+            <ReservationInfo> 
+               <GuestDetails> 
+                  <GuestDetail> 
+                     <ContactInfo BirthDate="1986-0 5-10+02:00" Age="25" ContactType="CNT"> 
+                        <Address> 
+                           <StateProv StateCode="FL ">FL</StateProv> 
+                        </Address> 
+                        <FareQualifiers FareRestriction="2"/> 
+                      </ContactInfo> 
+                     <GuestTransportation Status="3 6" Mode="14"> 
+                        <GatewayCity LocationCode=" C/O"/> 
+                     </GuestTransportation> 
+                     <LoyaltyInfo MembershipID="351961734"/> 
+                     <SelectedDining Sitting="2"/> 
+                     <SelectedOffers PromotionCode= "Coupon123"/> 
+                  </GuestDetail> 
+                  <GuestDetail> 
+                     <ContactInfo BirthDate="1982-0 2-10+01:00" Age="29" ContactType="CNT"/> 
+---PAGE 178---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 178 of 382                      <GuestTransportation Status="3 6" Mode="14"> 
+                        <GatewayCity LocationCode=" C/O"/> 
+                     </GuestTransportation> 
+                     <SelectedDining Sitting="2"/> 
+                  </GuestDetail> 
+               </GuestDetails> 
+            </ReservationInfo> 
+         </OTA_CruisePriceBookingRQ> 
+      </ns26:getBookingPrice> 
+   </soap:Body> 
+</soap:Envelope> 
+ 
+21.4.3.6 Sample Message Response  
+ 
+This price is based on the sailing request with Pro motional qualifiers and BestRate 
+ 
+<soapenv:Envelope xmlns:soapenv="http://schemas.xml soap.org/soap/envelope/"> 
+   <soapenv:Body> 
+      <price:getBookingPriceResponse xmlns:alpha="h ttp://www.opentravel.org/OTA/2003/05/alpha" 
+xmlns:price="http://services.rccl.com/Interfaces/Bo okingPrice"> 
+         <alpha:OTA_CruisePriceBookingRS SequenceNm br="0" Version="1.0"> 
+            <alpha:Success/> 
+            <alpha:ReservationID ID="0" Type="14"/>  
+            <alpha:SailingInfo> 
+               <alpha:InclusivePackageOption Cruise PackageCode="ZEPZ0905"/> 
+               <alpha:SelectedCategory FareCode="01 085823" PromotionDescription="EB ALL TYPES B"/> 
+            </alpha:SailingInfo> 
+            <alpha:BookingPayment> 
+               <alpha:BookingPrices> 
+                  <alpha:BookingPrice Amount="0.00"  PriceTypeCode="6"/> 
+                  <alpha:BookingPrice Amount="130.7 1" PriceTypeCode="104"/> 
+                  <alpha:BookingPrice Amount="3524. 00" PriceTypeCode="3"/> 
+                  <alpha:BookingPrice Amount="3524. 00" PriceTypeCode="100"/> 
+                  <alpha:BookingPrice Amount="3524. 00" PriceTypeCode="8"/> 
+                  <alpha:BookingPrice Amount="2770. 85" PriceTypeCode="42"/> 
+                  <alpha:BookingPrice Amount="622.4 4" PriceTypeCode="102"/> 
+                  <alpha:BookingPrice Percent="21.0 0" PriceTypeCode="98"/> 
+                  <alpha:BookingPrice Percent="21.0 0" PriceTypeCode="73"/> 
+               </alpha:BookingPrices> 
+               <alpha:PaymentSchedule> 
+                  <alpha:Payment Amount="0.00" DueD ate="2013-12-10" PaymentNumber="1"/> 
+                  <alpha:Payment Amount="3524.00" D ueDate="2013-12-10" PaymentNumber="2"/> 
+               </alpha:PaymentSchedule> 
+               <alpha:GuestPrices> 
+                  <alpha:GuestPrice> 
+                     <alpha:PriceInfos> 
+                        <alpha:PriceInfo Amount="24 71.00" PriceTypeCode="49"/> 
+                        <alpha:PriceInfo Amount="31 1.22" Percent="21.00" PriceTypeCode="73"/> 
+                        <alpha:PriceInfo Amount="-9 89.00" CodeDescription="01085823" CodeDetail="EB AL L TYPES B" 
+PricedComponentCode="49" PricedComponentType="1" Pr iceTypeCode="34" PricingLevel="10" 
+PricingType="1"/> 
+                        <alpha:PriceInfo Amount="28 0.00" PriceTypeCode="18"/> 
+                        <alpha:PriceInfo Amount="17 62.00" PriceTypeCode="8"/> 
+                        <alpha:PriceInfo Amount="31 1.22" PriceTypeCode="80"/> 
+                        <alpha:PriceInfo Amount="14 50.78" PriceTypeCode="42"/> 
+                     </alpha:PriceInfos> 
+                  </alpha:GuestPrice> 
+                  <alpha:GuestPrice> 
+                     <alpha:PriceInfos> 
+                        <alpha:PriceInfo Amount="24 71.00" PriceTypeCode="49"/> 
+                        <alpha:PriceInfo Amount="31 1.22" Percent="21.00" PriceTypeCode="73"/> 
+                        <alpha:PriceInfo Amount="-9 89.00" CodeDescription="01085823" CodeDetail="EB AL L TYPES B" 
+PricedComponentCode="49" PricedComponentType="1" Pr iceTypeCode="34" PricingLevel="10" 
+PricingType="1"/> 
+---PAGE 179---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 179 of 382                         <alpha:PriceInfo Amount="28 0.00" PriceTypeCode="18"/> 
+                        <alpha:PriceInfo Amount="17 62.00" PriceTypeCode="8"/> 
+                        <alpha:PriceInfo Amount="31 1.22" PriceTypeCode="80"/> 
+                        <alpha:PriceInfo Amount="14 50.78" PriceTypeCode="42"/> 
+                     </alpha:PriceInfos> 
+                  </alpha:GuestPrice> 
+               </alpha:GuestPrices> 
+            </alpha:BookingPayment> 
+         </alpha:OTA_CruisePriceBookingRS> 
+      </price:getBookingPriceResponse> 
+   </soapenv:Body> 
+</soapenv:Envelope>  
+21.4.3.5 Sample Message Request  
+ 
+John would want to see the pricing for an existing booking.  
+ 
+ 
+<soapenv:Envelope xmlns:soapenv="http://schemas.xml soap.org/soap/envelope/"> 
+   <soapenv:Body> 
+      <book:getBookingPrice xmlns:book="http://serv ices.rccl.com/Interfaces/BookingPrice"> 
+         <alp:OTA_CruisePriceBookingRQ TransactionActionCode="RetrievePrice" Version="1" SequenceNmbr="1" 
+TimeStamp="2013-01-10T00:47:40.491-06:00" xmlns:alp ="http://www.opentravel.org/OTA/2003/05/alpha"> 
+            <alp:POS> 
+               …… 
+            </alp:POS> 
+            <alp:SailingInfo/> 
+            <alp:ReservationInfo> 
+               <alp:ReservationID ID="17951" Type=" 14"/> 
+               <alp:GuestDetails> 
+                  <alp:GuestDetail/> 
+               </alp:GuestDetails> 
+            </alp:ReservationInfo> 
+         </alp:OTA_CruisePriceBookingRQ> 
+      </book:getBookingPrice> 
+   </soapenv:Body> 
+</soapenv:Envelope> 
+ 
+21.4.3.6 Sample Message Response  
+ 
+This price returned is asis  pricing for the booking; 
+ 
+<soapenv:Envelope xmlns:soapenv="http://schemas.xml soap.org/soap/envelope/"> 
+   <soapenv:Body> 
+      <price:getBookingPriceResponse xmlns:alpha="h ttp://www.opentravel.org/OTA/2003/05/alpha" 
+xmlns:price="http://services.rccl.com/Interfaces/Bo okingPrice"> 
+         <alpha:OTA_CruisePriceBookingRS SequenceNm br="0" Version="1.0"> 
+            <alpha:Success/> 
+            <alpha:ReservationID ID="17951" Type="1 4"/> 
+            <alpha:SailingInfo> 
+               <alpha:InclusivePackageOption Cruise PackageCode="FR07W117"/> 
+               <alpha:SelectedCategory FareCode="00 049157" PromotionDescription="FR STD PRICE"/> 
+            </alpha:SailingInfo> 
+            <alpha:BookingPayment> 
+               <alpha:BookingPrices> 
+                  <alpha:BookingPrice Amount="500.0 0" PriceTypeCode="6"/> 
+                  <alpha:BookingPrice Amount="866.2 2" PriceTypeCode="3"/> 
+                  <alpha:BookingPrice Amount="866.2 2" PriceTypeCode="100"/> 
+                  <alpha:BookingPrice Amount="866.2 2" PriceTypeCode="8"/> 
+                  <alpha:BookingPrice Amount="817.7 2" PriceTypeCode="42"/> 
+                  <alpha:BookingPrice Amount="48.50 " PriceTypeCode="102"/> 
+                  <alpha:BookingPrice PriceTypeCode ="98"/> 
+                  <alpha:BookingPrice Percent="10.0 0" PriceTypeCode="73"/> 
+---PAGE 180---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 180 of 382                </alpha:BookingPrices> 
+               <alpha:PaymentSchedule> 
+                  <alpha:Payment Amount="500.00" Du eDate="2013-05-18" PaymentNumber="1"/> 
+                  <alpha:Payment Amount="866.22" Du eDate="2013-09-24" PaymentNumber="2"/> 
+               </alpha:PaymentSchedule> 
+               <alpha:GuestPrices> 
+                  <alpha:GuestPrice> 
+                     <alpha:PriceInfos> 
+                        <alpha:PriceInfo Amount="48 5.00" PriceTypeCode="49"/> 
+                        <alpha:PriceInfo Amount="48 .50" Percent="10.00" PriceTypeCode="73"/> 
+                        <alpha:PriceInfo Amount="17 5.00" PriceTypeCode="60"/> 
+                        <alpha:PriceInfo Amount="10 3.11" PriceTypeCode="18"/> 
+                        <alpha:PriceInfo Amount="76 3.11" PriceTypeCode="8"/> 
+                        <alpha:PriceInfo Amount="48 .50" PriceTypeCode="80"/> 
+                        <alpha:PriceInfo Amount="71 4.61" PriceTypeCode="42"/> 
+                        <alpha:PriceInfo PriceTypeC ode="156"/> 
+                     </alpha:PriceInfos> 
+                  </alpha:GuestPrice> 
+                  <alpha:GuestPrice> 
+                     <alpha:PriceInfos> 
+                        <alpha:PriceInfo Amount="0. 00" PriceTypeCode="49"/> 
+                        <alpha:PriceInfo Amount="0. 00" PriceTypeCode="60"/> 
+                        <alpha:PriceInfo Amount="10 3.11" PriceTypeCode="18"/> 
+                        <alpha:PriceInfo Amount="10 3.11" PriceTypeCode="8"/> 
+                        <alpha:PriceInfo Amount="10 3.11" PriceTypeCode="42"/> 
+                     </alpha:PriceInfos> 
+                  </alpha:GuestPrice> 
+               </alpha:GuestPrices> 
+            </alpha:BookingPayment> 
+         </alpha:OTA_CruisePriceBookingRS> 
+      </price:getBookingPriceResponse> 
+   </soapenv:Body> 
+</soapenv:Envelope>  
+ 
+21.4.3.7 Auto Add Options  
+ 
+ 
+Mandatory Auto Add Charges: 
+During the price booking process the mandatory charges will be retained in the booking 
+irrespective of the guest preference. 
+< SelectedOptions OptionCode =" FUEL " /> 
+< SelectedOptions OptionCode =" FUEL " SelectedOptionsIndicator =" true " /> 
+< SelectedOptions OptionCode =" FUEL " SelectedOptionsIndicator =" false " /> 
+< ** FUEL option is not sent back in the request **  /> 
+ 
+In all the above cases the item will be included in the pricing. 
+ 
+Non-Mandatory Auto Add Charges: 
+During the pricing booking process the non-mandatory charges will be retained in the 
+booking unless the explicit opt out is specified. 
+< SelectedOptions OptionCode =" FUEL " SelectedOptionsIndicator =" true" /> 
+< SelectedOptions OptionCode =" FUEL " /> 
+< ** FUEL option is not sent back in the request **  /> 
+ 
+In all the above cases the item will be included in the pricing. 
+Non-mandatory charges can be opted out by explicating setting th e 
+selectedOptionIndicator to “False”. 
+ 
+< SelectedOptions OptionCode =" FUEL " SelectedOptionsIndicator =" false " /> 
+If “false” is sent the item will not be included in the pricin g response. This 
+declined item can only be added back by back office process by calli ng in. 
+ 
+---PAGE 181---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 181 of 382 Additional information about auto add charges will be returned  in Guest Level pricing. 
+  
+<alpha:PriceInfo Amount ="3 0.00 " CodeDetail =" FUEL " PriceTypeCode =" 107 " OptionType = “ 8” 
+AutoAddedIndicator =” true ” MandatoryIndicator =” false ” ItemizableIndicator =” false ” PricingLevel =” 2” /> 
+<alpha:PriceInfo Amount =" 3.00 " CodeDetail =" FUEL " PriceTypeCode =" 127 " OptionType = “ 8” /> 
+<alpha:PriceInfo Amount =" 00.00 " CodeDetail =" OBC " PriceTypeCode =" 108 " OptionType = “ 10” 
+AutoAddedIndicator =” true ” MandatoryIndicator =” true ” ItemizableIndicator =” false ” FaceValue =” 250.00 ” 
+FaceCurrency =” USD ” PricingLevel =” 1” /> 
+<alpha:PriceInfo Amount =" 0" CodeDetail =" OBC " PriceTypeCode =" 128 " OptionType = “ 10” />  
+ 
+22.5 Error Handling 
+Please refer error code appendix for a list of OTA error codes.   Note – At this time, OTA 
+is yet to provide a numbering scheme for Cruise err or codes. 
+22.6 Special Design Considerations 
+None 
+---PAGE 182---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 182 of 382  
+23. Cruise Validate Linked Bookings Message 
+23.1 Functional Overview 
+The Validate Linked Bookings Request message is use d to validate the cross reference 
+booking numbers for all the categories – Tours, Din ing, and Air. 
+The response will include, next to each booking id being linked, a ‘Y’ or ‘N’ stating 
+whether the link was successfully created or not.  Please see sample response for more 
+details. 
+23.1.1 Transaction Services 
+ 
+• Validates whether 
+/square4 The bookings are valid 
+/square4 The bookings are in the same sailing 
+ 
+• Links up to 8 valid bookings per link type: 
+o Dining – OTA LTC code 2 
+o Tour ( Hotels) – OTA LTC code 3 
+o Air – OTA LTC code 6 
+23.2 Typical Process Flows 
+RCCL Partner 
+Set Booking Cross Reference Booking Retrieval
+Booking Cross Reference Guest Details 
+/ OTA_CruisePriceBookingRQ 
+Booking Cross Reference / OTA_ResRetrieveRS / OTA_ResRetrieveRS 
+/ OTA_CruiseBookRS 
+ 
+---PAGE 183---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 183 of 382 23.3 Schema Specification 
+The schemas for Cruise Validate Linked Bookings req uest and response are 
+OTA_CruisePriceBookingRQ and either OTA_ResRetrieve RS.  Our implementation is 
+based on the OTA_2007A schema specification.  
+ 
+23.3.1 Cruise Validate Linked Bookings Request  
+23.3.1.1  Data Types and Reuse Chart 
+Functional Components  Re -Use and Source of other 
+OTA Constructs 
+POS POSType 
+SailingInfo SailingCategoryInfoType 
+ReservationInfo CruiseGuestInfoType 
+23.3.1.2  Constraints and Restrictions 
+• Please review the overall constraints and restricti ons section for additional 
+information 
+• Maximum of 8 valid booking cross reference IDs are allowed for each cross-
+reference type for a reservation. 
+• ReservationInfo/ReservationID is intended to be use d for RCL Reservation ID 
+only.  PNRs are not supported. 
+23.3.1.3  Extensions 
+None 
+23.3.2 Cruise Validate Linked Bookings Response  
+23.3.2.1  Data Types and Reuse Chart 
+Functional Components  Re -Use and Source of other 
+OTA Constructs 
+Success SuccessType 
+Warnings WarningsType 
+Errors ErrorsType 
+23.3.2.2  Constraints and Restrictions 
+• None 
+23.3.2.3  Extensions 
+• None 
+---PAGE 184---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 184 of 382 23.4 Message User Guide 
+23.4.1 Request Parameters 
+Field Data 
+Type Type 
+Size Required 
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedSailing/@Start  Date   Y 
+/OTA_CruisePriceBookingRQ/SailingInfo/SelectedSailing/CruiseLine/ @ShipCode  String  2 Y 
+/OTA_CruisePriceBo okingRQ/ReservationInfo/ReservationID/@ID  Integer  7 Y 
+/OTA_CruisePriceBookingRQ/ReservationInfo/LinkedBookings/LinkedTy peCode['2']/UniqueID[1 -
+8]/@ID Integer 7 N 
+/OTA_CruisePriceBookingRQ/ReservationInfo/LinkedBookings/LinkedTy peCode['3']/UniqueID[1 -
+8]/@ID Integer 7 N 
+/OTA_CruisePriceBookingRQ/ReservationInfo/LinkedBookings/LinkedTy peCode['6']/UniqueID[1 -
+8]/@ID Integer 7 N 
+23.4.2 Response Parameters 
+Field Data 
+Type Type 
+Size Required 
+/OTA_ ResRetrieve RS/Warnings/Warning[1 -25 ] String  80  N 
+/OTA_ ResRetrieve RS/War nings/Warning[1 -25 ]/@ShortText  String  7 N 
+/OTA_ ResRetrieve RS/Warnings/Warning[1 -25 ]/@Type  Integer  1 N 
+/OTA_ ResRetrieve RS/Success  Node   N 
+/OTA_ResRetrieveRS/ReservationList/LinkedBookings/ LinkedBooking[1 -
+32]/@LinkTypeCode Integer 2 N 
+/OTA_ResRetrieveRS/ ReservationList/LinkedBookings/LinkedBooking[1 -32]/ @Relation  String 8 N 
+/OTA_ResRetrieveRS/ReservationList/LinkedBookings/LinkedBooki ng[1 -
+32]/UniqueID/@ID Integer 7 N 
+/OTA_ResRetrieveRS/ReservationList/LinkedBookings/LinkedBooki ng[1 -
+32]/UniqueID/@Type Integer 2 N 
+23.4.3 Use Case 
+23.4.3.1  Sample Message Request 
+John wants to create a dining link for his booking with id 8308 with a friend’s 
+booking with id 8310. 
+  
+<m:validateLinkedBookings  xmlns:m =" http://services.rccl.com/Interfaces/LinkedBooking ">  
+  <OTA_CruisePriceBookingRQ  RetransmissionIndicator =" false " SequenceNmbr =" 1" TimeStamp =" 2008-05-
+23T10:30:09.957-04:00 " TransactionIdentifier =" 123456 " Version =" 1.0 " 
+xmlns =" http://www.opentravel.org/OTA/2003/05/alpha ">  
+    <POS > 
+      <Source  AgentSine =" HP6 " TerminalID =" HP6 " PseudoCityCode =" KK11 " AgentDutyCode =" 7" ISOCurrency =" USD ">  
+        <BookingChannel  Type =" 1">  
+          <CompanyName  CompanyShortName =" SABRE "/>  
+        </ BookingChannel > 
+      </ Source > 
+    </ POS > 
+    <SailingInfo > 
+      <SelectedSailing  Start =" 2009-08-02 ">  
+        <CruiseLine  ShipCode =" FR "/>  
+      </ SelectedSailing > 
+    </ SailingInfo > 
+    <ReservationInfo > 
+      <ReservationID  ID =" 8308 " Type =" 14 "/>  
+      <GuestDetails > 
+        <GuestDetail />  
+      </ GuestDetails > 
+      <LinkedBookings > 
+        <LinkedBooking  LinkTypeCode =" 2">  
+---PAGE 185---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 185 of 382           <UniqueID  ID =" 8310 " Type =" 14 "/>  
+        </ LinkedBooking > 
+      </ LinkedBookings > 
+    </ ReservationInfo > 
+  </ OTA_CruisePriceBookingRQ > 
+</ m:validateLinkedBookings > 
+ 
+23.4.3.2  Sample Message Response 
+The response indicates that the request to link the  bookings has been received and 
+recorded. 
+ 
+<booking:validateLinkedBookingsResponse  xmlns:alpha =" http://www.opentravel.org/OTA/2003/05/alpha " 
+xmlns:booking =" http://services.rccl.com/Interfaces/LinkedBooking ">  
+  <alpha:OTA_ResRetrieveRS  Version =" 1.0 "> 
+    <alpha:Success />  
+    <alpha:Warnings > 
+      <alpha:Warning  Type =" 3"/>  
+    </ alpha:Warnings > 
+    <alpha:ReservationsList > 
+      <alpha:CruiseReservation > 
+        <alpha:SailingInfo />  
+        <alpha:ReservationInfo > 
+          <alpha:GuestDetails > 
+            <alpha:GuestDetail />  
+          </ alpha:GuestDetails > 
+          <alpha:LinkedBookings > 
+            <alpha:LinkedBooking  Relation =" Y" LinkTypeCode =" 2">  
+              <alpha:UniqueID  ID =" 8310 " Type =" 14 "/>  
+            </ alpha:LinkedBooking > 
+          </ alpha:LinkedBookings > 
+        </ alpha:ReservationInfo > 
+      </ alpha:CruiseReservation > 
+    </ alpha:ReservationsList > 
+  </ alpha:OTA_ResRetrieveRS > 
+</ booking:validateLinkedBookingsResponse > 
+23.5 Error Handling 
+Please refer error code appendix for a list of OTA error codes.   Note – At this time, OTA 
+is yet to provide a numbering scheme for Cruise err or codes. 
+23.6 Special Design Considerations 
+None 
+---PAGE 186---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 186 of 382  
+24. Cruise Payment Extension Message 
+24.1 Functional Overview 
+The Cruise Payment Extension request message reques ts for an extension of the booking 
+option date. Prior to invoking the payment extensio n message, the current option date 
+may be retrieved through Cruise Booking Retrieval o r Cruise Price Booking. 
+24.1.1 Transaction Services 
+ 
+• The response also returns the new option date that can be used in the Cruise 
+Book message. 
+ 
+24.2 Typical Process Flows 
+Partner RCCL 
+Extend Option Date Booking Retrieval
+Extend Option / OTA_CruiseInfoRQ 
+Extend Option Detail/ OTA_CruiseInfoRS / OTA_ResRetrieveRS 
+  
+24.3 Schema Specification 
+The schemas for Cruise Payment Extension request an d response are OTA_CruiseInfoRQ 
+and either OTA_CruiseInfoRS.  Our implementation is  based on the OTA_2007A 
+schema specification.  
+ 
+---PAGE 187---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 187 of 382 24.3.1 Cruise Payment Extension Request  
+24.3.1.1  Data Types and Reuse Chart 
+Functional Components  Re -Use and Source of other 
+OTA Constructs 
+POS POSType 
+24.3.1.2  Constraints and Restrictions 
+• Please review the overall constraints and restricti ons section for additional 
+information 
+• ReservationInfo/ReservationID is intended to be use d for RCL Reservation ID 
+only.  PNRs are not supported. 
+24.3.1.3  Extensions 
+None 
+ 
+24.3.2 Cruise Payment Extension Response  
+24.3.2.1  Data Types and Reuse Chart 
+Functional Components  Re -Use a nd Source of other 
+OTA Constructs 
+Success SuccessType 
+Warnings WarningsType 
+Errors ErrorsType 
+24.3.2.2  Constraints and Restrictions 
+• None 
+24.3.2.3  Extensions 
+None 
+ 
+24.4 Message User Guide 
+24.4.1 Request Parameters 
+Field Data 
+Type Type 
+Size Required 
+/OTA_CruiseInfoRQ/InformationType /ReservationID/@ID  Integer  7 Y 
+/OTA_CruiseInfoRQ/InformationType/ReservationID/@StatusCode  Integer  2 Y 
+/OTA_CruiseInfoRQ/InformationType/SailingInfo/SelectedSailing/@Start  Date   Y 
+/OTA_CruiseInfoRQ/InformationType/SailingInfo/SelectedSailing/Cruise Line/ @ShipCode  String  2 Y 
+---PAGE 188---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 188 of 382 24.4.2 Response Parameters 
+Field Data 
+Type Type 
+Size Required 
+/OTA_Cruise Info RS/Warnings/Warning[1 -3]  String  80  N 
+/OTA_Cruise Info RS/Warnings/Warning[1 -3]/@ShortText  String  7 N 
+/OTA_Cruise Info RS/Warnings/Warning[1 -3]/@Type  Integer  1 N 
+/OT A_Cruise Info RS/Success  Node   N 
+/OTA_Cruise Info RS/InformationType[1 -2]/@Code  String  1 N 
+/OTA_Cruise Info RS/InformationType[1 -2]/@Date  Date   N 
+/OTA_Cruise Info RS/InformationType[1 -2]/@Name  String  30  N 
+24.4.3 Use Case 
+John wants to extend payment for his booking with i d 8302 on the Freedom of the Seas. 
+24.4.3.1  Sample Message Request 
+<m:getPaymentExtension  xmlns:m =" http://services.rccl.com/Interfaces/PaymentExtensio n ">  
+  <m0:OTA_CruiseInfoRQ  RetransmissionIndicator =" false " SequenceNmbr =" 1" Target =" Test " TimeStamp =" 2009-
+02-26T17:05:29 " TransactionStatusCode =" Start " Version =" 2.0 ">  
+    <m0:POS > 
+   … 
+    </ m0:POS > 
+    <m0:InformationType > 
+      <m0:ReservationID  ID =" 8308 " StatusCode =" 42 " Type =" 14 "/>  
+      <m0:SailingInfo > 
+        <m0:SelectedSailing  Start =" 2009-08-02 ">  
+          <m0:CruiseLine  ShipCode =" FR "/>  
+        </ m0:SelectedSailing > 
+      </ m0:SailingInfo > 
+    </ m0:InformationType > 
+  </ m0:OTA_CruiseInfoRQ > 
+</ m:getPaymentExtension > 
+24.4.3.2  Sample Message Response 
+The response indicates that the payment extension r equest was processed successfully. 
+ 
+<extension:getPaymentExtensionResponse  xmlns:alpha =" http://www.opentravel.org/OTA/2003/05/alpha " 
+xmlns:extension =" http://services.rccl.com/Interfaces/PaymentExtensio n ">  
+  <alpha:OTA_CruiseInfoRS  Version =" 1.0 ">  
+    <alpha:Success />  
+    <alpha:InformationType  Code =" 1" Date =" 2009-03-13 " Name =" Payment extended before "/>  
+    <alpha:InformationType  Code =" 2" Date =" 2009-05-24 " Name =" Payment extended before "/>  
+  </ alpha:OTA_CruiseInfoRS > 
+</ extension:getPaymentExtensionResponse > 
+24.5 Error Handling 
+Please refer error code appendix for a list of OTA error codes.   Note – At this time, OTA 
+is yet to provide a numbering scheme for Cruise err or codes. 
+24.6 Special Design Considerations 
+None 
+ 
+---PAGE 189---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 189 of 382  
+25. Cruise Confirm Booking Message 
+25.1 Functional Overview 
+The Cruise Confirm Booking message is used to creat e a booking, amend a booking or 
+cancel a booking on the RCL reservation system for a specific sailing, with a specified 
+mode of transportation/gateway city pair and curren cy, and a selected fare/category pair, 
+for one or more passengers in a specific cabin. 
+Prior to submitting a Confirm Booking request messa ge, a cabin must have been placed 
+on hold.  The only exception to this is if a cabin is reserved as a guarantee, rather than a 
+specific cabin. If a booking transaction is not com pleted when the cabin is held, it can 
+still be booked if it is available at the time of t he booking request receipt. In case the 
+cabin is not available, then an error is sent back to select a new cabin. 
+The response message indicates if the request was s uccessful and returns a Reservation 
+ID number. 
+ 
+In amend mode, the client must provide the existing  passenger ids for the given booking. 
+Please use //ContactInfo/@GuestRefNumber to provide  the existing passenger ids. 
+ 
+This transaction performs the following functions: 
+ 
+• It is a comprehensive general-purpose validation pr ogram that can check the 
+validity and availability of all the components tha t have been selected for a 
+booking. If errors are found, the process stops and  the appropriate error message 
+is returned in the response.   
+ 
+• If all the components are valid and the request ind icates that the booking should 
+be confirmed, the transaction program will confirm the new or amended booking 
+by recording the changes in the RCL reservation sys tem.  
+ 
+• If the credit card details are entered here and all  the input fields are validated, the 
+credit card payment will be applied to the booking.  
+ 
+• Cruise Booking Amend is similar to creating a booki ng except that the 
+Reservation ID is already available.  
+ 
+• The first guest is always considered to be the prim ary guest. In situations where 
+there is a need to change the primary guest associa ted with a booking, the details 
+of the guest who should be designated as the primar y contact for a booking should 
+be sent first in the booking confirm or amend reque sts. 
+ 
+• For travel partners operating in USA and Canada, a mobile contact and email 
+address will be required for the first guest in the  reservation, by no later than the 
+---PAGE 190---
+Royal Caribbean Cruises, Ltd.  Confidential and Pro prietary 
+ 
+Page 190 of 382 due date for final payment. This information will b e captured as part of First 
+Guest  Alternate address contact. 
+ 
+• It is possible to provide a booking to link to when  the booking is created or 
+amended. However, the booking link is only a reques t and does not guarantee that 
+the guests on the linked bookings will dine or fly together. 
+ 
+• SelectedSailing/@Status of 60 instructs RCL to hand le the amendment as a cruise 
+reschedule 
+ 
+• During the confirm booking process the mandatory ch arges will be retained in the 
+booking irrespective of the guest preference. the n on-mandatory charges will be 
+retained in the booking unless the explicit opt out  is specified.  Non-mandatory 
+charges can be opted out by explicly setting settin g the selectedOptionIndicator to 
+“False”.  If “false” is sent the item will be remov ed from the booking. 
+Confirmation response will have the updated pricing  information. This declined 
+item can only be added back by back office process by calling in.  Additional 
+information about auto add charges will be returned  in Guest Level pricing. 
+ 
+• Accessible stateroom qualifiers will be accepted in  the request. Customer 
+preference for accessible/non-accessible staterooms  will be stored. Partners may 
+choose to opt out for the qualifier input. 
+ 
+• Pricing and Promotions 
+ 
+o Guest level promotional qualifiers are accepted.   
+ 
+o Promotional qualifiers are required to price and co nfirm restricted 
+promotions. 
+ 
+o Lowest Available Fare (LAF) is now being replaced w ith Best Rate 
+(BESTRATE).  
+ 
+o Best Available Offer concept (BVL-BestValue) is als o being introduced.  
+ 
+o Promotional Qualifiers are required both in create and amend mode for 
+restricted promotions. 
+ 
+o In booking amend mode, all promotional qualifiers s et at the guest level is 
+expected back in the request (unless explicitly cha nged by the agent) to 
+retain any applied restricted promotional discounts . 
+ 
+o Booking confirmation can be requested with the foll owing pricing 
+combinations; 
+ 

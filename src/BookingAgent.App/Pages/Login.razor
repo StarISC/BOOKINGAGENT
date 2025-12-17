@@ -1,0 +1,78 @@
+@page "/login"
+@attribute [AllowAnonymous]
+@using System.ComponentModel.DataAnnotations
+@inject IAuthService AuthService
+@inject NavigationManager Nav
+
+<PageTitle>Login</PageTitle>
+
+<section class="section-block">
+    <h1>Sign in</h1>
+    <p class="muted">Use your agency credentials to access the console.</p>
+
+    @if (!string.IsNullOrWhiteSpace(error))
+    {
+        <div class="alert alert-warning">@error</div>
+    }
+
+    <EditForm Model="model" OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="info-grid">
+            <div>
+                <label>Username</label>
+                <InputText class="form-control" @bind-Value="model.Username" />
+                <ValidationMessage For="@(() => model.Username)" />
+            </div>
+            <div>
+                <label>Password</label>
+                <InputText type="password" class="form-control" @bind-Value="model.Password" />
+                <ValidationMessage For="@(() => model.Password)" />
+            </div>
+            <div>
+                <label>
+                    <InputCheckbox class="form-check-input" @bind-Value="model.RememberMe" />
+                    <span class="ms-1">Remember me</span>
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" disabled="@isSubmitting">Login</button>
+        @if (isSubmitting)
+        {
+            <span class="status">Signing in…</span>
+        }
+    </EditForm>
+</section>
+
+@code {
+    private LoginModel model = new();
+    private bool isSubmitting;
+    private string? error;
+
+    private async Task HandleSubmit()
+    {
+        isSubmitting = true;
+        error = null;
+        var result = await AuthService.SignInAsync(model.Username, model.Password, model.RememberMe);
+        if (result.Success)
+        {
+            Nav.NavigateTo("/");
+        }
+        else
+        {
+            error = result.Error;
+        }
+        isSubmitting = false;
+    }
+
+    public class LoginModel
+    {
+        [Required]
+        public string Username { get; set; } = string.Empty;
+
+        [Required]
+        public string Password { get; set; } = string.Empty;
+
+        public bool RememberMe { get; set; }
+    }
+}

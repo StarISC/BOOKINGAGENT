@@ -28,8 +28,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YU1vZGVsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/STI/BOOKING_AGENT/BOOKINGAGENT/src/BookingAgent.App/Pages/Diagnostics.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlhZ25vc3RpY3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/STI/BOOKING_AGENT/BOOKINGAGENT/src/BookingAgent.App/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/STI/BOOKING_AGENT/BOOKINGAGENT/src/BookingAgent.App/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/STI/BOOKING_AGENT/BOOKINGAGENT/src/BookingAgent.App/Pages/Pricing.razor]

@@ -32,7 +32,6 @@ D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\obj\Debug\net9.0\compress
 D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\obj\Debug\net9.0\compressed\tvhdu79a8h-wk8x8xm0ah.gz
 D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\obj\Debug\net9.0\compressed\h62llvkwly-sjnzgf7e1h.gz
 D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\obj\Debug\net9.0\compressed\4a4oja26bg-5bzwdl5l6x.gz
-D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\obj\Debug\net9.0\compressed\zbuuy761rr-l3pvqibcev.gz
 D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\obj\Debug\net9.0\compressed\wj6t2qq2tx-r2yetwkyoq.gz
 D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\obj\Debug\net9.0\compressed\qcjnn55s36-r2yetwkyoq.gz
 D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\obj\Debug\net9.0\staticwebassets.build.json
@@ -80,3 +79,4 @@ D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\bin\Debug\net9.0\runtimes
 D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+D:\STI\BOOKING_AGENT\BOOKINGAGENT\src\BookingAgent.App\obj\Debug\net9.0\compressed\zbuuy761rr-qcd9yagnax.gz

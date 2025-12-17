@@ -105,7 +105,8 @@ public sealed class RoyalCaribbeanSoapPricingClient : ICruisePricingService
         {
             throw new InvalidOperationException("RoyalCaribbeanApi:BaseUrl is not configured.");
         }
-        var path = string.IsNullOrWhiteSpace(_options.OperationPath) ? "BookingPrice" : _options.OperationPath;
-        return new Uri(new Uri(_options.BaseUrl.TrimEnd('/')), path);
+        var path = string.IsNullOrWhiteSpace(_options.OperationPath) ? "BookingPrice" : _options.OperationPath.TrimStart('/');
+        var baseUri = _options.BaseUrl.EndsWith("/") ? _options.BaseUrl : $"{_options.BaseUrl}/";
+        return new Uri($"{baseUri}{path}");
     }
 }

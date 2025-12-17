@@ -1,7 +1,18 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+:root {
+    --brand-primary: #005edc;
+    --brand-secondary: #212654;
+    --brand-accent: #0c7bff;
+    --ink-strong: #0f172a;
+    --ink-muted: #5b6472;
+    --surface: #f4f6fb;
+}
+
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--ink-strong);
+    background: var(--surface);
 }
 
 h1:focus {
@@ -9,17 +20,17 @@ h1:focus {
 }
 
 a, .btn-link {
-    color: #0071c1;
+    color: var(--brand-primary);
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--brand-primary);
 }
 
 .content {
@@ -71,11 +82,11 @@ a, .btn-link {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #f1f5f9;
+    background: var(--surface);
 }
 
 .app-header {
-    background: linear-gradient(135deg, #012a5a, #003366 65%, #0c4c81);
+    background: linear-gradient(135deg, var(--brand-primary), #0c6be6 50%, var(--brand-secondary));
     color: white;
     padding: 1.5rem 2.25rem;
     display: flex;
@@ -84,16 +95,35 @@ a, .btn-link {
     align-items: center;
 }
 
+.brand-block h1 {
+    margin: 0.1rem 0;
+}
+
 .header-eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     font-size: 0.75rem;
-    margin-bottom: 0.25rem;
+    margin: 0 0 0.25rem;
+    opacity: 0.85;
+}
+
+.header-tagline {
+    margin: 0;
+    color: #e0e7ff;
+    font-size: 0.95rem;
 }
 
 .header-meta {
     font-size: 0.95rem;
     color: #e0e7ff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-align: right;
+}
+
+.header-contact {
+    font-weight: 600;
 }
 
 .content-layout {
@@ -103,9 +133,9 @@ a, .btn-link {
 
 .sidebar {
     width: 220px;
-    background: #031b35;
+    background: var(--brand-secondary);
     padding: 1.5rem;
-    color: #bfd5ff;
+    color: #d8e4ff;
 }
 
 .nav-wrapper {
@@ -120,18 +150,19 @@ a, .btn-link {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-size: 0.75rem;
-    color: #a2c1ff;
+    color: #b8c8ff;
 }
 
 .nav-link {
     padding: 0.5rem 0.25rem;
-    color: #bfd5ff;
+    color: #d8e4ff;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .nav-link.active {
     color: #ffffff;
     font-weight: 600;
-    border-bottom: 2px solid #7ad1ff;
+    border-bottom: 2px solid var(--brand-accent);
 }
 
 .content {
@@ -167,7 +198,7 @@ a, .btn-link {
 }
 
 .muted {
-    color: #6c757d;
+    color: var(--ink-muted);
     font-size: 0.9rem;
 }
 
@@ -223,7 +254,7 @@ a, .btn-link {
 }
 
 .guest-card {
-    border: 1px solid #d6dbe6;
+    border: 1px solid #dce3f3;
     border-radius: 0.65rem;
     padding: 1rem;
     background: #fff;
