@@ -145,9 +145,9 @@ Ghi chú:
 - Có thể loại bỏ promotion không hoàn tiền qua cờ trong fare/promo (theo spec).
 
 ## Tình trạng API & phác thảo DTO (staging)
-- Login (`login`): đã test → HTTP 200 nhưng cảnh báo CSE0572 “ACCESS NOT AUTHORIZED FOR THIS AGENCY”; chưa được cấp quyền. DTO: `LoginResponse { WarningCode, WarningText }`.
-- LookupAgency (`lookupAgency`): đã test → 200 OK, trả thông tin agency (ID 378372/275611, địa chỉ/điện thoại). DTO: `AgencyInfo { AgencyIds[], Name, Address, Phone }`.
-- SailingList (`getSailingList`): đã test → 200 OK, trả danh sách chuyến (region FAR.E, tàu OV/SC, packages). DTO: `SailingOption { ShipCode, PackageCode, StartDate, Duration, DeparturePort, ArrivalPort, Region, SubRegion }`.
+- Login (`login`): đã test → HTTP 200 với cảnh báo CSE0572 “ACCESS NOT AUTHORIZED FOR THIS AGENCY”; coi là cảnh báo. DTO: `LoginResponse { WarningCode, WarningText }`.
+- LookupAgency (`lookupAgency`): lần trước 200 OK (trả thông tin agency). Lần test PWSh mới nhất trả 401 “User is not found”; khả năng do auth/endpoint; cần kiểm tra thêm với vendor.
+- SailingList (`getSailingList`): lần trước 200 OK; lần test PWSh mới nhất trả 401 “User is not found”; cần xem lại auth header/endpoint hoặc vendor config. DTO: `SailingOption { ShipCode, PackageCode, StartDate, Duration, DeparturePort, ArrivalPort, Region, SubRegion }`.
 - BookingPrice (`getBookingPrice`): đã test → 500 env:Client “Internal Error”; bị chặn tới khi vendor mở quyền. DTO: `BookingPriceResponse { BookingPayment (BookingPrices, PaymentSchedule, GuestPrices), SailingInfo, Promotions, Warnings/Errors }`.
 - HoldCabin/ReleaseCabin: chưa test; DTO kỳ vọng: `HoldCabinResponse { OptionId, Expiration, Cabin }`, `ReleaseCabinResponse { Success, Message }`.
 - CategoryList/CabinList: chưa test; DTO: `Category { Code, Description, Min/MaxOccupancy }`, `Cabin { CabinNumber, DeckNumber, Status, MaxOccupancy, LocationFlags }`.

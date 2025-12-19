@@ -173,9 +173,9 @@ Notes:
 - Non-refundable promotions can be excluded via flags in fare/promo selection (per spec).
 
 ## API method status & DTO sketch (staging)
-- Login (`login`): tested → HTTP 200 with warning CSE0572 “ACCESS NOT AUTHORIZED FOR THIS AGENCY”; auth not granted. DTO: `LoginResponse { WarningCode, WarningText }`.
-- LookupAgency (`lookupAgency`): tested → 200 OK, returns agency info (IDs 378372/275611, address/phone). DTO: `AgencyInfo { AgencyIds[], Name, Address, Phone }`.
-- SailingList (`getSailingList`): tested → 200 OK, returns sailing options (region FAR.E, OV/SC ships, packages). DTO: `SailingOption { ShipCode, PackageCode, StartDate, Duration, DeparturePort, ArrivalPort, Region, SubRegion }`.
+- Login (`login`): tested → HTTP 200 with warning CSE0572 “ACCESS NOT AUTHORIZED FOR THIS AGENCY”; treat as warning. DTO: `LoginResponse { WarningCode, WarningText }`.
+- LookupAgency (`lookupAgency`): earlier 200 OK (agency info). Latest PWSh call returned 401 “User is not found”; likely endpoint auth quirk—works via app diagnostics? Needs vendor confirmation.
+- SailingList (`getSailingList`): earlier 200 OK (staging). Latest PWSh call returned 401 “User is not found”; investigate auth header/endpoint or vendor config. DTO: `SailingOption { ShipCode, PackageCode, StartDate, Duration, DeparturePort, ArrivalPort, Region, SubRegion }`.
 - BookingPrice (`getBookingPrice`): tested → 500 env:Client “Internal Error”; blocked until vendor enables. DTO: `BookingPriceResponse { BookingPayment (BookingPrices, PaymentSchedule, GuestPrices), SailingInfo, Promotions, Warnings/Errors }`.
 - HoldCabin/ReleaseCabin: not yet tested; expected DTOs: `HoldCabinResponse { OptionId, Expiration, Cabin }`, `ReleaseCabinResponse { Success, Message }`.
 - CategoryList/CabinList: not yet tested; DTOs: `Category { Code, Description, Min/MaxOccupancy }`, `Cabin { CabinNumber, DeckNumber, Status, MaxOccupancy, LocationFlags }`.
@@ -327,7 +327,6 @@ Notes:
 - Booking: bookings persisted with pricing audit; retrieve/amend supports repricing.
 - Security: role policies enforced; secrets not logged/committed.
 - Payment-ready: abstraction and schema in place; UI can branch into payment once gateway is selected.
-
 
 
 

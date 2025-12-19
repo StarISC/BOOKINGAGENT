@@ -82,3 +82,6 @@
 
 21) Admin Seed Safety
 - Default admin user created by `db/auth_schema.sql` has empty hash/salt; deployment must set real hash/salt via a secure process. Never leave PasswordHash/PasswordSalt as 0x in production.
+
+22) Staging API Warnings
+- Treat CSE0572 (“ACCESS NOT AUTHORIZED FOR THIS AGENCY”) as a warning for Login; continue testing downstream calls while noting auth may be limited. If other endpoints return 401 “User is not found,” verify headers/payload, but keep a mock/stub path to avoid blocking UI.
